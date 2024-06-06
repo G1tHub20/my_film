@@ -20,25 +20,6 @@
 						$table->integer('director_id')->nullable()->unsigned();
 						$table->integer('distributor_id')->nullable();
 						$table->integer('country_id')->unsigned();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
-						$table->index();
 						
 
                     //*********************************
