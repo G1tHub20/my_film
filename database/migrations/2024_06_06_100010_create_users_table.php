@@ -12,21 +12,20 @@
              */
             public function up()
             {
-                Schema::create("tag_movie", function (Blueprint $table) {
+                Schema::create("users", function (Blueprint $table) {
 
-						$table->integer('tag_id')->unsigned();
-						$table->integer('movie_id')->unsigned();
-						//$table->foreign("tag_id")->references("id")->on("tags");
-						//$table->foreign("movie_id")->references("id")->on("movies");
+						$table->increments('id');
+						$table->string('user_name',20);
+						$table->string('email',20);
+						$table->string('password',20);
+						$table->unique(['user_name', 'email']);
 
 
 
 						// ----------------------------------------------------
-						// -- SELECT [tag_movie]--
+						// -- SELECT [users]--
 						// ----------------------------------------------------
-						// $query = DB::table("tag_movie")
-						// ->leftJoin("tags","tags.id", "=", "tag_movie.tag_id")
-						// ->leftJoin("movies","movies.id", "=", "tag_movie.movie_id")
+						// $query = DB::table("users")
 						// ->get();
 						// dd($query); //For checking
 
@@ -42,7 +41,7 @@
              */
             public function down()
             {
-                Schema::dropIfExists("tag_movie");
+                Schema::dropIfExists("users");
             }
         };
     
