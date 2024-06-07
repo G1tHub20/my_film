@@ -16,6 +16,7 @@
 
 						$table->integer('genre_id')->unsigned();
 						$table->integer('movie_id')->unsigned();
+						$table->timestamps();
 						//$table->foreign("genre_id")->references("id")->on("genres");
 						//$table->foreign("movie_id")->references("id")->on("movies");
 

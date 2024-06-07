@@ -16,6 +16,7 @@
 
 						$table->increments('id');
 						$table->string('country',20);
+						$table->timestamps();
 
 
 

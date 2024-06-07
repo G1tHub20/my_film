@@ -16,6 +16,7 @@
 
 						$table->integer('cast_id')->unsigned();
 						$table->integer('movie_id')->unsigned();
+						$table->timestamps();
 						//$table->foreign("cast_id")->references("id")->on("casts");
 						//$table->foreign("movie_id")->references("id")->on("movies");
 

@@ -16,6 +16,7 @@
 
 						$table->increments('id');
 						$table->string('director',20);
+						$table->timestamps();
 
 
 
