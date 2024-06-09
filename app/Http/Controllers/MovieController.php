@@ -19,22 +19,23 @@ class MovieController extends Controller
         //     return view('movies.index', compact('values')); //compact関数でViewに変数を渡す
         // }
 
-        public function index(Request $request)
-        {           
-            // 検索対応
-            $search = $request->search;
-            $query = Movie::search($search);
-            $values = $query->select('id','title','release_year');
-
-            // dd($values);
-            // $query->dd(); //SQLの確認
-
+        public function index()
+        {
+            $values = Tag::all();
             return view('movies.index', compact('values'));
         }
 
-        public function search()
+        public function result(Request $request)
         {
-            $values = Tag::all();
-            return view('movies.search', compact('values'));
+            // 検索対応
+            $search = $request->title;
+            $query = Movie::search($search);
+            // $values = $query->select('id','title','release_year');
+            $values = $query->select('title','release_year','director_id','distributor_id','country_id')->get();
+
+            // $query->dd(); //SQLの確認
+            // dd($values);
+
+            return view('movies.result', compact('values'));
         }
 }

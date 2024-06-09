@@ -26,8 +26,9 @@
                     //*********************************
                     // Foreign KEY [ Uncomment if you want to use!! ]
                     //*********************************
-                        //$table->foreign("director_id")->references("id")->on("directors");
-						//$table->foreign("country_id")->references("id")->on("countries");
+                        // $table->foreign("director_id")->references("id")->on("directors");
+                        // $table->foreign("distributor_id")->references("id")->on("distributor");
+						// $table->foreign("country_id")->references("id")->on("countries");
 
 
 
