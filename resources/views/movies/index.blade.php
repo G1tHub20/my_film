@@ -16,10 +16,10 @@
               @foreach($values as $value)
               {{ $value->id }}<br>
               {{ $value->title }}<br>
-              {{ $value->release_year }}<br>
+              {{-- {{ $value->release_year }}<br>
               {{ $value->director_id }}<br>
               {{ $value->distributor_id }}<br>
-              {{ $value->country_id }}<br>
+              {{ $value->country_id }}<br> --}}
               @endforeach
           </div>
       </div>
