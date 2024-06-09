@@ -24,6 +24,14 @@ class MovieSeeder extends Seeder
                 'country_id' => 1 ,
                 'created_at' => Now()
             ],
+            [
+                'title' => 'マッドマックス　フュリオサ' ,
+                'release_year' => 2024 ,
+                'director_id' => 1 ,
+                'distributor_id' => 2 ,
+                'country_id' => 2 ,
+                'created_at' => Now()
+            ],
         ]);
     }
 }

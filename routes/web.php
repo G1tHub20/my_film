@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+    
+// Route::get('movies', [MovieController::class, 'index']);
+
+// グループ化してまとめる場合（シンプルに書ける）
+Route::prefix('movies') // 頭に contacts をつける
+	->middleware(['auth']) // 認証機能をつける
+	->controller(MovieController::class) // コントローラ指定（Laravel9から）
+	->name('movies.')
+	->group(function() { // グループ化
+		Route::get('/', 'index')->name('index'); // 名前付きルート
+		Route::get('/search', 'search')->name('search');
+	});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
