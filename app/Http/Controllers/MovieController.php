@@ -22,8 +22,10 @@ class MovieController extends Controller
             $search = $request->title;
             $query = Movie::search($search);
             // Directorをリレーションさせる
-            // $movies = $query->with('director')->select('title','release_year','director_id','director','distributor_id','country_id')->get();
-            $movies = $query->with('director')->select('title','release_year','director_id','distributor_id','country_id')->get();
+            // Eager Loading（遅延読み込み）
+            // 関連するデータ（director）を事前に読み込む
+            // withメソッドの引数にはモデルで定義したリレーションメソッド名を文字列で指定
+            $movies = $query->with('director')->with('Country')->select('title','release_year','director_id','distributor_id','country_id')->get(); //getメソッド 結果をコレクションとして取得
 
             // $query->dd(); //SQLの確認
 

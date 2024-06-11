@@ -9,10 +9,18 @@ class Movie extends Model
 {
     use HasFactory;
 
+    // Director(1) 対 Movie(多)
     public function director()
     {
-    //    return $this->hasOne('App\Models\Director');
        return $this->belongsTo('App\Models\Director');
+    }
+    public function country()
+    {
+       return $this->belongsTo('App\Models\Country');
+    }
+    public function distributor()
+    {
+       return $this->belongsTo('App\Models\Distributor');
     }
 
     public function scopeSearch($query, $search) //ローカルスコープ

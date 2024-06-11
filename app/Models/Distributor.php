@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Distributor extends Model
 {
-    // 1対1のリレーション
+    use HasFactory;
+    
+    // Country(1) 対 Movie(多)
     public function movie()
     {
-        return $this->hasOne(Movie::class);
+        return $this->hasMany('App\Models\Movie');
     }
 }

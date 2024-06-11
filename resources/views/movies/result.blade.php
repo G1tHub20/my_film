@@ -18,8 +18,8 @@
                 <p>タイトル：{{ $movie->title }}</p>
                 <p>製作年：{{ $movie->release_year }}</p>
                 <p>監督：{{ $movie->director->director }}</p>
-                <p>配給：{{ $movie->distributor_id }}</p>
-                <p>製作国：{{ $movie->country_id }}</p>
+                <p>配給：{{ $movie->distributor->distributor }}</p>
+                <p>製作国：{{ $movie->country->country }}</p>
               </div>
               @endforeach
           </div>
