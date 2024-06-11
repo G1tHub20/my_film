@@ -13,13 +13,13 @@
                   <a href="{{ route('movies.index') }}" class="text-blue-500">検索に戻る</a>
               </div>
               {{-- bladeテンプレート --}}
-              @foreach($values as $value)
+              @foreach($movies as $movie)
               <div class="container px-5 py-5 mx-auto">
-                <p>タイトル：{{ $value->title }}</p>
-                <p>製作年：{{ $value->release_year }}</p>
-                <p>監督：{{ $value->director_id }}</p>
-                <p>配給：{{ $value->distributor_id }}</p>
-                <p>製作国：{{ $value->country_id }}</p>
+                <p>タイトル：{{ $movie->title }}</p>
+                <p>製作年：{{ $movie->release_year }}</p>
+                <p>監督：{{ $movie->director->director }}</p>
+                <p>配給：{{ $movie->distributor_id }}</p>
+                <p>製作国：{{ $movie->country_id }}</p>
               </div>
               @endforeach
           </div>
