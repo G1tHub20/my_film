@@ -32,6 +32,14 @@ class MovieSeeder extends Seeder
                 'country_id' => 2 ,
                 'created_at' => Now()
             ],
+            [
+                'title' => 'てすとマッド' ,
+                'release_year' => 1999 ,
+                'director_id' => 2 ,
+                'distributor_id' => 1 ,
+                'country_id' => 1 ,
+                'created_at' => Now()
+            ],
         ]);
     }
 }
