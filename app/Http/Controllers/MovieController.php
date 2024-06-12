@@ -19,8 +19,11 @@ class MovieController extends Controller
     public function result(Request $request)
     {
         // 検索対応
-        $search = $request->title;
-        $query = Movie::search($search);
+        $title = $request->title; //タイトル
+        $release_year = $request->release_year; //製作年
+
+        $query = Movie::search($title, $release_year);
+        // dd($query);
         // Directorをリレーションさせる
         // Eager Loading（遅延読み込み）
         // 関連するデータ（director）を事前に読み込む

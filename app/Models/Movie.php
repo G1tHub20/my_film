@@ -23,15 +23,20 @@ class Movie extends Model
        return $this->belongsTo('App\Models\Distributor');
     }
 
-    public function scopeSearch($query, $search) //ローカルスコープ
+    public function scopeSearch($query, $title, $release_year) //ローカルスコープ
     {
-        if($search != null) {
-            $search_split = mb_convert_kana($search, 's'); //全角スペースを半角に変換
-            $search_split2 = preg_split('/[\s]+/', $search_split); //空白で区切る
-            foreach($search_split2 as $value) {
+        if($title != null) {
+            $title_split = mb_convert_kana($title, 's'); //全角スペースを半角に変換
+            $title_split2 = preg_split('/[\s]+/', $title_split); //空白で区切る
+            foreach($title_split2 as $value) {
                 $query->where('title', 'like', '%' . $value . '%');
+            }
         }
-            return $query;
+            
+        if($release_year != null) {
+            $query->where('release_year', '=', $release_year);
         }
+        
+        return $query;
     }
 }
