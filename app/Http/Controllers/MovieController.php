@@ -27,8 +27,7 @@ class MovieController extends Controller
         $title = $request->title; //タイトル
         $release_year = $request->release_year; //製作年
         $country_id = $request->country; //製作国
-        $director_id = $request->director; //製作国
-        // dd($request->country);
+        $director_id = $request->director; //監督
 
         $query = Movie::search($title, $release_year, $director_id, $country_id);
         // dd($query);

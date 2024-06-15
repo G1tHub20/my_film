@@ -23,7 +23,7 @@ class Movie extends Model
        return $this->belongsTo('App\Models\Distributor');
     }
 
-    public function scopeSearch($query, $title, $release_year, $country) //ローカルスコープ
+    public function scopeSearch($query, $title, $release_year, $director_id, $country_id) //ローカルスコープ
     {
         if($title != null) {
             $title_split = mb_convert_kana($title, 's'); //全角スペースを半角に変換
@@ -37,8 +37,12 @@ class Movie extends Model
             $query->where('release_year', '=', $release_year);
         }
 
-        if($country != null) {
-            $query->where('country_id', '=', $country);
+        if($country_id != null) {
+            $query->where('country_id', '=', $country_id);
+        }
+
+        if($director_id != null) {
+            $query->where('director_id', '=', $director_id);
         }
         
         return $query;

@@ -53,9 +53,8 @@
                           <select name="release_year">
                             <option value=""></option>
                             @for($i=1900; $i<=2024; $i++)
-                              <option value="{{ old($i) }}">{{ $i }}</option>;
+                              <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
-                            ?>
                           </select><br>
                           監督
                           <select name="director">
