@@ -13,6 +13,7 @@ class MovieController extends Controller
         public function index()
         {
             $values = Tag::all();
+            $countries = Tag::all();
             return view('movies.index', compact('values'));
         }
 

@@ -21,14 +21,16 @@
                       <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                         <div class="relative flex-grow w-full">
                           <label for="full-name" class="leading-7 font-medium text-gray-500">タグ</label>
-                          <input type="text" id="full-name" name="search" value="{{ old('search') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                          <input type="text" id="full-name" name="tag" value="{{ old('search') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
-                        {{-- <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">search</button> --}}
                     </div>
                 </div>
                 <div class="container mx-10 px-5 py-2 mx-auto mb-10">
-                    @foreach($values as $value)
-                        <span class="">{{ $value->tag }}</span>
+                    @foreach($tags as $tag)
+                        {{-- <span class="">{{ $tag->tag }}</span> --}}
+                        <label for="{{ $tag->id }}">
+                        <input type="checkbox" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }}
+                      </label>
                     @endforeach
                 </div>
                   </section>
@@ -47,10 +49,30 @@
                       <div id="accordion-collapse-body-1" class="display" aria-labelledby="accordion-collapse-heading-1">
                         <div class="p-2 w-full">
                           タイトル<input type="text" id="title" name="title" value="{{ old('title') }}"><br>
-                          製作年<input type="text" id="release_year" name="release_year" value="{{ old('release_year') }}"><br>
-                          監督<input type="text" id="director" name="director" value="{{ old('director') }}"><br>
-                          配給<input type="text" id="distributor" name="distributor" value="{{ old('distributor') }}"><br>
-                          製作国<input type="text" id="country" name="country" value="{{ old('country') }}"><br>
+                          製作年
+                          <select name="release_year">
+                            <option value=""></option>
+                            @for($i=1900; $i<=2024; $i++)
+                              <option value="{{ old($i) }}">{{ $i }}</option>;
+                            @endfor
+                            ?>
+                          </select><br>
+                          監督
+                          <select name="director">
+                            <option value=""></option>
+                          @foreach($directors as $director)
+                            <option value="{{ $director->id }}">{{ $director->director }}</option>
+                          @endforeach
+                          </select><br>
+
+                          製作国
+                          <select name="country">
+                            <option value=""></option>
+                          @foreach($countries as $country)
+                            <option value="{{ $country->id }}">{{ $country->country }}</option>
+                          @endforeach
+                          </select><br>
+
                           キャスト<input type="text" id="cast" name="cast" value="{{ old('cast') }}"><br>
                         </div>
                         

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Director;
+use App\Models\Country;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 
@@ -12,17 +13,24 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $values = Tag::all();
-        return view('movies.index', compact('values'));
+        $tags = Tag::all();
+        $directors = Director::all();
+        $countries = Country::all();
+        // dd($countries);
+        return view('movies.index', compact('tags','directors','countries'));
     }
 
     public function result(Request $request)
     {
+        // dd($request);
         // 検索対応
         $title = $request->title; //タイトル
         $release_year = $request->release_year; //製作年
+        $country_id = $request->country; //製作国
+        $director_id = $request->director; //製作国
+        // dd($request->country);
 
-        $query = Movie::search($title, $release_year);
+        $query = Movie::search($title, $release_year, $director_id, $country_id);
         // dd($query);
         // Directorをリレーションさせる
         // Eager Loading（遅延読み込み）
