@@ -9,7 +9,6 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
               <div class="p-6 bg-white border-b border-gray-200">
-                  index<br>
 
                 <form method="get" action="{{ route('movies.result') }}">
                   <section class="text-gray-600 body-font">
@@ -52,7 +51,7 @@
                           製作年
                           <select name="release_year">
                             <option value=""></option>
-                            @for($i=1900; $i<=2024; $i++)
+                            @for($i=2024; $i>=1950; $i--)
                               <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
                           </select><br>
@@ -74,12 +73,12 @@
 
                           キャスト<input type="text" id="cast" name="cast" value="{{ old('cast') }}"><br>
                         </div>
-                        
+                        <input type="reset" class="text-white bg-indigo-300 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-400 rounded text-lg" value="条件をクリア">
                       </div>
                       
                     </div>
                   </section>
-                  <button class="text-white bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
+                  <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
                 </form>
               </div>
           </div>
