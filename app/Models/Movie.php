@@ -23,11 +23,11 @@ class Movie extends Model
        return $this->belongsTo('App\Models\Distributor');
     }
     // Movie(1) 対 Movie_Tag(多)？
-    // public function tags()
-    // {
-    //    
-    //     return $this->belongsToMany('App\Models\Tag', 'movie_tag', 'movie_id', 'tag_id');
-    // }
+    public function tags()
+    {
+       
+        return $this->belongsToMany('App\Models\Tag', 'movie_tag', 'movie_id', 'tag_id');
+    }
 
     public function scopeSearch($query, $title, $release_year, $director_id, $country_id) //ローカルスコープ
     {
