@@ -30,6 +30,13 @@ class ReviewSeeder extends Seeder
                 'rating' => 5,
                 'created_at' => Now()
             ],
+            [
+                'movie_id' => 4,
+                'user_id' => 1,
+                'review' => '先日観た関心領域より、ずっと前の本作ですが初めて観賞。ナチス幹部の残虐さに衝撃。',
+                'rating' => 4,
+                'created_at' => Now()
+            ],
         ]);
     }
 }

@@ -17,18 +17,28 @@ class MovieTagSeeder extends Seeder
     {
         DB::table('movie_tag')->insert([
             [
-                'movie_id' => 1 ,
-                'tag_id' => 2 ,
+                'movie_id' => 1,
+                'tag_id' => 2,
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 1 ,
-                'tag_id' => 8 ,
+                'movie_id' => 1,
+                'tag_id' => 8,
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 1 ,
-                'tag_id' => 11 ,
+                'movie_id' => 2,
+                'tag_id' => 11,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 4,
+                'tag_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 4,
+                'tag_id' => 14,
                 'created_at' => Now()
             ],
         ]);

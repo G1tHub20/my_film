@@ -24,6 +24,10 @@ class DirectorSeeder extends Seeder
                 'director' => '堤幸彦' ,
                 'created_at' => Now()
              ],
+            [
+                'director' => 'スティーブン・スピルバーグ' ,
+                'created_at' => Now()
+             ],
         ]);
     }
 }

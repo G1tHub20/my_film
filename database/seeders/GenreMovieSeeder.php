@@ -22,8 +22,33 @@ class GenreMovieSeeder extends Seeder
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 19 ,
-                'movie_id' => 1 ,
+                'genre_id' => 19,
+                'movie_id' => 1,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 11,
+                'movie_id' => 2,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 2,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 13,
+                'movie_id' => 2,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 2,
+                'movie_id' => 4,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 5,
+                'movie_id' => 4,
                 'created_at' => Now()
             ],
         ]);

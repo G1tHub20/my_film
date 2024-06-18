@@ -24,6 +24,10 @@ class DistributorSeeder extends Seeder
                'distributor' => 'ワーナー・ブラザース映画' ,
                'created_at' => Now()
             ],
+            [
+               'distributor' => 'UIP' ,
+               'created_at' => Now()
+            ],
         ]);
     }
 }
