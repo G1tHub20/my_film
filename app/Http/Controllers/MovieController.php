@@ -7,7 +7,7 @@ use App\Models\Movie;
 use App\Models\Director;
 use App\Models\Country;
 use App\Models\Tag;
-use App\Models\Movie_Tag;
+use App\Models\MovieTag; //アンダーバー使わない！
 use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
@@ -21,21 +21,24 @@ class MovieController extends Controller
         return view('movies.index', compact('tags','directors','countries'));
     }
 
-    public function result(Request $request)
+    public function create() // 登録
     {
-        // dd($request);
-        // 検索対応
+        // 管理者ユーザかどうか判定
+        $isAdmin = auth()->user()->isAdmin;
+        if($isAdmin === 1) {
+            return view('movies.create');
+        } else {
+            abort(404); // HTTP例外を出す
+        }
+    }
+
+    public function result(Request $request) // 検索
+    {
         $title = $request->title;               //タイトル
         $release_year = $request->release_year; //製作年
         $country_id = $request->country;        //製作国
         $director_id = $request->director;      //監督
         $tag_ids = $request->tag;                //タグ
-
-        // if(!empty($request->tag)) {
-        //     foreach ($request->tag as $tag_id) { //タグ（配列で取得）
-        //         $movie_ids = Tag::find($tag_id)->movies()->pluck('id'); //pluckメソッド 指定したキーの全コレクション値を取得
-        //     }
-        // }
         
         $query = Movie::search($title, $release_year, $director_id, $country_id);
         // Eager Loading（遅延読み込み）
@@ -49,8 +52,8 @@ class MovieController extends Controller
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && !empty(count($tag_ids))) { //tag_idsがある、かつ、数が0じゃない
-                $query = $query->whereHas('tags', function($q)use($tag_ids) { //whereHas
-                $q->whereIn('id', $tag_ids);
+                $query = $query->whereHas('tags', function($q)use($tag_ids) { //whereHas リレーション先のテーブルの条件で検索
+                $q->whereIn('id', $tag_ids);                                  //useメソッドを使用するとクロージャの中で変数が使える
             });
             }
             

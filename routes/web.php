@@ -27,6 +27,7 @@ Route::prefix('movies') // 頭に contacts をつける
 	->name('movies.')
 	->group(function() { // グループ化
 		Route::get('/', 'index')->name('index'); // 名前付きルート
+		Route::get('/create', 'create')->name('create');
 		Route::get('/result', 'result')->name('result');
 	});
 

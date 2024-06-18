@@ -21,14 +21,23 @@ class UserSeeder extends Seeder
                'name' => 'test',
                'email' => 'test@test.com',
                'password' => Hash::make('password123'),
+               'isAdmin' => 0,
                'created_at' => Now()
             ],
             [
                'name' => '太郎' ,
                'email' => 'taro@test.com' ,
                'password' => Hash::make('password123'),
+               'isAdmin' => 0,
                'created_at' => Now()
-            ]
+            ],
+            [
+               'name' => 'admin' ,
+               'email' => 'admin@test.com' ,
+               'password' => Hash::make('admin123'),
+               'isAdmin' => 1,
+               'created_at' => Now()
+            ],
         ]);
     }
 }
