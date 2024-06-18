@@ -48,14 +48,17 @@ class MovieController extends Controller
             ->with('director')
             ->with('country')
             ->with('distributor')
+            // ->select('title','genre','release_year','director_id','distributor_id','country_id');
             ->select('title','release_year','director_id','distributor_id','country_id');
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && !empty(count($tag_ids))) { //tag_idsがある、かつ、数が0じゃない
                 $query = $query->whereHas('tags', function($q)use($tag_ids) { //whereHas リレーション先のテーブルの条件で検索
-                $q->whereIn('id', $tag_ids);                                  //useメソッドを使用するとクロージャの中で変数が使える
-            });
+                    $q->whereIn('id', $tag_ids);                                  //useメソッドを使用するとクロージャの中で変数が使える
+                });
             }
+
+            // dd($query->toSql(), $query->getBindings());
             
         $movies = $query->get(); //getメソッド 結果をコレクションとして取得
 

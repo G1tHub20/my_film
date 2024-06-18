@@ -13,6 +13,7 @@
               @foreach($movies as $movie)
                 <div class="container px-5 py-5 mx-auto">
                   <p>タイトル：{{ $movie->title }}</p>
+                  <p>ジャンル：{{ $movie->genre }}</p>
                   <p>製作年：{{ $movie->release_year }}</p>
                   <p>監督：{{ $movie->director->director }}</p>
                   <p>配給：{{ $movie->distributor->distributor }}</p>
