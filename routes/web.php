@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MoviexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,13 @@ use App\Http\Controllers\MovieController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
-    
+
+Route::get('post', [UserController::class, 'post']);
+
+Route::get('/moviex', [MoviexController::class, 'search'])->name('movies.search');
+
 // Route::get('movies', [MovieController::class, 'index']);
 
 // グループ化してまとめる場合（シンプルに書ける）
