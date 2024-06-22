@@ -48,7 +48,7 @@
                       <div id="accordion-collapse-body-1" class="display" aria-labelledby="accordion-collapse-heading-1">
                         <div class="p-2 w-full">
                           タイトル<input type="text" id="title" name="title" value="{{ old('title') }}"><br>
-                          製作年
+                          公開年
                           <select name="release_year">
                             <option value=""></option>
                             @for($i=2024; $i>=1950; $i--)

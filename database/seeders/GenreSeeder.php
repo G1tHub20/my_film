@@ -16,96 +16,231 @@ class GenreSeeder extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
+            // [
+            //    'genre' => 'アニメ' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ドラマ' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => '恋愛' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ホラー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => '戦争' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ミュージカル' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'スポーツ' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'SF' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => '青春' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'コメディ' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'アクション' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'アドベンチャー・冒険' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'クライム' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ドキュメンタリー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'スリラー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'サスペンス' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ファミリー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ファンタジー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ミステリー' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'パニック' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'オムニバス' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'バイオレンス' ,
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'genre' => 'ギャング・マフィア' ,
+            //    'created_at' => Now()
+            // ],
             [
-               'genre' => 'アニメ' ,
+               'id' => 12,
+               'genre' => 'アドベンチャー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ドラマ' ,
+               'id' => 14,
+               'genre' => 'ファンタジー',
                'created_at' => Now()
             ],
             [
-               'genre' => '恋愛' ,
+               'id' => 16,
+               'genre' => 'アニメーション',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ホラー' ,
+               'id' => 18,
+               'genre' => 'ドラマ',
                'created_at' => Now()
             ],
             [
-               'genre' => '戦争' ,
+               'id' => 27,
+               'genre' => 'ホラー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ミュージカル' ,
+               'id' => 28,
+               'genre' => 'アクション',
                'created_at' => Now()
             ],
             [
-               'genre' => 'スポーツ' ,
+               'id' => 35,
+               'genre' => 'コメディ',
                'created_at' => Now()
             ],
             [
-               'genre' => 'SF' ,
+               'id' => 36,
+               'genre' => '歴史',
                'created_at' => Now()
             ],
             [
-               'genre' => '青春' ,
+               'id' => 37,
+               'genre' => '西部劇',
                'created_at' => Now()
             ],
             [
-               'genre' => 'コメディ' ,
+               'id' => 53,
+               'genre' => 'スリラー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'アクション' ,
+               'id' => 80,
+               'genre' => 'クライム',
                'created_at' => Now()
             ],
             [
-               'genre' => 'アドベンチャー・冒険' ,
+               'id' => 99,
+               'genre' => 'ドキュメンタリー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'クライム' ,
+               'id' => 878,
+               'genre' => 'SF',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ドキュメンタリー' ,
+               'id' => 9648,
+               'genre' => 'ミステリー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'スリラー' ,
+               'id' => 10402,
+               'genre' => '音楽',
                'created_at' => Now()
             ],
             [
-               'genre' => 'サスペンス' ,
+               'id' => 10749,
+               'genre' => 'ロマンス',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ファミリー' ,
+               'id' => 10751,
+               'genre' => 'ファミリー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ファンタジー' ,
+               'id' => 10752,
+               'genre' => '戦争',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ミステリー' ,
+               'id' => 10759,
+               'genre' => 'アクション＆アドベンチャー',
                'created_at' => Now()
             ],
             [
-               'genre' => 'パニック' ,
+               'id' => 10762,
+               'genre' => 'キッズ',
                'created_at' => Now()
             ],
             [
-               'genre' => 'オムニバス' ,
+               'id' => 10763,
+               'genre' => 'ニュース',
                'created_at' => Now()
             ],
             [
-               'genre' => 'バイオレンス' ,
+               'id' => 10764,
+               'genre' => 'リアリティ',
                'created_at' => Now()
             ],
             [
-               'genre' => 'ギャング・マフィア' ,
+               'id' => 10765,
+               'genre' => 'SF＆ファンタジー',
+               'created_at' => Now()
+            ],
+            [
+               'id' => 10766,
+               'genre' => '連続ドラマ',
+               'created_at' => Now()
+            ],
+            [
+               'id' => 10767,
+               'genre' => 'トーク',
+               'created_at' => Now()
+            ],
+            [
+               'id' => 10768,
+               'genre' => '戦争と政治',
+               'created_at' => Now()
+            ],
+            [
+               'id' => 10770,
+               'genre' => 'テレビ映画',
                'created_at' => Now()
             ],
         ]);

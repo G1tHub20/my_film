@@ -17,17 +17,22 @@ class GenreMovieSeeder extends Seeder
     {
         DB::table('genre_movie')->insert([
             [
-                'genre_id' => 10 ,
+                'genre_id' => 35 ,
                 'movie_id' => 1 ,
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 19,
+                'genre_id' => 80,
                 'movie_id' => 1,
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 11,
+                'genre_id' => 9648,
+                'movie_id' => 1,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 28,
                 'movie_id' => 2,
                 'created_at' => Now()
             ],
@@ -37,17 +42,22 @@ class GenreMovieSeeder extends Seeder
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 13,
+                'genre_id' => 878,
                 'movie_id' => 2,
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 2,
+                'genre_id' => 18,
                 'movie_id' => 4,
                 'created_at' => Now()
             ],
             [
-                'genre_id' => 5,
+                'genre_id' => 36,
+                'movie_id' => 4,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 10752,
                 'movie_id' => 4,
                 'created_at' => Now()
             ],

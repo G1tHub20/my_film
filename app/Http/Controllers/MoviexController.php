@@ -20,6 +20,12 @@ class MoviexController extends Controller
         
         $movies = $this->tmdbService->searchMovie($query);
 
-        return view('movies.index2', compact('movies'));
+        return view('movies.test1', compact('movies'));
+    }
+
+    public function show($id)
+    {
+        $details = $this->tmdbService->getMovieDetails($id);
+        return view('movies.test2', compact('details'));
     }
 }

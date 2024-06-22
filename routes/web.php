@@ -22,7 +22,9 @@ Route::get('/', function () {
 
 Route::get('post', [UserController::class, 'post']);
 
+// TMDB API
 Route::get('/moviex', [MoviexController::class, 'search'])->name('movies.search');
+Route::get('/moviex/{id}', [MoviexController::class, 'show'])->name('movies.show');
 
 // Route::get('movies', [MovieController::class, 'index']);
 

@@ -14,7 +14,7 @@
             {
                 Schema::create("genres", function (Blueprint $table) {
 
-						$table->increments('id');
+						$table->integer('id')->unsigned();
 						$table->string('genre',20);
 						$table->timestamps();
 
