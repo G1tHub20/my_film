@@ -41,15 +41,6 @@ class TMDbService
         ]);
 
         $data = json_decode($response->getBody()->getContents(), true);
-
-        // // Extracting required details
-        // $details = [
-        //     'title' => $data['title'] ?? 'Title not found',
-        //     'release_date' => $data['release_date'] ?? 'Release date not found',
-        //     // 'director' => $this->getDirector($data['credits']['crew'] ?? []),
-        //     'production_countries' => $this->getProductionCountries($data['production_countries'] ?? [])
-        // ];
-
         return $data;
     }
 

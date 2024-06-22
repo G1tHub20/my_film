@@ -49,7 +49,7 @@ class MovieController extends Controller
             ->with('country')
             ->with('distributor')
             // ->select('title','genre','release_year','director_id','distributor_id','country_id');
-            ->select('title','release_year','director_id','distributor_id','country_id');
+            ->select('id','title','release_year','director_id','distributor_id','country_id');
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && !empty(count($tag_ids))) { //tag_idsがある、かつ、数が0じゃない
@@ -63,5 +63,26 @@ class MovieController extends Controller
         $movies = $query->get(); //getメソッド 結果をコレクションとして取得
 
         return view('movies.result', compact('movies'));
+    }
+
+    public function show($id) // 詳細情報
+    {
+
+        $query = Movie::search2($id);
+
+        $query
+            ->with('director')
+            ->with('country')
+            ->with('distributor')
+            ->select('id','title','overview','release_year','director_id','distributor_id','country_id');
+            
+        $movie = $query->first();
+
+        return view('movies.show',compact('movie'));
+    //     $movie = Movie::find($id);
+
+    //     // return view('contacts.show', compact('contact', 'gender', 'age'));
+    //     return view('movies.show',compact('movie'));
+
     }
 }

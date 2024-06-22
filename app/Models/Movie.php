@@ -53,4 +53,13 @@ class Movie extends Model
         
         return $query;
     }
+
+    public function scopeSearch2($query, $id)
+    {
+        if($id != null) {
+            $query->where('id', '=', $id);
+        }
+        
+        return $query;
+    }
 }

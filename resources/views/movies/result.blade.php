@@ -16,8 +16,9 @@
                   <p>ジャンル：{{ $movie->genre }}</p>
                   <p>公開年：{{ $movie->release_year }}</p>
                   <p>監督：{{ $movie->director->director }}</p>
-                  <p>配給：{{ $movie->distributor->distributor }}</p>
+                  {{-- <p>配給：{{ $movie->distributor->distributor }}</p> --}}
                   <p>製作国：{{ $movie->country->country }}</p>
+                  <p><a href="/movies/{{ $movie['id'] }}" class="text-blue-500">詳細を見る</a></p>
                   </div>
                 @endforeach
                 
