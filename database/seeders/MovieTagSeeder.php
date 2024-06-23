@@ -28,17 +28,37 @@ class MovieTagSeeder extends Seeder
             ],
             [
                 'movie_id' => 2,
+                'tag_id' => 4,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 2,
+                'tag_id' => 11,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 2,
+                'tag_id' => 17,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 3,
+                'tag_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 3,
+                'tag_id' => 14,
+                'created_at' => Now()
+            ],
+            [
+                'movie_id' => 4,
                 'tag_id' => 11,
                 'created_at' => Now()
             ],
             [
                 'movie_id' => 4,
-                'tag_id' => 5,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 4,
-                'tag_id' => 14,
+                'tag_id' => 15,
                 'created_at' => Now()
             ],
         ]);

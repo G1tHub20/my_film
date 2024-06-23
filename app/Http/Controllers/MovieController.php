@@ -8,6 +8,7 @@ use App\Models\Director;
 use App\Models\Country;
 use App\Models\Tag;
 use App\Models\MovieTag; //アンダーバー使わない！
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
@@ -45,11 +46,9 @@ class MovieController extends Controller
         // 関連するデータ（director）を事前に読み込む
         // withメソッドの引数にはモデルで定義したリレーションメソッド名を文字列で指定
         $query
-            ->with('director')
+            ->with('director') //Movieのdirectorメソッドを呼び出す
             ->with('country')
-            ->with('distributor')
-            // ->select('title','genre','release_year','director_id','distributor_id','country_id');
-            ->select('id','title','release_year','director_id','distributor_id','country_id');
+            ->select('id','title','release_year','director_id','country_id');
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && !empty(count($tag_ids))) { //tag_idsがある、かつ、数が0じゃない
@@ -58,8 +57,6 @@ class MovieController extends Controller
                 });
             }
 
-            // dd($query->toSql(), $query->getBindings());
-            
         $movies = $query->get(); //getメソッド 結果をコレクションとして取得
 
         return view('movies.result', compact('movies'));
@@ -67,22 +64,25 @@ class MovieController extends Controller
 
     public function show($id) // 詳細情報
     {
+        $movie = Movie::find($id);
+        $title = $movie->title;
+        $release_year = $movie->release_year;
+        $country = $movie->country->country;
+        $overview = $movie->overview;
+        $director = $movie->director->director;
+        $image_path = 'https://image.tmdb.org/t/p/w500';
+        $image1 = $image_path . $movie->image1;
+        $image2 = null;
+        if(!empty($movie->image2)) {
+            $image2 = $image_path . $movie->image2;
+        }
+        $tags = $movie->tags;
+        $genres = $movie->genres;
+        $reviews = $movie->reviews;
 
-        $query = Movie::search2($id);
+        $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100;
+        // dd($rating);
 
-        $query
-            ->with('director')
-            ->with('country')
-            ->with('distributor')
-            ->select('id','title','overview','release_year','director_id','distributor_id','country_id');
-            
-        $movie = $query->first();
-
-        return view('movies.show',compact('movie'));
-    //     $movie = Movie::find($id);
-
-    //     // return view('contacts.show', compact('contact', 'gender', 'age'));
-    //     return view('movies.show',compact('movie'));
-
+        return view('movies.show',compact('title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));
     }
 }

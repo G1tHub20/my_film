@@ -24,6 +24,10 @@ class CountrySeeder extends Seeder
                'country' => 'アメリカ' ,
                'created_at' => Now()
             ],
+            [
+               'country' => 'イギリス' ,
+               'created_at' => Now()
+            ],
         ]);
     }
 }

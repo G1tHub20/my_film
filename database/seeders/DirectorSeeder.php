@@ -28,6 +28,14 @@ class DirectorSeeder extends Seeder
                 'director' => 'スティーブン・スピルバーグ' ,
                 'created_at' => Now()
              ],
+            [
+                'director' => 'クリス・コロンバス' ,
+                'created_at' => Now()
+             ],
+            [
+                'director' => 'ジョン・ラセター' ,
+                'created_at' => Now()
+             ],
         ]);
     }
 }

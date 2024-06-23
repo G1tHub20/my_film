@@ -19,7 +19,8 @@
 						$table->string('overview',500)->nullable();
 						$table->integer('release_year');
 						$table->integer('director_id')->nullable()->unsigned();
-						$table->integer('distributor_id')->nullable();
+						$table->string('image1')->nullable();
+						$table->string('image2')->nullable();
 						$table->integer('country_id')->unsigned();
 						$table->timestamps();
 

@@ -5,14 +5,14 @@
       </h2>
   </x-slot>
 
-  <div class="py-12">
+  <div class="py-5">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
               <div class="p-6 bg-white border-b border-gray-200">
 
                 <form method="get" action="{{ route('movies.result') }}">
                   <section class="text-gray-600 body-font">
-                    <div class="container px-5 pt-10 mx-auto">
+                    <div class="container px-5 pt-5 mx-auto">
                       <div class="flex flex-col text-center w-full mb-4">
                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">映画を探しましょう</h1>
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">気になるタグ、または詳細条件から映画を検索してください</p>

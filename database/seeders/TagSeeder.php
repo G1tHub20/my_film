@@ -80,6 +80,10 @@ class TagSeeder extends Seeder
                'tag' => '映画賞受賞' ,
                'created_at' => Now()
             ],
+            [
+               'tag' => 'ド派手なアクション' ,
+               'created_at' => Now()
+            ],
         ]);
     }
 }

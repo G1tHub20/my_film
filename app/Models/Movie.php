@@ -18,15 +18,20 @@ class Movie extends Model
     {
        return $this->belongsTo('App\Models\Country');
     }
-    public function distributor()
+    public function genres()
     {
-       return $this->belongsTo('App\Models\Distributor');
+        return $this->belongsToMany('App\Models\Genre', 'genre_movie', 'movie_id', 'genre_id');
     }
     // Movie(1) 対 Movie_Tag(多)？
     public function tags()
     {
-       
+        //第一引数に：関係するモデルのモデル名、第二引数：中間テーブルのテーブル名、第三引数：中間テーブル内で対応しているID名, 第四引数：関係するモデルで対応しているID名'
         return $this->belongsToMany('App\Models\Tag', 'movie_tag', 'movie_id', 'tag_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
     }
 
     public function scopeSearch($query, $title, $release_year, $director_id, $country_id) //ローカルスコープ

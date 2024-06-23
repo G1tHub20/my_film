@@ -22,7 +22,8 @@ class TMDbService
         $response = $this->httpClient->request('GET', 'search/movie', [
             'query' => [
                 'api_key' => $this->apiKey,
-                'query' => $query
+                'query' => $query,
+                'language' => 'ja-JP' // 日本語のレスポンスを指定
             ]
         ]);
 
@@ -36,7 +37,9 @@ class TMDbService
         $response = $this->httpClient->request('GET', "movie/{$movieId}", [
             'query' => [
                 'api_key' => $this->apiKey,
-                'append_to_response' => 'credits'
+                'append_to_response' => 'credits',
+                'language' => 'ja-JP' // 日本語のレスポンスを指定
+
             ]
         ]);
 

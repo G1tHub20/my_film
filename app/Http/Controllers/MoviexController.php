@@ -26,7 +26,8 @@ class MoviexController extends Controller
     public function show($id)
     {
         $details = $this->tmdbService->getMovieDetails($id);
-        // $details = $this->tmdbService->translateMovieDetails($id);
+
+        // dd($details);
         return view('movies.test2', compact('details'));
     }
 }
