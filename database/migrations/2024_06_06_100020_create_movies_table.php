@@ -16,6 +16,7 @@
 
 						$table->increments('id');
 						$table->string('title',50);
+						$table->string('original_title',50);
 						$table->string('overview',500)->nullable();
 						$table->integer('release_year');
 						$table->integer('director_id')->nullable()->unsigned();
