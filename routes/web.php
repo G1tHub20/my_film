@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MoviexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +24,7 @@ Route::get('post', [UserController::class, 'post']);
 // Route::get('movies', [MovieController::class, 'index']);
 
 // グループ化してまとめる場合（シンプルに書ける）
-Route::prefix('movies') // 頭に contacts をつける
+Route::prefix('movies') // 頭に movies をつける
 	->middleware(['auth']) // 認証機能をつける
 	->controller(MovieController::class) // コントローラ指定（Laravel9から）
 	->name('movies.')
@@ -34,6 +33,8 @@ Route::prefix('movies') // 頭に contacts をつける
 		Route::get('/create', 'create')->name('create');
 		Route::get('/result', 'result')->name('result');
 		Route::get('/{id}', 'show')->name('show');
+		Route::get('post/{id}', 'post')->name('post');
+		Route::post('store/{id}', 'store')->name('store');
 	});
 
 Route::get('/dashboard', function () {
@@ -46,7 +47,7 @@ Route::get('/dashboard', function () {
 
 
 // TMDB API
-Route::get('/moviex', [MoviexController::class, 'search'])->name('movies.search');
-Route::get('/moviex/{id}', [MoviexController::class, 'show'])->name('movies.show');
+// Route::get('/moviex', [MoviexController::class, 'search'])->name('movies.search');
+// Route::get('/moviex/{id}', [MoviexController::class, 'show'])->name('movies.show');
 
 require __DIR__.'/auth.php';

@@ -36,6 +36,10 @@ class DirectorSeeder extends Seeder
                 'director' => 'ジョン・ラセター' ,
                 'created_at' => Now()
              ],
+            [
+                'director' => 'N/A' ,
+                'created_at' => Now()
+             ],
         ]);
     }
 }

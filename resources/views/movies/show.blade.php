@@ -69,7 +69,8 @@
 
           </div>
       </div>
-      <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを投稿</button>
+      <button onclick="location.href='/movies/post/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
+      {{-- <button onclick="location.href='{{ route('movies/post', ['id' => $movie_id]}}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button> --}}
 
   </div>
 

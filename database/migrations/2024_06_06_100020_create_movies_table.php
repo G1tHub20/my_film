@@ -15,9 +15,9 @@
                 Schema::create("movies", function (Blueprint $table) {
 
 						$table->increments('id');
-						$table->string('title',50);
-						$table->string('original_title',50);
-						$table->string('overview',500)->nullable();
+						$table->string('title',80);
+						$table->string('original_title',80);
+						$table->string('overview',600)->nullable();
 						$table->integer('release_year');
 						$table->integer('director_id')->nullable()->unsigned();
 						$table->string('image1')->nullable();

@@ -16,6 +16,7 @@
 
 						$table->integer('movie_id')->unsigned();
 						$table->integer('tag_id')->unsigned();
+						$table->integer('user_id')->unsigned();
 						$table->timestamps();
 						//$table->foreign("movie_id")->references("id")->on("movies");
 						//$table->foreign("tag_id")->references("id")->on("tags");

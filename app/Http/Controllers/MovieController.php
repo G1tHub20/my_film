@@ -64,6 +64,7 @@ class MovieController extends Controller
 
     public function show($id) // 詳細情報
     {
+        $movie_id = $id;
         $movie = Movie::find($id);
         $title = $movie->title;
         $release_year = $movie->release_year;
@@ -76,13 +77,83 @@ class MovieController extends Controller
         if(!empty($movie->image2)) {
             $image2 = $image_path . $movie->image2;
         }
-        $tags = $movie->tags;
+        // $tags = $movie->tags->orderBy('tag_id','desc');
+        $tags = $movie->tags; //distinctで重複を除去したい
         $genres = $movie->genres;
         $reviews = $movie->reviews;
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100;
         // dd($rating);
 
-        return view('movies.show',compact('title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));
+        return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));
+    }
+
+    public function post($id) // レビューを書く
+    {
+        $tags = Tag::all();
+        $movie = Movie::find($id);
+        $movie_id = $movie->id;
+        $title = $movie->title;
+        // dd($title);
+        $user_id = auth()->user()->id;
+
+        return view('movies.post', compact('movie_id','user_id','title','tags'));
+    }
+
+    public function store(Request $request) // DBに登録
+    {
+        $review = new Review;
+        // $tag = new Tag;
+        $review->user_id = $request->input('user_id');
+        $review->movie_id = $request->input('movie_id');
+        $review->rating = $request->input('rating');
+        $review->review = $request->input('review');
+        $review->save();
+
+        $insertedId = [];
+        foreach($request->input('newTag') as $newTag) {
+            if($newTag != null) {
+                $tag = new Tag;
+                $tag->tag = $newTag;
+                $tag->save(); //★既存と重複する場合は例外処理したい
+                array_push($insertedId, $tag->id);
+            }
+        }
+        // $insertedId = $tag->id;             //登録したタグのidを取得
+
+        if(!empty($request->input('tag'))) {
+            $tags = $request->input('tag');
+            if(!empty($insertedId)) { //タグの追加があれば
+                foreach($insertedId as $i) {
+                    array_push($tags, strval($i)); //取得したidを配列に追加
+                }
+            }
+
+            foreach($tags as $tag) {
+                $movieTag = new MovieTag;
+                $movieTag->movie_id = $request->input('movie_id');
+                $movieTag->tag_id = $tag;
+                $movieTag->user_id = $request->input('user_id');
+                $movieTag->save();
+            }
+
+
+            
+        }
+        
+        
+
+        // foreach($tags as $tag) {
+        //     $movieTag = new MovieTag;
+        //     $movieTag->movie_id = $request->input('movie_id');
+        //     $movieTag->tag_id = $tag;
+        //     $movieTag->user_id = $request->input('user_id');
+        //     $movieTag->save();
+        // }
+
+        // 詳細情報画面に遷移したい
+
+        return redirect('movies/' . $review->movie_id);
+        // return route('movies.show', ['id' => $review->movie_id]);
     }
 }

@@ -18,9 +18,9 @@
                     <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
                         検索
                     </x-nav-link>
-                    <x-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
+                    {{-- <x-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
                         登録
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
@@ -75,9 +75,9 @@
             <x-responsive-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
                 検索
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
+            {{-- <x-responsive-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
                 登録
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->

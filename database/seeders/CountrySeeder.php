@@ -28,6 +28,38 @@ class CountrySeeder extends Seeder
                'country' => 'イギリス' ,
                'created_at' => Now()
             ],
+            [
+               'country' => 'フランス' ,
+               'created_at' => Now()
+            ],
+            [
+               'country' => 'ドイツ' ,
+               'created_at' => Now()
+            ],
+            [
+               'country' => '韓国' ,
+               'created_at' => Now()
+            ],
+            [
+                'country' => '中国' ,
+                'created_at' => Now()
+            ],
+            [
+               'country' => 'カナダ' ,
+               'created_at' => Now()
+            ],
+            [
+               'country' => '香港' ,
+               'created_at' => Now()
+            ],
+            [
+               'country' => 'インド' ,
+               'created_at' => Now()
+            ],
+            [
+               'country' => 'その他' ,
+               'created_at' => Now()
+            ],
         ]);
     }
 }

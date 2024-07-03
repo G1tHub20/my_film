@@ -17,7 +17,7 @@
 						$table->increments('id');
 						$table->integer('movie_id')->unsigned();
 						$table->integer('user_id')->unsigned();
-						$table->string('review',300)->nullable();
+						$table->string('review',1000)->nullable();
 						$table->integer('rating');
 						$table->timestamps();
 						//$table->foreign("movie_id")->references("id")->on("movies");

@@ -18,6 +18,8 @@
 						$table->string('tag',20);
 						$table->timestamps();
 
+                        $table->unique('tag');
+
 
 
 						// ----------------------------------------------------

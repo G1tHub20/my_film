@@ -19,7 +19,7 @@
                       </div>
                       <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                         <div class="relative flex-grow w-full">
-                          <label for="tag" class="leading-7 font-medium text-gray-500">タグ</label>
+                          {{-- <label for="tag" class="leading-7 font-medium text-gray-500">タグ</label> --}}
                         </div>
                     </div>
                 </div>
@@ -49,6 +49,7 @@
                           公開年
                           <select name="release_year">
                             <option value=""></option>
+                            {{-- @for($i=2024; $i>=1950; $i--) --}}
                             @for($i=2024; $i>=1950; $i--)
                               <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
@@ -69,7 +70,7 @@
                           @endforeach
                           </select><br>
 
-                          キャスト<input type="text" id="cast" name="cast" value="{{ old('cast') }}"><br>
+                          {{-- キャスト<input type="text" id="cast" name="cast" value="{{ old('cast') }}"><br> --}}
                         </div>
                         <input type="reset" class="text-white bg-indigo-300 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-400 rounded text-lg" value="条件をクリア">
                       </div>

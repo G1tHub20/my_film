@@ -61,7 +61,7 @@ class TagSeeder extends Seeder
                'created_at' => Now()
             ],
             [
-               'tag' => '演技が上手い' ,
+               'tag' => '演技力がすごい' ,
                'created_at' => Now()
             ],
             [
