@@ -77,8 +77,14 @@ class MovieController extends Controller
         if(!empty($movie->image2)) {
             $image2 = $image_path . $movie->image2;
         }
-        // $tags = $movie->tags->orderBy('tag_id','desc');
-        $tags = $movie->tags; //distinctで重複を除去したい
+        // $tags = $movie->tags;
+        // tag_idのカウント数の降順
+        $tags = $movie->tags()
+        ->select('tags.tag',\DB::raw('COUNT(movie_tag.tag_id) as tag_count'))
+        ->groupBy('tags.id','tags.tag','movie_tag.movie_id','movie_tag.tag_id')
+        ->orderBy('tag_count', 'desc')
+        ->get();
+
         $genres = $movie->genres;
         $reviews = $movie->reviews;
 
@@ -136,23 +142,8 @@ class MovieController extends Controller
                 $movieTag->user_id = $request->input('user_id');
                 $movieTag->save();
             }
-
-
-            
         }
-        
-        
-
-        // foreach($tags as $tag) {
-        //     $movieTag = new MovieTag;
-        //     $movieTag->movie_id = $request->input('movie_id');
-        //     $movieTag->tag_id = $tag;
-        //     $movieTag->user_id = $request->input('user_id');
-        //     $movieTag->save();
-        // }
-
-        // 詳細情報画面に遷移したい
-
+        // 詳細情報画面に遷移
         return redirect('movies/' . $review->movie_id);
         // return route('movies.show', ['id' => $review->movie_id]);
     }

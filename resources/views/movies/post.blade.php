@@ -6,7 +6,10 @@
   </x-slot>
 
   <div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
         <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}</h2>
         <form method="POST" action="{{ route('movies.store', $movie_id) }}">
           @csrf
@@ -54,8 +57,8 @@
         </div>
 
           </div>
+          <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して投稿する</button>
       </div>
-      <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して投稿する</button>
   </div>
 </form>
 

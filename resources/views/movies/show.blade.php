@@ -12,7 +12,7 @@
 
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}<span> {{ number_format($rating, 1) }}</span></h1>
 
-              <div class="flex justify-center items-center gap-4"> <!-- 上部 -->
+              <div class="flex justify-center gap-4"> <!-- 上部 -->
               <div>
                 {{-- <p><img src="https://image.tmdb.org/t/p/w500{{ $image1 }}"></p>
                 <p><img src="https://image.tmdb.org/t/p/w500{{ $image2 }}"></p> --}}
@@ -26,7 +26,7 @@
                     <div class="flex flex-wrap -m-2">
                       
                       <div class="p-2 w-full">
-                        <div class="container px-5 py-5 mx-auto">
+                        <div class="container px-5 mx-auto">
                           {{-- <p>タイトル：{{ $title }}</p> --}}
                           <p>あらすじ：</p>
                           <p>{{ $overview }}</p>
