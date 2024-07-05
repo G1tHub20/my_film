@@ -26,13 +26,7 @@
               <option value="5">★★★★★</option>
           </select>
         </div>
-        {{-- <div class="container mx-10 px-5 py-2 mx-auto mb-10">
-          @foreach($tags as $tag)
-            <label for="{{ $tag->id }}" class="mx-1 text-lg font-bold">
-              <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }}
-            </label>
-          @endforeach
-        </div>         --}}
+
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
           <p class="mx-auto leading-relaxed text-base">タグを3つまで選んでください。</p>
           @foreach($tags as $tag)
@@ -42,10 +36,6 @@
           @endforeach
 
           <p class="mx-auto leading-relaxed text-base">リストにない場合は追加できます</p>
-          {{-- <br><input name="newTag1"> --}}
-          {{-- <br><input name="newTag[]">
-          <br><input name="newTag[]">
-          <br><input name="newTag[]"> --}}
           <input name="newTag[]" maxlength="20">
           <input name="newTag[]" maxlength="20">
           <input name="newTag[]" maxlength="20">
@@ -64,3 +54,6 @@
 
 <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
 </x-app-layout>
+
+{{-- asset()でJSファイルを読み込む --}}
+<script src="{{ asset('js/tag_count.js') }}"></script>
