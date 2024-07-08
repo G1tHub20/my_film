@@ -67,7 +67,6 @@ class GetApiData extends Command
         foreach($data as $movie) {
             $details = $this->tmdbService->getMovieDetails($movie['id']);
 
-            // $genres = [];
             $genres = null;
             foreach($details['genres'] as $i => $g) {
                 if($i === array_key_last($details['genres'])) {
@@ -77,6 +76,7 @@ class GetApiData extends Command
                 }
             };
 
+            //国名→国IDに置き換え
             $countryName = isset($details['production_countries'][0]['name']) ? $details['production_countries'][0]['name'] : 'N/A';
             $country = null;
             switch ($countryName) {
@@ -115,6 +115,7 @@ class GetApiData extends Command
                     break;
             }
 
+
             $movies[] = [
                 // 'id' => $details['id'],
                 'title' => $details['title'],
@@ -126,13 +127,20 @@ class GetApiData extends Command
                 // 'director' => $details['credits']['cast'][0]['name'],
                 'image1' => $details['backdrop_path'],
                 'image2' => '',
-                'genres' => $genres,
+                // 'genres' => $genres,
             ];
+
+            // $movie->save(); //movieだけまず保存
+            // dd($movie->id) //movie_idを元にジャンルを保存
 
             // dd($id,$title,$original_title,$overview,$genres,$release_year,$country,$director,$images);
         }
         
-        dd($movies);
+        foreach($movies as $movie){
+            dd($movie);
+         }
+
+        // dd($movies);
         // データを表示（必要に応じて処理）
         // $this->info(print_r($movie, true));
     }

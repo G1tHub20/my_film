@@ -1,4 +1,5 @@
 import './bootstrap';
+import 'flowbite'; //Tailwind CSSのユーティリティクラスで実装されたUIコンポーネントのライブラリ
 
 import Alpine from 'alpinejs';
 

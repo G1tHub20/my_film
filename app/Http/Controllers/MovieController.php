@@ -42,9 +42,8 @@ class MovieController extends Controller
         $tag_ids = $request->tag;                //タグ
         
         $query = Movie::search($title, $release_year, $director_id, $country_id);
-        // Eager Loading（遅延読み込み）
-        // 関連するデータ（director）を事前に読み込む
-        // withメソッドの引数にはモデルで定義したリレーションメソッド名を文字列で指定
+        // Eager Loading（遅延読み込み）で関連するデータを事前に読み込む
+        // withメソッドの引数にはリレーションメソッド名を指定
         $query
             ->with('director') //Movieのdirectorメソッドを呼び出す
             ->with('country')
@@ -88,7 +87,7 @@ class MovieController extends Controller
         $genres = $movie->genres;
         $reviews = $movie->reviews;
 
-        $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100;
+        $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
         // dd($rating);
 
         return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));

@@ -25,18 +25,18 @@ checkBoxes.forEach(checkBox => {
 });
 
 
-// テキストボックスをカウント
-textboxs.forEach(textbox => {
-  textbox.addEventListener('input', () => {
+// // テキストボックスをカウント
+// textboxs.forEach(textbox => {
+//   textbox.addEventListener('input', () => {
 
-  Array.prototype.forEach.call(textboxs, textbox => {
-      if(textbox.value.trim() !== '') {
-        tagCount++;
-      }
-  });
-  if(tagCount >= tagMax) {
-    alert('タグは最大3つまで')
-  }
+//   Array.prototype.forEach.call(textboxs, textbox => {
+//       if(textbox.value.trim() !== '') {
+//         tagCount++;
+//       }
+//   });
+//   if(tagCount >= tagMax) {
+//     alert('タグは最大3つまで')
+//   }
 
-  })
-});
+//   })
+// });

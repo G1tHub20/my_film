@@ -9,7 +9,7 @@ class Movie extends Model
 {
     use HasFactory;
 
-    // Director(1) 対 Movie(多)
+    // 多対1（従から主のレコードを取り出す）
     public function director()
     {
        return $this->belongsTo('App\Models\Director');
@@ -18,29 +18,32 @@ class Movie extends Model
     {
        return $this->belongsTo('App\Models\Country');
     }
+
+    // 多対多（中間テーブルを介する）
     public function genres()
-    {
+    {   //('関係するモデル', '中間テーブル', '中間テーブル外部キー', '中間テーブル外部キー(関係するモデル)');
         return $this->belongsToMany('App\Models\Genre', 'genre_movie', 'movie_id', 'genre_id');
     }
-    // Movie(1) 対 Movie_Tag(多)？
     public function tags()
     {
-        //第一引数に：関係するモデルのモデル名、第二引数：中間テーブルのテーブル名、第三引数：中間テーブル内で対応しているID名, 第四引数：関係するモデルで対応しているID名'
         return $this->belongsToMany('App\Models\Tag', 'movie_tag', 'movie_id', 'tag_id');
     }
 
+    // 1対多（主から従のレコードを取り出す）
     public function reviews()
     {
         return $this->hasMany('App\Models\Review');
     }
 
-    public function scopeSearch($query, $title, $release_year, $director_id, $country_id) //ローカルスコープ
+    // ローカルスコープ(頭にscopeを付け、第一引数$queryで定義、呼出時はscopeプレフィックスなし)
+    // アプリ全体で再利用できる共通のクエリ制約を定義できる
+    public function scopeSearch($query, $title, $release_year, $director_id, $country_id)
     {
         if($title != null) {
-            $title_split = mb_convert_kana($title, 's'); //全角スペースを半角に変換
+            $title_split = mb_convert_kana($title, 's'); //全角空白を半角に変換
             $title_split2 = preg_split('/[\s]+/', $title_split); //空白で区切る
             foreach($title_split2 as $value) {
-                $query->where('title', 'like', '%' . $value . '%');
+                $query->where('title', 'like', '%' . $value . '%'); //WHERE句に条件を追加していく
             }
         }
             

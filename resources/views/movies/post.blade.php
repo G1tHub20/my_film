@@ -11,6 +11,7 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}</h2>
+        
         <form method="POST" action="{{ route('movies.store', $movie_id) }}">
           @csrf
           <input type="hidden" name="movie_id" value="{{ $movie_id }}">

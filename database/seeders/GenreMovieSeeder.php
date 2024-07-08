@@ -71,6 +71,98 @@ class GenreMovieSeeder extends Seeder
                 'movie_id' => 4,
                 'created_at' => Now()
             ],
+            [
+                'genre_id' => 16,
+                'movie_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 10751,
+                'movie_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 35,
+                'movie_id' => 5,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 878,
+                'movie_id' => 6,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 6,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 28,
+                'movie_id' => 6,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 16,
+                'movie_id' => 7,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 10751,
+                'movie_id' => 7,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 7,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 878,
+                'movie_id' => 8,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 28,
+                'movie_id' => 8,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 8,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 878,
+                'movie_id' => 9,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 9,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 16,
+                'movie_id' => 10,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 28,
+                'movie_id' => 10,
+                'created_at' => Now()
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 10,
+                'created_at' => Now()
+            ],
+
+
         ]);
     }
 }
