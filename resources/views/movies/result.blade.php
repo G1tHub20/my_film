@@ -13,7 +13,11 @@
                 @foreach($movies as $movie)
                   <div class="container p-2 my-4 mx-auto bg-amber-100">
                     <p>タイトル：{{ $movie->title }}</p>
-                    <p>ジャンル：{{ $movie->genre }}</p>
+                    <p>ジャンル：
+                      @foreach($genres[$movie->id] as $genre)
+                        {{ $genre }}{{ $loop->last ? '' : '、' }}
+                      @endforeach
+                    </p>
                     <p>公開年：{{ $movie->release_year }}</p>
                     <p>監督：{{ $movie->director }}</p>
                     <p>製作国：{{ $movie->country->country }}</p>

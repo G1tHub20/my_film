@@ -51,10 +51,11 @@ class MovieController extends Controller
         // withメソッドの引数にはリレーションメソッド名を指定
         $query
             ->with('country') //Movieのcountryメソッドを呼び出す
+            ->with('genres')
             ->select('id','title','release_year','director','country_id');
 
             //タグを持つ映画を絞り込み
-            if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsがある、かつ0個以上
+            if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
                 foreach ($tag_ids as $tag_id) {
                     $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
                         $q->where('id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
@@ -62,9 +63,18 @@ class MovieController extends Controller
                 }
             }
 
-        $movies = $query->get(); //getメソッド 結果をコレクションとして取得
+            $movies = $query->get(); //getメソッド 結果をコレクションとして取得
 
-        return view('movies.result', compact('movies'));
+            // 各映画に対してその映画のジャンルIDを取得する
+            $movies->load('genres');
+            $genres = [];
+            foreach ($movies as $movie) {
+                foreach ($movie->genres as $genre) {
+                    $genres[$movie->id][] = $genre->genre;
+                }
+            }
+
+        return view('movies.result', compact('movies', 'genres'));
     }
 
     public function show($id) // 詳細情報
