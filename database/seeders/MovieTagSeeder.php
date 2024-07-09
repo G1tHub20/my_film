@@ -71,104 +71,26 @@ class MovieTagSeeder extends Seeder
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 7,
-                'tag_id' => 12,
+                'movie_id' => 5,
+                'tag_id' => 2,
                 'user_id' => 2,
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 7,
-                'tag_id' => 28,
+                'movie_id' => 5,
+                'tag_id' => 7,
                 'user_id' => 1,
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 7,
-                'tag_id' => 878,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 8,
-                'tag_id' => 12,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 8,
-                'tag_id' => 16,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 8,
-                'tag_id' => 18,
+                'movie_id' => 5,
+                'tag_id' => 10,
                 'user_id' => 2,
                 'created_at' => Now()
             ],
             [
-                'movie_id' => 8,
-                'tag_id' => 35,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 8,
-                'tag_id' => 107571,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 9,
-                'tag_id' => 12,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 9,
-                'tag_id' => 28,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 9,
-                'tag_id' => 878,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 10,
-                'tag_id' => 12,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 10,
-                'tag_id' => 14,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 10,
-                'tag_id' => 28,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 11,
-                'tag_id' => 12,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 11,
-                'tag_id' => 28,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 11,
-                'tag_id' => 35,
+                'movie_id' => 5,
+                'tag_id' => 15,
                 'user_id' => 1,
                 'created_at' => Now()
             ],

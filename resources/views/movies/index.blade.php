@@ -53,7 +53,7 @@
                       <select name="director">
                         <option value=""></option>
                       @foreach($directors as $director)
-                        <option value="{{ $director->id }}">{{ $director->director }}</option>
+                        <option value="{{ $director }}">{{ $director }}</option>
                       @endforeach
                       </select><br>
                       製作国
@@ -61,6 +61,13 @@
                         <option value=""></option>
                       @foreach($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->country }}</option>
+                      @endforeach
+                      </select><br>
+                      ジャンル
+                      <select name="genre">
+                        <option value=""></option>
+                      @foreach($genres as $genre)
+                        <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
                       @endforeach
                       </select><br>
                     </div>

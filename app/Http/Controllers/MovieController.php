@@ -8,6 +8,7 @@ use App\Models\Director;
 use App\Models\Country;
 use App\Models\Tag;
 use App\Models\MovieTag; //アンダーバー使わない！
+use App\Models\Genre;
 use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 
@@ -16,10 +17,13 @@ class MovieController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        $directors = Director::all();
+        // $directors = Director::all();
+        // 全ての監督（ユニーク）
+        $directors = Movie::distinct()->pluck('director');
         $countries = Country::all();
+        $genres = Genre::all();
         // dd($countries);
-        return view('movies.index', compact('tags','directors','countries'));
+        return view('movies.index', compact('tags','directors','countries','genres'));
     }
 
     public function create() // 登録
@@ -38,22 +42,24 @@ class MovieController extends Controller
         $title = $request->title;               //タイトル
         $release_year = $request->release_year; //製作年
         $country_id = $request->country;        //製作国
-        $director_id = $request->director;      //監督
-        $tag_ids = $request->tag;                //タグ
-        
-        $query = Movie::search($title, $release_year, $director_id, $country_id);
+        $director = $request->director;         //監督
+        $tag_ids = $request->tag;               //タグ
+        $genre_ids = $request->genre;           //ジャンル
+
+        $query = Movie::search($title, $release_year, $director, $country_id, $genre_ids);
         // Eager Loading（遅延読み込み）で関連するデータを事前に読み込む
         // withメソッドの引数にはリレーションメソッド名を指定
         $query
-            ->with('director') //Movieのdirectorメソッドを呼び出す
-            ->with('country')
-            ->select('id','title','release_year','director_id','country_id');
+            ->with('country') //Movieのcountryメソッドを呼び出す
+            ->select('id','title','release_year','director','country_id');
 
             //タグを持つ映画を絞り込み
-            if(!empty($tag_ids) && !empty(count($tag_ids))) { //tag_idsがある、かつ、数が0じゃない
-                $query = $query->whereHas('tags', function($q)use($tag_ids) { //whereHas リレーション先のテーブルの条件で検索
-                    $q->whereIn('id', $tag_ids);                                  //useメソッドを使用するとクロージャの中で変数が使える
-                });
+            if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsがある、かつ0個以上
+                foreach ($tag_ids as $tag_id) {
+                    $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
+                        $q->where('id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
+                    });
+                }
             }
 
         $movies = $query->get(); //getメソッド 結果をコレクションとして取得
@@ -69,14 +75,13 @@ class MovieController extends Controller
         $release_year = $movie->release_year;
         $country = $movie->country->country;
         $overview = $movie->overview;
-        $director = $movie->director->director;
+        $director = $movie->director;
         $image_path = 'https://image.tmdb.org/t/p/w500';
         $image1 = $image_path . $movie->image1;
         $image2 = null;
         if(!empty($movie->image2)) {
             $image2 = $image_path . $movie->image2;
         }
-        // $tags = $movie->tags;
         // tag_idのカウント数の降順
         $tags = $movie->tags()
         ->select('tags.tag',\DB::raw('COUNT(movie_tag.tag_id) as tag_count'))

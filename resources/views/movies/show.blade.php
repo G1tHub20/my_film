@@ -14,20 +14,16 @@
 
               <div class="flex justify-center gap-4"> <!-- 上部 -->
               <div>
-                {{-- <p><img src="https://image.tmdb.org/t/p/w500{{ $image1 }}"></p>
-                <p><img src="https://image.tmdb.org/t/p/w500{{ $image2 }}"></p> --}}
                 <p><img src="{{ $image1 }}"></p>
                 <p><img src="{{ $image2 }}"></p>
               </div>
 
                 <div class="container px-5 mx-auto">
-                  {{-- <div class="lg:w-1/2 md:w-2/3 mx-auto"> --}}
                   <div class="mx-auto">
                     <div class="flex flex-wrap -m-2">
                       
                       <div class="p-2 w-full">
                         <div class="container px-5 mx-auto">
-                          {{-- <p>タイトル：{{ $title }}</p> --}}
                           <p>あらすじ：</p>
                           <p>{{ $overview }}</p>
                           <p>ジャンル：</p>

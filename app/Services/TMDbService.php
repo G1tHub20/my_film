@@ -23,7 +23,8 @@ class TMDbService
             'query' => [
                 'api_key' => $this->apiKey,
                 'append_to_response' => 'credits',
-                'language' => 'ja-JP' // 日本語のレスポンスを指定
+                'language' => 'ja-JP', // 日本語のレスポンスを指定
+                'page' => 1
 
             ]
         ]);

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Services\TMDbService;
 use App\Models\Movie;
-use App\Models\GenreMovie;
+use App\Models\MovieTag;
 
-class GetApiData extends Command
+class GetApiData_copy extends Command
 {
     /**
      * The name and signature of the console command.
@@ -17,7 +17,7 @@ class GetApiData extends Command
      * @var string
      */
     // protected $signature = 'command:tmdbapi';
-    protected $signature = 'command:tmdbapi {query}';
+    protected $signature = 'command:tmdbapi_copy {query}';
 
     /**
      * The console command description.
@@ -43,30 +43,40 @@ class GetApiData extends Command
     public function handle()
     {
         // コマンドライン引数から検索クエリを取得
+        // $query = $this->argument('query');
         $with_genres = $this->argument('query');
 
         // GuzzleHTTPクライアントのインスタンスを作成
         $client = new Client();
 
         // APIリクエストを送信
+        // $response = $client->request('GET', 'https://api.themoviedb.org/3/search/movie', [
         $response = $client->request('GET', 'https://api.themoviedb.org/3/discover/movie', [
             'headers' => [
+                // 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZThmODAzNmNlMzhhMmYxNTM5Yzg1NjdiMmM1OTU3MiIsInN1YiI6IjY2NzQzMzJiMWUxZmY1M2I5ZDFkYzZhNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4nPb4FfCtP3V6Q0rxfHUyFoatMzm_nB5U5O1da247ZA',
                 'Accept' => 'application/json',
             ],
             'query' => [
                 'api_key' => env('TMDB_API_KEY'),
                 'with_genres' => $with_genres,
-                'language' => 'ja-JA',
-                'limit' => 1,
+                'language' => 'ja-JA'
         ],
     ]);
         
         $body = $response->getBody();
         $data = json_decode($body, true)['results']; // JSONデータを配列に変換
+        $movies = [];
         foreach($data as $movie) {
             $details = $this->tmdbService->getMovieDetails($movie['id']);
-            // dd($details);
-            $genres = implode(',', array_column($details['genres'], 'id'));
+
+            $genres = null;
+            foreach($details['genres'] as $i => $g) {
+                if($i === array_key_last($details['genres'])) {
+                    $genres .= strval($g['id']);
+                } else {
+                    $genres .= strval($g['id']) . ', ';
+                }
+            };
 
             //国名→国IDに置き換え
             $countryName = isset($details['production_countries'][0]['name']) ? $details['production_countries'][0]['name'] : 'N/A';
@@ -108,28 +118,38 @@ class GetApiData extends Command
             }
 
 
-            // Movie
-            $movie = new Movie;
-            $movie->title = $details['title'];
-            $movie->original_title = $details['title'];
-            $movie->overview = $details['overview'];
-            $movie->release_year = intval(substr($details['release_date'], 0, 4));
-            $movie->country_id = $country;
-            $movie->image1 = $details['backdrop_path'];
-            $movie->image2 = '';
-            $movie->save(); //movieだけまず保存
+            $movies[] = [
+                // 'id' => $details['id'],
+                'title' => $details['title'],
+                'original_title' => $details['original_title'],
+                'overview' => $details['overview'],
+                'release_year' => intval(substr($details['release_date'], 0, 4)),
+                'director_id' => 6,
+                'country_id' => $country,
+                // 'director' => $details['credits']['cast'][0]['name'],
+                'image1' => $details['backdrop_path'],
+                'image2' => '',
+                // 'genres' => $genres,
+            ];
 
-            // GenreMovie
-            $insertedId = $movie->id;
-            foreach(explode(",", $genres) as $genre_id) {
-                $genreMovie = new GenreMovie;
-                $genreMovie->movie_id = $insertedId;
-                $genreMovie->genre_id = $genre_id;
-                // var_dump($genreMovie->getAttributes());
-                $genreMovie->save();
-            }
+            $genreMovie[] = [
+
+            ];
+
+            // $movie->save(); //movieだけまず保存
+            // dd($movie->id) //movie_idを元にジャンルを保存
 
             // dd($id,$title,$original_title,$overview,$genres,$release_year,$country,$director,$images);
         }
+        
+        foreach($movies as $movie){
+            // $movie = new Movie;
+            dd($movie);
+            // $movie->save(); //movieだけまず保存
+        }
+
+        // dd($movies);
+        // データを表示（必要に応じて処理）
+        // $this->info(print_r($movie, true));
     }
 }
