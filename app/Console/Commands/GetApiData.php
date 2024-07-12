@@ -16,7 +16,6 @@ class GetApiData extends Command
      *
      * @var string
      */
-    // protected $signature = 'command:tmdbapi';
     protected $signature = 'command:tmdbapi {query}';
 
     /**
@@ -62,10 +61,16 @@ class GetApiData extends Command
     ]);
         
         $body = $response->getBody();
+        // dd(json_decode($body, true));
         $data = json_decode($body, true)['results']; // JSONデータを配列に変換
+        $i = 0;
         foreach($data as $movie) {
+            if($i >= 5) { break; } //最初の5つだけ取得
+
             $details = $this->tmdbService->getMovieDetails($movie['id']);
-            // dd($details);
+
+            $images = $this->tmdbService->getMovieBackdrop($movie['id']);
+
             $genres = implode(',', array_column($details['genres'], 'id'));
 
             //国名→国IDに置き換え
@@ -114,9 +119,11 @@ class GetApiData extends Command
             $movie->original_title = $details['title'];
             $movie->overview = $details['overview'];
             $movie->release_year = intval(substr($details['release_date'], 0, 4));
+            $movie->director = $details['credits']['cast'][0]['name'];
             $movie->country_id = $country;
-            $movie->image1 = $details['backdrop_path'];
-            $movie->image2 = '';
+            $movie->image1 = $images[0];
+            $movie->image2 = $images[1];
+            var_dump($movie->getAttributes());
             $movie->save(); //movieだけまず保存
 
             // GenreMovie
@@ -125,11 +132,10 @@ class GetApiData extends Command
                 $genreMovie = new GenreMovie;
                 $genreMovie->movie_id = $insertedId;
                 $genreMovie->genre_id = $genre_id;
-                // var_dump($genreMovie->getAttributes());
                 $genreMovie->save();
             }
 
-            // dd($id,$title,$original_title,$overview,$genres,$release_year,$country,$director,$images);
+            $i++;
         }
     }
 }

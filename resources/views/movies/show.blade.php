@@ -26,10 +26,11 @@
                         <div class="container px-5 mx-auto">
                           <p>あらすじ：</p>
                           <p>{{ $overview }}</p>
-                          <p>ジャンル：</p>
+                          <p>ジャンル：
                           @foreach($genres as $genre)
                             {{ $genre->genre }}{{ $loop->last ? '' : '、' }} <!-- サイトだけカンマなし -->
                           @endforeach
+                          </p>
                           <p>公開年：{{ $release_year }}</p>
                           <p>監督：{{ $director }}</p>
                           <p>製作国：{{ $country }}</p>
@@ -66,7 +67,6 @@
           </div>
       </div>
       <button onclick="location.href='/movies/post/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
-      {{-- <button onclick="location.href='{{ route('movies/post', ['id' => $movie_id]}}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button> --}}
 
   </div>
 

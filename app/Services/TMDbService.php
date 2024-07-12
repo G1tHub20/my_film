@@ -32,4 +32,20 @@ class TMDbService
         $data = json_decode($response->getBody()->getContents(), true);
         return $data;
     }
+
+    public function getMovieBackdrop($movieId)
+    {
+        $response = $this->httpClient->request('GET', "movie/{$movieId}/images", [
+            'query' => [
+                'api_key' => $this->apiKey,
+                // 'language' => 'ja-JP', // 日本語のレスポンスを指定
+            ]
+        ]);
+
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        $images[0] = $data['backdrops'][0]['file_path'] ?? null;
+        $images[1] = $data['backdrops'][3]['file_path'] ?? null;
+        return $images;
+    }
 }

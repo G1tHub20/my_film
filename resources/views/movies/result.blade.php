@@ -21,7 +21,7 @@
                     <p>公開年：{{ $movie->release_year }}</p>
                     <p>監督：{{ $movie->director }}</p>
                     <p>製作国：{{ $movie->country->country }}</p>
-                    <p><a href="/movies/{{ $movie['id'] }}" class="text-blue-500">➡詳細を見る</a></p>
+                    <button onclick="location.href='/movies/{{ $movie['id'] }}'" class="text-white block bg-indigo-500 mx-auto mr-0 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細</button>
                     </div>
                     @endforeach
                   </div>
