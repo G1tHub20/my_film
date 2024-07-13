@@ -14,7 +14,7 @@
 
               <div class="flex justify-center gap-4"> <!-- 上部 -->
               <div>
-                <p><img src="{{ $image1 }}"></p>
+                <p><img src="{{ $image1 }}" class="mb-2"></p>
                 <p><img src="{{ $image2 }}"></p>
               </div>
 

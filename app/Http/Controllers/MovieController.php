@@ -19,10 +19,11 @@ class MovieController extends Controller
         $tags = Tag::all();
         // $directors = Director::all();
         // 全ての監督（ユニーク）
-        $directors = Movie::distinct()->pluck('director');
-        $countries = Country::all();
-        $genres = Genre::all();
-        // dd($countries);
+        // $directors = Movie::distinct()->pluck('director');
+        $directors = Movie::distinct()->orderBy('director')->pluck('director');
+        $countries = Country::orderBy('id', 'asc')->get();
+        // $genres = Genre::all()->orderBy('id', 'asc');
+        $genres = Genre::orderBy('id', 'asc')->get();
         return view('movies.index', compact('tags','directors','countries','genres'));
     }
 

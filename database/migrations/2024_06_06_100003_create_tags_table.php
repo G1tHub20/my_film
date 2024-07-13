@@ -15,10 +15,8 @@
                 Schema::create("tags", function (Blueprint $table) {
 
 						$table->increments('id');
-						$table->string('tag',20);
+						$table->string('tag',20)->unique();
 						$table->timestamps();
-
-                        $table->unique('tag');
 
 
 

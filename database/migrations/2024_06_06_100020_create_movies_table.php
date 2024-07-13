@@ -16,6 +16,7 @@
 
 						$table->increments('id');
 						$table->string('title',80);
+						$table->integer('tmdb_id')->unique();
 						$table->string('original_title',80);
 						$table->string('overview',600)->nullable();
 						$table->integer('release_year');

@@ -6,28 +6,37 @@
   </x-slot>
 
   <div class="lg:w-2/3 mx-auto py-5">
-    <div class="lg:w-2/3 mx-auto bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-            {{-- bladeテンプレート --}}
-              @if(!$movies->isEmpty())
-                <div class="container mx-auto">
-                @foreach($movies as $movie)
-                  <div class="container p-2 my-4 mx-auto bg-amber-100">
-                    <p>タイトル：{{ $movie->title }}</p>
-                    <p>ジャンル：
-                      @foreach($genres[$movie->id] as $genre)
-                        {{ $genre }}{{ $loop->last ? '' : '、' }}
-                      @endforeach
-                    </p>
-                    <p>公開年：{{ $movie->release_year }}</p>
-                    <p>監督：{{ $movie->director }}</p>
-                    <p>製作国：{{ $movie->country->country }}</p>
-                    <button onclick="location.href='/movies/{{ $movie['id'] }}'" class="text-white block bg-indigo-500 mx-auto mr-0 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細</button>
-                    </div>
-                    @endforeach
-                  </div>
-                @else
-                    <p class="text-center">条件に一致する映画は見つかりませんでした。</p>
-                @endif
-                  <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索に戻る</button>
+    <div class="mx-auto bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
+{{-- bladeテンプレート --}}
+@if(!$movies->isEmpty())
+<table class="table-auto w-full">
+        <thead>
+          <tr>
+            <th class="w-3/12">タイトル</th>
+            <th class="w-4/12">ジャンル</th>
+            <th class="w-1/12">公開年</th>
+            <th class="w-2/12">監督</th>
+            <th class="w-2/12">製作国</th>
+          </tr>
+        </thead>
+        @foreach($movies as $movie)
+        <tbody>
+          <tr>
+            <td class="w-3/12"><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 border-0 py-2 px-1 focus:outline-none hover:bg-indigo-300">{{ $movie->title }}</button></td>
+            <td class="w-4/12">
+              @foreach($genres[$movie->id] as $genre)
+                {{ $genre }}{{ $loop->last ? '' : '、' }}
+              @endforeach</td>
+            <td class="w-1/12">{{ $movie->release_year }}</td>
+            <td class="w-2/12">{{ $movie->director }}</td>
+            <td class="w-2/12">{{ $movie->country->country }}</td>
+          </tr>
+        </tbody>
+        @endforeach
+      </table>
+      @endif
+      <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索に戻る</button>
+
+    </div>
     </div>
                 </x-app-layout>

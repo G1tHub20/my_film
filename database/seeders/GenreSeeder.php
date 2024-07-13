@@ -198,51 +198,51 @@ class GenreSeeder extends Seeder
                'genre' => '戦争',
                'created_at' => Now()
             ],
-            [
-               'id' => 10759,
-               'genre' => 'アクション＆アドベンチャー',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10762,
-               'genre' => 'キッズ',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10763,
-               'genre' => 'ニュース',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10764,
-               'genre' => 'リアリティ',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10765,
-               'genre' => 'SF＆ファンタジー',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10766,
-               'genre' => '連続ドラマ',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10767,
-               'genre' => 'トーク',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10768,
-               'genre' => '戦争と政治',
-               'created_at' => Now()
-            ],
-            [
-               'id' => 10770,
-               'genre' => 'テレビ映画',
-               'created_at' => Now()
-            ],
+            // [
+            //    'id' => 10759,
+            //    'genre' => 'アクション＆アドベンチャー',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10762,
+            //    'genre' => 'キッズ',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10763,
+            //    'genre' => 'ニュース',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10764,
+            //    'genre' => 'リアリティ',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10765,
+            //    'genre' => 'SF＆ファンタジー',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10766,
+            //    'genre' => '連続ドラマ',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10767,
+            //    'genre' => 'トーク',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10768,
+            //    'genre' => '戦争と政治',
+            //    'created_at' => Now()
+            // ],
+            // [
+            //    'id' => 10770,
+            //    'genre' => 'テレビ映画',
+            //    'created_at' => Now()
+            // ],
         ]);
     }
 }
