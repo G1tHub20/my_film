@@ -68,8 +68,9 @@
   <input type="hidden" name="movie_id" value="{{ $movie_id }}">
   <input type="hidden" name="user_id" value="{{ $user_id }}">
 </form>
+{{-- <a href="/movies/{{ $movie_id }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
 
-<button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
+<button onclick="location.href='/movies/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
 </x-app-layout>
 
 {{-- asset()でJSファイルを読み込む --}}

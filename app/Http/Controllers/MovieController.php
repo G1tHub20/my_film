@@ -27,6 +27,8 @@ class MovieController extends Controller
         $countries = Country::orderBy('id', 'asc')->get();
         // $genres = Genre::all()->orderBy('id', 'asc');
         $genres = Genre::orderBy('id', 'asc')->get();
+
+
         return view('movies.index', compact('tags','directors','countries','genres'));
     }
 
@@ -62,7 +64,7 @@ class MovieController extends Controller
             if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
                 foreach ($tag_ids as $tag_id) {
                     $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
-                        $q->where('id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
+                        $q->where('tag_id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
                     });
                 }
             }
@@ -78,7 +80,13 @@ class MovieController extends Controller
                 }
             }
 
-        return view('movies.result', compact('movies', 'genres'));
+                    
+        $prevurl = "http://127.0.0.1:8000/movies";
+        if(url()->previous() !== null) {
+            $prevurl = url()->previous(); //直前のページURLを取得
+        }
+
+        return view('movies.result', compact('movies', 'genres', 'prevurl'));
     }
 
     public function show($id) // 詳細情報
