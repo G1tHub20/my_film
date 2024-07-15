@@ -31,6 +31,7 @@ class StoreMovieForm extends FormRequest
             'tag_id' => 'integer|max:10',
             // 'newTag' => 'string|max:20|unique:tags,tag' //配列で来るのでこのバリデーションはできない
             'newTag.*' => 'string|max:20|unique:tags,tag' //.*でいけると思います
+            // https://qiita.com/map_corn/items/b3ad27bf3e1a5532c8c7
         ];
     }
 }

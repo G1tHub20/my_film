@@ -154,7 +154,9 @@ return [
     */
 
     'attributes' => [
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'rating' => '評価',
+        'review' => 'レビュー本文',
     ],
 
 ];

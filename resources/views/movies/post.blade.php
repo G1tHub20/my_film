@@ -12,36 +12,35 @@
 
         <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}</h2>
         
+        {{-- エラーメッセージ --}}
         @if( $errors->any())
-        <div class="alert alert-danger">
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400">
           <ul>
             @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-              @endforeach
+              <li>{{ $error }}</li>
+            @endforeach
           </ul>
         </div>
         @endif
 
         <form method="POST" action="{{ route('movies.store', $movie_id) }}">
-          @csrf
-          <input type="hidden" name="movie_id" value="{{ $movie_id }}">
-          <input type="hidden" name="user_id" value="{{ $user_id }}">
+        @csrf
           
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
             <label for="rating" class="text-sm font-medium text-gray-900 dark:text-white">評価</label>
             <select name="rating" id="rating">
               <option value="">評価を選択</option>
-              <option value="1">★</option>
-              <option value="2">★★</option>
-              <option value="3">★★★</option>
-              <option value="4">★★★★</option>
-              <option value="5">★★★★★</option>
+              <option value="1" @if((int)old('rating') === 1) selected @endif>★</option>
+              <option value="2" @if((int)old('rating') === 2) selected @endif>★★</option>
+              <option value="3" @if((int)old('rating') === 3) selected @endif>★★★</option>
+              <option value="4" @if((int)old('rating') === 4) selected @endif>★★★★</option>
+              <option value="5" @if((int)old('rating') === 5) selected @endif>★★★★★</option>
           </select>
         </div>
 
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
           {{-- <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">本文</label> --}}
-          <textarea id="message" name="review" rows="4" maxlength="1000" required class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ここにレビューを書いてください（1,000字以内）"></textarea>
+          <textarea id="message" name="review" rows="4" maxlength="1000" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ここにレビューを書いてください（1,000字以内）">{{ old('review') }}</textarea>
         </div>
 
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
@@ -49,20 +48,25 @@
           <label for="tag" class="text-sm font-medium text-gray-900 dark:text-white">タグを選択（3つまで）</label><br>
           @foreach($tags as $tag)
             <label for="{{ $tag->id }}" class="mx-1 text-lg">
-              <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }}
+              {{-- <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }} --}}
+              <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}"
+                {{ in_array($tag->id, old('tag', [])) ? 'checked' : '' }}><!-- $tag->idの設定値があればチェックする -->
+              {{ $tag->tag }}
             </label>
           @endforeach
 
           <p class="mx-auto leading-relaxed text-base mt-2">※リストにないタグを追加できます</p>
-          <input name="newTag[]" maxlength="20">
-          <input name="newTag[]" maxlength="20">
-          <input name="newTag[]" maxlength="20">
+          <input type="text" name="newTag[]" value="{{ old('newTag.0') }}">
+          <input type="text" name="newTag[]" value="{{ old('newTag.1') }}">
+          <input type="text" name="newTag[]" value="{{ old('newTag.2') }}">
         </div>
 
           </div>
           <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して投稿する</button>
       </div>
   </div>
+  <input type="hidden" name="movie_id" value="{{ $movie_id }}">
+  <input type="hidden" name="user_id" value="{{ $user_id }}">
 </form>
 
 <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
