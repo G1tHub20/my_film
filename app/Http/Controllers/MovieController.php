@@ -10,7 +10,10 @@ use App\Models\Tag;
 use App\Models\MovieTag; //アンダーバー使わない！
 use App\Models\Genre;
 use App\Models\Review;
+use App\Http\Requests\StoreMovieForm; //フォームリクエスト
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -115,48 +118,52 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $movie_id = $movie->id;
         $title = $movie->title;
-        // dd($title);
         $user_id = auth()->user()->id;
 
         return view('movies.post', compact('movie_id','user_id','title','tags'));
     }
 
-    public function store(Request $request) // DBに登録
+    public function store(StoreMovieForm $request) // DBに登録 //バリデーション
     {
         $review = new Review;
-        // $tag = new Tag;
+
         $review->user_id = $request->input('user_id');
         $review->movie_id = $request->input('movie_id');
         $review->rating = $request->input('rating');
         $review->review = $request->input('review');
+
+        // dd($review->rating);
         $review->save();
 
         $insertedId = [];
-        foreach($request->input('newTag') as $newTag) {
-            if($newTag != null) {
+        foreach($request->input('newTag') as $newTag) {               
                 $tag = new Tag;
                 $tag->tag = $newTag;
-                $tag->save(); //★既存と重複する場合は例外処理したい
-                array_push($insertedId, $tag->id);
-            }
+                $tag->save();
+                array_push($insertedId, $tag->id); //登録したタグのidを次処理で使うため配列に格納
         }
-        // $insertedId = $tag->id;             //登録したタグのidを取得
 
-        if(!empty($request->input('tag'))) {
-            $tags = $request->input('tag');
-            if(!empty($insertedId)) { //タグの追加があれば
-                foreach($insertedId as $i) {
-                    array_push($tags, strval($i)); //取得したidを配列に追加
+        if(!empty($request->input('tag')) || !empty($insertedId)) {
+            $tags = [];
+            // リストから選択
+            if(!empty($request->input('tag'))) {
+                $tags = $request->input('tag');
+            }
+            
+            // 新規タグ
+            if(!empty($insertedId)) {
+                    foreach($insertedId as $i) {
+                        array_push($tags, strval($i)); //取得したidを配列に追加
+                    }
                 }
-            }
 
-            foreach($tags as $tag) {
-                $movieTag = new MovieTag;
-                $movieTag->movie_id = $request->input('movie_id');
-                $movieTag->tag_id = $tag;
-                $movieTag->user_id = $request->input('user_id');
-                $movieTag->save();
-            }
+                foreach($tags as $tag) {
+                    $movieTag = new MovieTag;
+                    $movieTag->movie_id = $request->input('movie_id');
+                    $movieTag->tag_id = $tag;
+                    $movieTag->user_id = $request->input('user_id');
+                    $movieTag->save();
+                }
         }
         // 詳細情報画面に遷移
         return redirect('movies/' . $review->movie_id);

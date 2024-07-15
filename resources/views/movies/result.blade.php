@@ -21,8 +21,8 @@
         </thead>
         @foreach($movies as $movie)
         <tbody>
-          <tr>
-            <td class="w-3/12"><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 border-0 py-2 px-1 focus:outline-none hover:bg-indigo-300">{{ $movie->title }}</button></td>
+          <tr class="divide-y divide-slate-400">
+            <td class="border-t border-slate-400 w-3/12 text-indigo-600 "><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">{{ $movie->title }}</button></td>
             <td class="w-4/12">
               @foreach($genres[$movie->id] as $genre)
                 {{ $genre }}{{ $loop->last ? '' : '、' }}
