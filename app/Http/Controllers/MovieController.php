@@ -32,17 +32,6 @@ class MovieController extends Controller
         return view('movies.index', compact('tags','directors','countries','genres'));
     }
 
-    public function create() // 登録
-    {
-        // 管理者ユーザかどうか判定
-        $isAdmin = auth()->user()->isAdmin;
-        if($isAdmin === 1) {
-            return view('movies.create');
-        } else {
-            abort(404); // HTTP例外を出す
-        }
-    }
-
     public function result(Request $request) // 検索
     {
         $title = $request->title;               //タイトル
@@ -80,13 +69,7 @@ class MovieController extends Controller
                 }
             }
 
-                    
-        $prevurl = "http://127.0.0.1:8000/movies";
-        if(url()->previous() !== null) {
-            $prevurl = url()->previous(); //直前のページURLを取得
-        }
-
-        return view('movies.result', compact('movies', 'genres', 'prevurl'));
+        return view('movies.result', compact('movies', 'genres'));
     }
 
     public function show($id) // 詳細情報
@@ -119,6 +102,7 @@ class MovieController extends Controller
 
         return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));
     }
+
 
     public function post($id) // レビューを書く
     {
@@ -176,5 +160,16 @@ class MovieController extends Controller
         // 詳細情報画面に遷移
         return redirect('movies/' . $review->movie_id);
         // return route('movies.show', ['id' => $review->movie_id]);
+    }
+
+    public function create() // 登録
+    {
+        // 管理者ユーザかどうか判定
+        $isAdmin = auth()->user()->isAdmin;
+        if($isAdmin === 1) {
+            return view('movies.create');
+        } else {
+            abort(404); // HTTP例外を出す
+        }
     }
 }

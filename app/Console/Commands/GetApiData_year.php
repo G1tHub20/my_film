@@ -65,7 +65,7 @@ class GetApiData_year extends Command
         $data = json_decode($body, true)['results']; // JSONデータを配列に変換
         $i = 0;
         foreach($data as $movie) {
-            if($i >= 5) { break; } //最初の5つだけ取得
+            if($i >= 1) { break; } //最初の5つだけ取得
 
             $details = $this->tmdbService->getMovieDetails($movie['id']);
 

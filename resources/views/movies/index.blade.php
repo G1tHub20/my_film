@@ -52,10 +52,16 @@
                       公開年
                       <select name="release_year">
                         <option value=""></option>
-                        {{-- @for($i=2024; $i>=1950; $i--) --}}
-                        @for($i=2024; $i>=1950; $i--)
-                          <option value="{{ $i }}">{{ $i }}</option>
+                        @for($i=2025; $i>=1985; $i-=5)
+                          @if($i=(2025-5))
+                          <option value="{{ $i }}">{{ $i }}～{{ date('Y') }}</option>
+                          @else
+                          <option value="{{ $i }}">{{ $i }}～{{ $i+5 }}</option>
+                          @endif
                         @endfor
+                        {{-- @for($i=2025; $i>=1985; $i-5)
+                          <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor --}}
                       </select><br>
                       監督
                       <select name="director">

@@ -20,7 +20,7 @@
 						$table->string('original_title',80);
 						$table->string('overview',600)->nullable();
 						$table->integer('release_year');
-						$table->string('director',20)->nullable();
+						$table->string('director',30)->nullable();
 						$table->string('image1')->nullable();
 						$table->string('image2')->nullable();
 						$table->integer('country_id')->unsigned();
