@@ -39,17 +39,24 @@
                   </div>
                   {{-- <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2"> --}}
                   <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
-                    <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
-                      
-                      タイトル<input type="text" id="title" name="title" value="{{ old('title') }}"><br>
-                      ジャンル
+                  <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
+                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                      <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="title">タイトル</label>
+                      <input type="text" class="block w-full sm:w-2/3 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
+                    </div>
+
+                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="genre">ジャンル</label>
                       <select name="genre">
                         <option value=""></option>
                       @foreach($genres as $genre)
                         <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
                       @endforeach
-                      </select><br>
-                      公開年
+                      </select>
+                      </div>
+
+                      <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                        <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="release_year">公開年</label>
                       <select name="release_year">
                         <option value=""></option>
                         @for($i=2020; $i>=1985; $i-=5)
@@ -62,15 +69,21 @@
                         {{-- @for($i=2025; $i>=1985; $i-5)
                           <option value="{{ $i }}">{{ $i }}</option>
                         @endfor --}}
-                      </select><br>
-                      監督
+                      </select>
+                    </div>
+
+                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="director">監督</label>
                       <select name="director">
                         <option value=""></option>
                       @foreach($directors as $director)
                         <option value="{{ $director }}">{{ $director }}</option>
                       @endforeach
-                      </select><br>
-                      製作国
+                      </select>
+                    </div>
+
+                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                      <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="country">製作国</label>
                       <select name="country">
                         <option value=""></option>
                       @foreach($countries as $country)
@@ -78,13 +91,16 @@
                       @endforeach
                       </select><br>
                     </div>
+                    </div>
+
                   </div>
                   
                 </div><!-- #accordion-collapse -->
                   
-                  <input type="reset" class="text-white bg-indigo-300 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-400 rounded text-lg mt-10" value="条件をクリア">
-                  <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
-                
+                <div class="flex justify-center">
+                  <button type="reset" class="text-gray-500 bg-gray-100 border-0 py-2 px-8 focus:outline-none rounded text-lg hover:bg-gray-200 mr-5">クリア</button>
+                  <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
+                </div>
                 </form>
           </div>
       </div>
