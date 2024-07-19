@@ -1,22 +1,24 @@
 <x-app-layout>
   <x-slot name="header">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          一覧
-      </h2>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      一覧
+    </h2>
   </x-slot>
-
+  
   <div class="lg:w-2/3 mx-auto py-5">
     <div class="mx-auto bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-{{-- bladeテンプレート --}}
-@if(!$movies->isEmpty())
+      {{-- bladeテンプレート --}}
+    @if($movies->isEmpty())
+    <p class="text-center text-lg mb-5">該当する映画が見つかりませんでした。</p>
+    @else
 <table class="table-auto w-full">
         <thead>
           <tr>
-            <th class="w-3/12">タイトル</th>
-            <th class="w-4/12">ジャンル</th>
-            <th class="w-1/12">公開年</th>
-            <th class="w-2/12">監督</th>
-            <th class="w-2/12">製作国</th>
+            <th class="w-3/12 text-left">タイトル</th>
+            <th class="w-4/12 text-left">ジャンル</th>
+            <th class="w-1/12 text-left">公開年</th>
+            <th class="w-2/12 text-left">監督</th>
+            <th class="w-2/12 text-left">製作国</th>
           </tr>
         </thead>
         @foreach($movies as $movie)

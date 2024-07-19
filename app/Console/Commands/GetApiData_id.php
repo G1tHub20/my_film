@@ -53,7 +53,7 @@ class GetApiData_id extends Command
                 'Accept' => 'application/json',
             ],
             'query' => [
-                // 'query' => 10749,
+                // 'query' => $id,
                 'language' => 'ja-JA',
                 'api_key' => env('TMDB_API_KEY'),
                 'limit' => 1,
@@ -61,65 +61,64 @@ class GetApiData_id extends Command
     ]);
 
         $body = $response->getBody();
-        dd($body);
 
         $movie = json_decode($body, true); // JSONデータを配列に変換
 
-        // dd($movie);
-            $movie['id'] = 10749;
+        $details = $this->tmdbService->getMovieDetails($id);
 
-            $details = $this->tmdbService->getMovieDetails($movie['id']);
+        // dd($details);
 
-            $images = $this->tmdbService->getMovieBackdrop($movie['id']);
+        $images = $this->tmdbService->getMovieBackdrop($id);
 
-            $genres = implode(',', array_column($details['genres'], 'id'));
+        $genres = implode(',', array_column($details['genres'], 'id'));
 
-            //国名→国IDに置き換え
-            $countryName = isset($details['production_countries'][0]['name']) ? $details['production_countries'][0]['name'] : 'N/A';
-            $country = null;
-            switch ($countryName) {
-                case 'Japan':
-                    $country = 1;
-                    break;
-                case 'United States of America':
-                    $country = 2;
-                    break;
-                case 'United Kingdom':
-                    $country = 3;
-                    break;
-                case 'Italy':
-                    $country = 4;
-                    break;
-                case 'Spain':
-                    $country = 5;
-                    break;
-                case 'France':
-                    $country = 6;
-                    break;
-                case 'Germany':
-                    $country = 7;
-                    break;
-                case 'Canada':
-                    $country = 8;
-                    break;
-                case 'India':
-                    $country = 9;
-                    break;
-                case 'Australia':
-                    $country = 10;
-                    break;
-                case 'South Korea':
-                    $country = 11;
-                    break;
-                case 'China':
-                    $country = 12;
-                    break;
-                case 'Hong Kong':
-                    $country = 13;
-                    break;
-                default:
-                    $country = 15;
-                    break;
+        //国名→国IDに置き換え
+        $countryName = isset($details['production_countries'][0]['name']) ? $details['production_countries'][0]['name'] : 'N/A';
+        $country = null;
+        switch ($countryName) {
+            case 'Japan':
+                $country = 1;
+                break;
+            case 'United States of America':
+                $country = 2;
+                break;
+            case 'United Kingdom':
+                $country = 3;
+                break;
+            case 'Italy':
+                $country = 4;
+                break;
+            case 'Spain':
+                $country = 5;
+                break;
+            case 'France':
+                $country = 6;
+                break;
+            case 'Germany':
+                $country = 7;
+                break;
+            case 'Canada':
+                $country = 8;
+                break;
+            case 'India':
+                $country = 9;
+                break;
+            case 'Australia':
+                $country = 10;
+                break;
+            case 'South Korea':
+                $country = 11;
+                break;
+            case 'China':
+                $country = 12;
+                break;
+            case 'Hong Kong':
+                $country = 13;
+                break;
+            default:
+                $country = 15;
+                break;
+        }
 
             // Movie
             // もし重複するtmdb_idがあればスキップする
@@ -147,6 +146,5 @@ class GetApiData_id extends Command
                     $genreMovie->save();
                 }
             }
-        }
     }
 }
