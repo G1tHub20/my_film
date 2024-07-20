@@ -10,7 +10,8 @@
       <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white">
 
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}<span> {{ number_format($rating, 1) }}</span></h1>
+          {{-- <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}<span> {{ number_format($rating, 1) }}</span></h1> --}}
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}<span class="font-normal"> {{ $rating==0 ? '未評価' : number_format($rating, 1) }}</span></h1>
 
           <div class="flex justify-center gap-4"> <!-- 上部 -->
           <div>
@@ -24,7 +25,7 @@
                   
                   <div class="p-2 w-full">
                     <div class="container px-5 mx-auto">
-                      <p>あらすじ：</p>
+                      {{-- <p>あらすじ：</p> --}}
                       <p>{{ $overview }}</p>
                       <p>ジャンル：
                       @foreach($genres as $genre)
@@ -43,10 +44,13 @@
 
         <div class="flex justify-center items-start gap-4"> <!-- 下部 -->
           <div class="container px-5 mx-auto">
-            <p>タグ：</p>
+          @if($tags->isEmpty())
+          <p class="text-lg mb-5">タグが未登録です。</p>
+          @else
             @foreach($tags as $tag)
-              <p class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $tag->tag }}</p>
+              <p class="sm:text-xl text-xl font-medium title-font mb-4 text-gray-900">{{ $tag->tag }}</p>
             @endforeach
+          @endif
           </div>
 
           <div class="container mx-auto">

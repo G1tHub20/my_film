@@ -40,12 +40,12 @@
                   {{-- <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2"> --}}
                   <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
                   <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
-                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                       <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="title">タイトル</label>
                       <input type="text" class="block w-full sm:w-2/3 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
                     </div>
 
-                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="genre">ジャンル</label>
                       <select name="genre">
                         <option value=""></option>
@@ -55,7 +55,7 @@
                       </select>
                       </div>
 
-                      <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                      <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                         <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="release_year">公開年</label>
                       <select name="release_year">
                         <option value=""></option>
@@ -72,7 +72,7 @@
                       </select>
                     </div>
 
-                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="director">監督</label>
                       <select name="director">
                         <option value=""></option>
@@ -82,7 +82,7 @@
                       </select>
                     </div>
 
-                    <div class="flex sm:items-center mb-6 flex-col sm:flex-row">
+                    <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                       <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="country">製作国</label>
                       <select name="country">
                         <option value=""></option>
