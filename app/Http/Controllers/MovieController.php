@@ -32,6 +32,7 @@ class MovieController extends Controller
         return view('movies.index', compact('tags','directors','countries','genres'));
     }
 
+
     public function result(Request $request) // 検索
     {
         $title = $request->title;               //タイトル
@@ -47,7 +48,11 @@ class MovieController extends Controller
         $query
             ->with('country') //Movieのcountryメソッドを呼び出す
             ->with('genres')
-            ->select('id','title','release_year','director','country_id');
+            ->select('id','title','release_year','director','country_id')
+
+            ->sortable() //これを挟むだけ
+            // ->orderBy('title', 'asc')
+            ;
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
@@ -65,12 +70,13 @@ class MovieController extends Controller
             $genres = [];
             foreach ($movies as $movie) {
                 foreach ($movie->genres as $genre) {
-                    $genres[$movie->id][] = $genre->genre;
+                    $genres[$movie->id][$genre->id] = $genre->genre;
                 }
             }
 
         return view('movies.result', compact('movies', 'genres'));
     }
+
 
     public function show($id) // 詳細情報
     {
@@ -84,12 +90,21 @@ class MovieController extends Controller
         $image_path = 'https://image.tmdb.org/t/p/w500';
         $image1 = $image_path . $movie->image1;
         $image2 = null;
+
+        $user_id = auth()->user()->id;
+        // 投稿済みのユーザーか
+        $posted_user = 0;
+        $count = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->count();
+        if($count > 0) {
+            $posted_user = 1;
+        }
+
         if(!empty($movie->image2)) {
             $image2 = $image_path . $movie->image2;
         }
         // tag_idのカウント数の降順
         $tags = $movie->tags()
-        ->select('tags.tag',\DB::raw('COUNT(movie_tag.tag_id) as tag_count'))
+        ->select('tags.id','tags.tag',\DB::raw('COUNT(movie_tag.tag_id) as tag_count'))
         ->groupBy('tags.id','tags.tag','movie_tag.movie_id','movie_tag.tag_id')
         ->orderBy('tag_count', 'desc')
         ->get();
@@ -98,22 +113,53 @@ class MovieController extends Controller
         $reviews = $movie->reviews;
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
-        // dd($rating);
-
-        return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews'));
+        // dd($tags);
+        return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews','posted_user'));
     }
 
 
     public function post($id) // レビューを書く
     {
+        $user_id = auth()->user()->id;
         $tags = Tag::all();
         $movie = Movie::find($id);
         $movie_id = $movie->id;
         $title = $movie->title;
-        $user_id = auth()->user()->id;
 
         return view('movies.post', compact('movie_id','user_id','title','tags'));
     }
+
+
+    public function edit($id) // レビューを編集
+    {
+        $user_id = auth()->user()->id;
+        $tags = Tag::all();
+        $movie = Movie::find($id);
+        $movie_id = $movie->id;
+        $title = $movie->title;
+
+        // movieTagからtag_idと一緒にtagも取得したい
+        // $movieTags = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->with('tag')->get();
+        $movieTags = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->get();
+        // dd($movieTags);
+        $mTags = [];
+        foreach($movieTags as $mTag) {
+            array_push($mTags, $mTag->tag_id);
+            // $mTags[$mTag->tag_id] = $mTag->tag;
+        }
+        // dd($mTags);
+
+        $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
+        // dd($review);
+        $comment = $review->comment;
+        $rating = $review->rating;
+
+        // whereHas('tags', function($q)use($tag_id))
+
+
+        return view('movies.edit', compact('movie_id','user_id','title','tags','comment','rating','mTags'));
+    }
+
 
     public function store(StoreMovieForm $request) // DBに登録 //バリデーション
     {
@@ -122,17 +168,19 @@ class MovieController extends Controller
         $review->user_id = $request->input('user_id');
         $review->movie_id = $request->input('movie_id');
         $review->rating = $request->input('rating');
-        $review->review = $request->input('review');
+        $review->comment = $request->input('comment');
 
         // dd($review->rating);
         $review->save();
 
         $insertedId = [];
-        foreach($request->input('newTag') as $newTag) {               
+        if(!empty($request->input('tag'))) {
+            foreach($request->input('newTag') as $newTag) {
                 $tag = new Tag;
                 $tag->tag = $newTag;
                 $tag->save();
                 array_push($insertedId, $tag->id); //登録したタグのidを次処理で使うため配列に格納
+            }
         }
 
         if(!empty($request->input('tag')) || !empty($insertedId)) {
@@ -162,14 +210,14 @@ class MovieController extends Controller
         // return route('movies.show', ['id' => $review->movie_id]);
     }
 
-    public function create() // 登録
-    {
-        // 管理者ユーザかどうか判定
-        $isAdmin = auth()->user()->isAdmin;
-        if($isAdmin === 1) {
-            return view('movies.create');
-        } else {
-            abort(404); // HTTP例外を出す
-        }
-    }
+    // public function create() // 登録
+    // {
+    //     // 管理者ユーザかどうか判定
+    //     $isAdmin = auth()->user()->isAdmin;
+    //     if($isAdmin === 1) {
+    //         return view('movies.create');
+    //     } else {
+    //         abort(404); // HTTP例外を出す
+    //     }
+    // }
 }

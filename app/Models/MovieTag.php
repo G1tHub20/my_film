@@ -15,4 +15,8 @@ class MovieTag extends Model
     {
         return $this->belongsTo('App\Models\Movie');
     }
+    public function tag()
+    {
+        return $this->belongsTo('App\Models\Tag');
+    }
 }

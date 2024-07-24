@@ -1,42 +1,54 @@
-// alert("Hello");
+document.addEventListener('DOMContentLoaded', function() {
+  const textArea = document.getElementById('comment');
+  const inputlength = document.getElementById('inputlength');
 
-const tagMax = 3;
-const checkBoxes = document.getElementsByName('tag[]');
-const textboxs = document.getElementsByName('newTag[]');
-// let tagCount = 0;
+  const checkboxes = document.getElementsByName('tag[]');
+  const textInputs = document.getElementsByName('newTag[]');
 
-// チェックボックスをカウント
-checkBoxes.forEach(checkBox => {
-  let tagCount = 0;
-  checkBox.addEventListener('change', () => {
-
-  checkBoxes.forEach(checkBox => {
-    if(checkBox.checked) {
-      tagCount++;
-    }
+  /* テキストエリアの文字数カウント*/
+  textArea.addEventListener('input', function() {
+    let count = textArea.value.length;
+    console.log(count);
+    inputlength.innerHTML = count + '/1000';
+    // console.log(textArea.value.length);
   });
 
-  if(tagCount > tagMax) {
-    alert('タグは最大3つまで');
-    checkBox.checked = false;
+  /* タグ数のカウント*/
+  function checkInputCount(event) {
+      let checkboxCount = 0;
+      let textInputCount = 0;
+
+      console.log(event.target.type);
+
+      checkboxes.forEach(function(checkbox) {
+          if (checkbox.checked) {
+              checkboxCount++;
+          }
+      });
+
+      textInputs.forEach(function(textInput) {
+          if (textInput.value.trim() !== '') {
+              textInputCount++;
+          }
+      });
+
+      const totalCount = checkboxCount + textInputCount;
+      if (totalCount >= 4) {
+        alert('タグの指定は3つまでです。');
+        // 直前のcheckboxまたはtextInputの指定を解除
+        if (event.target.type === 'checkbox') { 
+        event.target.checked = false; 
+        } else if (event.target.type === 'text') {
+        event.target.value = ''; 
+       }
+      }
   }
 
-  })
+  checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', checkInputCount);
+  });
+
+  textInputs.forEach(function(textInput) {
+      textInput.addEventListener('input', checkInputCount);
+  });
 });
-
-
-// // テキストボックスをカウント
-// textboxs.forEach(textbox => {
-//   textbox.addEventListener('input', () => {
-
-//   Array.prototype.forEach.call(textboxs, textbox => {
-//       if(textbox.value.trim() !== '') {
-//         tagCount++;
-//       }
-//   });
-//   if(tagCount >= tagMax) {
-//     alert('タグは最大3つまで')
-//   }
-
-//   })
-// });

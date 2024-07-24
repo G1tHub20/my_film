@@ -7,7 +7,7 @@
 
   <div class="py-5">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg lg:w-2/3  mx-auto">
+          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto">
               <div class="p-6 bg-white border-b border-gray-200">
 
                 <form method="get" action="{{ route('movies.result') }}">
@@ -18,7 +18,7 @@
                       </div>
                     </div>
 
-                <div class="container w-full py-2 mx-auto mb-10">
+                <div class="container lg:w-2/3 py-2 mx-auto mb-10">
                     @foreach($tags as $tag)
                       <label for="{{ $tag->id }}" class="mx-1 text-lg font-bold">
                         <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }}
@@ -29,7 +29,7 @@
                 <!-- 詳細条件のアコーディオン -->
                 <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
                   
-                  <div id="accordion-collapse-heading-2">
+                  <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
                     <button type="button" class="flex items-center justify-between px-5 py-3 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">
                       より詳しい条件で検索
                       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -37,16 +37,15 @@
                       </svg>
                     </button>
                   </div>
-                  {{-- <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2"> --}}
                   <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
                   <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                      <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="title">タイトル</label>
-                      <input type="text" class="block w-full sm:w-2/3 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
+                      <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="title">タイトル</label>
+                      <input type="text" class="block w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                    <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="genre">ジャンル</label>
+                    <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="genre">ジャンル</label>
                       <select name="genre">
                         <option value=""></option>
                       @foreach($genres as $genre)
@@ -56,24 +55,24 @@
                       </div>
 
                       <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                        <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="release_year">公開年</label>
+                        <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="release_year">公開年</label>
                       <select name="release_year">
                         <option value=""></option>
-                        @for($i=2020; $i>=1985; $i-=5)
-                        @if($i == 2020)
-                          <option value="{{ $i }}">{{ $i }}～</option>
-                        @else
-                          <option value="{{ $i }}">{{ $i }}～{{ $i+4 }}</option>
-                        @endif
-                        @endfor
-                        {{-- @for($i=2025; $i>=1985; $i-5)
-                          <option value="{{ $i }}">{{ $i }}</option>
+                        {{-- @for($i=2020; $i>=1985; $i-=5)
+                          @if($i == 2020)
+                            <option value="{{ $i }}">{{ $i }}～</option>
+                          @else
+                            <option value="{{ $i }}">{{ $i }}～{{ $i+4 }}</option>
+                          @endif
                         @endfor --}}
+                        @for($i=date('Y'); $i>=1985; $i-=1)
+                          <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
                       </select>
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                    <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="director">監督</label>
+                    <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="director">監督</label>
                       <select name="director">
                         <option value=""></option>
                       @foreach($directors as $director)
@@ -83,7 +82,7 @@
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                      <label class="block sm:w-1/3 font-bold sm:text-right mb-1 pr-4" for="country">製作国</label>
+                      <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="country">製作国</label>
                       <select name="country">
                         <option value=""></option>
                       @foreach($countries as $country)

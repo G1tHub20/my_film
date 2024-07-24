@@ -17,9 +17,11 @@
 						$table->increments('id');
 						$table->integer('movie_id')->unsigned();
 						$table->integer('user_id')->unsigned();
-						$table->string('review',1000)->nullable();
+						$table->string('comment',1000)->nullable();
 						$table->integer('rating');
 						$table->timestamps();
+
+                        $table->unique(['movie_id', 'user_id']); //複合ユニーク
 						//$table->foreign("movie_id")->references("id")->on("movies");
 						//$table->foreign("user_id")->references("id")->on("users");
 

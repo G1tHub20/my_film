@@ -157,6 +157,9 @@ return [
         'password' => 'パスワード',
         'rating' => '評価',
         'review' => 'レビュー本文',
+        'newTag.0' => '新規タグ1',
+        'newTag.1' => '新規タグ2',
+        'newTag.2' => '新規タグ3',
     ],
 
 ];

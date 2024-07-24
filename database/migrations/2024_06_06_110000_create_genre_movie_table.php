@@ -18,6 +18,8 @@
                     $table->integer('genre_id')->unsigned();
                     $table->integer('movie_id')->unsigned();
                     $table->timestamps();
+
+                    $table->unique(['movie_id', 'genre_id']); //複合ユニーク
                     //$table->foreign("genre_id")->references("id")->on("genres");
                     //$table->foreign("movie_id")->references("id")->on("movies");
 

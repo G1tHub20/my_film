@@ -38,6 +38,7 @@ Route::prefix('movies') // 頭に movies をつける
 		Route::get('/result', 'result')->name('result');
 		Route::get('/{id}', 'show')->name('show');
 		Route::get('post/{id}', 'post')->name('post');
+		Route::get('edit/{id}', 'edit')->name('edit');
 		Route::post('store/{id}', 'store')->name('store');
 	});
 
