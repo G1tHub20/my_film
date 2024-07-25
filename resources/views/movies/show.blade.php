@@ -59,7 +59,7 @@
                 ★
               @endfor
             </p>
-            <p>レビュー：{{ $review->review }}</p>
+            <p>レビュー：{{ $review->comment }}</p>
             <p>ユーザID：{{ $review->user_id }}</p>
           </div>
           @endforeach

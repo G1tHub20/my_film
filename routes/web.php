@@ -40,6 +40,7 @@ Route::prefix('movies') // 頭に movies をつける
 		Route::get('post/{id}', 'post')->name('post');
 		Route::get('edit/{id}', 'edit')->name('edit');
 		Route::post('store/{id}', 'store')->name('store');
+		Route::post('update/{id}', 'update')->name('update'); //ユーザIDも指定すべき？
 	});
 
 Route::get('/dashboard', function () {

@@ -130,12 +130,7 @@ class GetApiData_id extends Command
                 $movie->original_title = $details['original_title'];
                 $movie->overview = $details['overview'];
                 $movie->release_year = intval(substr($details['release_date'], 0, 4));
-                foreach($details['credits']['crew'] as $crew) {
-                    if($crew['known_for_department'] === 'Directing') {
-                        $movie->director = $crew['name'];
-                        break;
-                    }
-                }
+                $movie->director = $details['credits']['cast'][0]['name'];
                 $movie->country_id = $country;
                 $movie->image1 = $images[0];
                 $movie->image2 = $images[1];
@@ -150,8 +145,6 @@ class GetApiData_id extends Command
                     $genreMovie->genre_id = $genre_id;
                     $genreMovie->save();
                 }
-            } else {
-                print("既に登録されています" . "（" . $details['id']. "）");
             }
     }
 }

@@ -23,7 +23,7 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('movies.store', $movie_id) }}">
+        <form method="POST" action="{{ route('movies.update', $movie_id) }}">
         @csrf
           
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">

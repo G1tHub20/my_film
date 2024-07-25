@@ -24,10 +24,10 @@ class StoreMovieForm extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer|max:10',
-            'movie_id' => 'required|integer|max:10',
+            'user_id' => 'required|integer',
+            'movie_id' => 'required|integer',
             'rating' => 'required|integer|digits:1',
-            'review' => 'required|string|max:1000',
+            'comment' => 'required|string|max:1000',
             'tag_id' => 'integer|max:10',
             // 'newTag' => 'string|max:20|unique:tags,tag' //配列で来るのでこのバリデーションはできない
             'newTag.*' => 'nullable|string|max:20|unique:tags,tag' //.*でいけると思います
