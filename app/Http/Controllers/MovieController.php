@@ -23,7 +23,7 @@ class MovieController extends Controller
         // $directors = Director::all();
         // 全ての監督（ユニーク）
         // $directors = Movie::distinct()->pluck('director');
-        $directors = Movie::distinct()->orderBy('director')->pluck('director');
+        $directors = Movie::distinct()->orderBy('director')->pluck('director'); //directorが配列で出てくる
         $countries = Country::orderBy('id', 'asc')->get();
         // $genres = Genre::all()->orderBy('id', 'asc');
         $genres = Genre::orderBy('id', 'asc')->get();
@@ -82,11 +82,6 @@ class MovieController extends Controller
     {
         $movie_id = $id;
         $movie = Movie::find($id);
-        $title = $movie->title;
-        $release_year = $movie->release_year;
-        $country = $movie->country->country;
-        $overview = $movie->overview;
-        $director = $movie->director;
         $image_path = 'https://image.tmdb.org/t/p/w500';
         $image1 = $image_path . $movie->image1;
         $image2 = null;
@@ -110,15 +105,14 @@ class MovieController extends Controller
         ->get();
 
         $genres = $movie->genres;
-        $reviews = $movie->reviews;
+        $reviews = $movie->reviews->sortByDesc('id'); //ここでユーザ名も取得したい
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
-        // dd($tags);
-        return view('movies.show',compact('movie_id','title','rating','release_year','country','overview','director','image1','image2','tags','genres','reviews','posted_user'));
+        return view('movies.show',compact('movie_id','movie','rating','image1','image2','tags','genres','reviews','posted_user'));
     }
 
 
-    public function post($id) // レビューを書く
+    public function post($id) // レビュー作成
     {
         $user_id = auth()->user()->id;
         $tags = Tag::all();
@@ -130,34 +124,31 @@ class MovieController extends Controller
     }
 
 
-    public function edit($id) // レビューを編集
+    public function edit($id) // レビュー更新
     {
         $user_id = auth()->user()->id;
         $tags = Tag::all();
         $movie = Movie::find($id);
-        $movie_id = $movie->id;
-        $title = $movie->title;
 
         // movieTagからtag_idと一緒にtagも取得したい
         // $movieTags = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->with('tag')->get();
-        $movieTags = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->get();
+        $movieTags = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->get();
         // dd($movieTags);
-        $mTags = [];
-        foreach($movieTags as $mTag) {
-            array_push($mTags, $mTag->tag_id);
-            // $mTags[$mTag->tag_id] = $mTag->tag;
+        $tag_ids = [];
+        foreach($movieTags as $mTag) {                  //★pluckで書き換えできる
+            array_push($tag_ids, $mTag->tag_id);
         }
-        // dd($mTags);
 
-        $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
+        $review = Review::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->first();
         // dd($review);
-        $comment = $review->comment;
+        $comment = $review->comment;         //★$reviewでビューに渡す
         $rating = $review->rating;
+        //★reviewが無い（NULL）とき
 
         // whereHas('tags', function($q)use($tag_id))
 
 
-        return view('movies.edit', compact('movie_id','user_id','title','tags','comment','rating','mTags'));
+        return view('movies.edit', compact('movie','user_id','tags','review','tag_ids'));
     }
 
 

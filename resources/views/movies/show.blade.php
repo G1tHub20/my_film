@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
 
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}<span class="font-normal"> {{ $rating==0 ? '未評価' : number_format($rating, 1) }}</span></h1>
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $movie->title }}<span class="font-normal"> {{ $rating==0 ? '未評価' : number_format($rating, 1) }}</span></h1>
           
           <div class="flex justify-center gap-4 mb-5"> <!-- 上部 -->
           <div>
@@ -24,15 +24,15 @@
                   <div class="p-2 w-full">
                     <div class="container px-5 mx-auto">
                       {{-- <p>あらすじ：</p> --}}
-                      <p class="mb-5">{{ $overview }}</p>
+                      <p class="mb-5">{{ $movie->overview }}</p>
                       <p>ジャンル：
-                      @foreach($genres as $genre)
-                        {{ $genre->genre }}{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
+                      @foreach($genres as $key => $genre)
+                      <a href="/movies/result?genre={{ $genre->id }}" class="hover:underline hover:decoration-indigo-600">{{ $genre->genre }}</a>{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
                       @endforeach
                       </p>
-                      <p>公開年：{{ $release_year }}</p>
-                      <p>監督：{{ $director }}</p>
-                      <p>製作国：{{ $country }}</p>
+                      <p>公開年：<a href="/movies/result?release_year={{ $movie->release_year }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->release_year }}</a></p>
+                      <p>監督：<a href="/movies/result?director={{ $movie->director }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->director }}</a></p>
+                      <p>製作国：<a href="/movies/result?country={{ $movie->country->id }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->country->country }}</a></p>
                     </div>
                   </div>
                 </div>

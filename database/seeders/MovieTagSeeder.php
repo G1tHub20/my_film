@@ -70,30 +70,6 @@ class MovieTagSeeder extends Seeder
                 'user_id' => 1,
                 'created_at' => Now()
             ],
-            [
-                'movie_id' => 5,
-                'tag_id' => 2,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 5,
-                'tag_id' => 7,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 5,
-                'tag_id' => 10,
-                'user_id' => 2,
-                'created_at' => Now()
-            ],
-            [
-                'movie_id' => 5,
-                'tag_id' => 15,
-                'user_id' => 1,
-                'created_at' => Now()
-            ],
         ]);
     }
 }

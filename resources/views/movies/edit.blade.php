@@ -10,7 +10,7 @@
             <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           
-                  <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $title }}</h2>
+                  <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $movie->title }}</h2>
 
         {{-- エラーメッセージ --}}
         @if( $errors->any())
@@ -23,25 +23,25 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('movies.update', $movie_id) }}">
+        <form method="POST" action="{{ route('movies.update', $movie->id) }}">
         @csrf
           
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
             {{-- <label for="rating" class="text-sm font-medium text-gray-900 dark:text-white">評価</label> --}}
             <select name="rating" id="rating">
               <option value="">評価を選択</option>
-              <option value="1" @if($rating === 1) selected @endif>★</option>
-              <option value="2" @if($rating === 2) selected @endif>★★</option>
-              <option value="3" @if($rating === 3) selected @endif>★★★</option>
-              <option value="4" @if($rating === 4) selected @endif>★★★★</option>
-              <option value="5" @if($rating === 5) selected @endif>★★★★★</option>
+              <option value="1" @if($review->rating === 1) selected @endif>★</option>
+              <option value="2" @if($review->rating === 2) selected @endif>★★</option>
+              <option value="3" @if($review->rating === 3) selected @endif>★★★</option>
+              <option value="4" @if($review->rating === 4) selected @endif>★★★★</option>
+              <option value="5" @if($review->rating === 5) selected @endif>★★★★★</option>
           </select>
         </div>
 
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
           {{-- <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">本文</label> --}}
-          <textarea id="comment" name="comment" rows="4" maxlength="1000" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ここにレビューを書いてください（1,000字以内）">{{ $comment }}</textarea>
-          <p id="inputlength">{{ mb_strlen($comment) }}/1000</p>
+          <textarea id="comment" name="comment" rows="4" maxlength="1000" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ここにレビューを書いてください（1,000字以内）">{{ $review->comment }}</textarea>
+          <p id="inputlength">{{ mb_strlen($review->comment) }}/1000</p>
         </div>
 
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
@@ -49,7 +49,7 @@
           @foreach($tags as $tag)
             <label for="{{ $tag->id }}" class="mx-1 text-lg">
               <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}"
-                {{ in_array($tag->id, $mTags) ? 'checked' : '' }}><!-- $tag->idの設定値があればチェックする -->
+                {{ in_array($tag->id, $tag_ids) ? 'checked' : '' }}><!-- $tag->idの設定値があればチェックする -->
               {{ $tag->tag }}
             </label>
           @endforeach
@@ -64,12 +64,12 @@
             <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して更新する</button>
       </div>
   </div>
-  <input type="hidden" name="movie_id" value="{{ $movie_id }}">
+  <input type="hidden" name="movie_id" value="{{ $movie->id }}">
   <input type="hidden" name="user_id" value="{{ $user_id }}">
 </form>
-{{-- <a href="/movies/{{ $movie_id }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
+{{-- <a href="/movies/{{ $movie->id }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
 
-<button onclick="location.href='/movies/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
+<button onclick="location.href='/movies/{{ $movie->id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
 </x-app-layout>
 
 {{-- asset()でJSファイルを読み込む --}}

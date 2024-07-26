@@ -14,4 +14,10 @@ class Review extends Model
         // 従テーブルから関連する主テーブルのレコードを取り出す
         return $this->belongsTo('App\Models\Movie', 'movie_id', 'id');
     }
+
+    public function user()
+    {
+        // 従テーブルから関連する主テーブルのレコードを取り出す
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }
