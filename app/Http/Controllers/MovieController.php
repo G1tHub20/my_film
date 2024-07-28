@@ -217,6 +217,10 @@ class MovieController extends Controller
             }
         }
 
+        //既存タグを全て削除
+        $tag_ids = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->delete();
+
+
         //既存タグのチェックが外されたら削除したい
         if(!empty($request->input('tag')) || !empty($insertedId)) {
             $tags = [];
