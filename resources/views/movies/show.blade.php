@@ -65,12 +65,14 @@
           @endforeach
           </div>
 
-      </div>
-      @if($posted_user === 1)
-      <button onclick="location.href='/movies/edit/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
-      @else
-      <button onclick="location.href='/movies/post/{{ $movie_id }}'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
-      @endif
+        </div>
+      <div>
+        @if($posted_user === 1)
+        <button onclick="location.href='/movies/edit/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
+        @else
+        <button onclick="location.href='/movies/post/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
+        @endif
+      <div>
       </div>
     
   </div>

@@ -130,19 +130,10 @@ class MovieController extends Controller
         $tags = Tag::all();
         $movie = Movie::find($id);
 
-        // movieTagからtag_idと一緒にtagも取得したい
-        // $movieTags = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->with('tag')->get();
-        $movieTags = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->get();
-        // dd($movieTags);
-        $tag_ids = [];
-        foreach($movieTags as $mTag) {                  //★pluckで書き換えできる
-            array_push($tag_ids, $mTag->tag_id);
-        }
+        // movieTagからtag_idと一緒にtagも取得したい //★pluckで書き換えできる
+        $tag_ids = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->pluck('tag_id')->all();
 
         $review = Review::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->first();
-        // dd($review);
-        $comment = $review->comment;         //★$reviewでビューに渡す
-        $rating = $review->rating;
         //★reviewが無い（NULL）とき
 
         // whereHas('tags', function($q)use($tag_id))
@@ -207,7 +198,6 @@ class MovieController extends Controller
         $user_id = $request->input('user_id');
         $movie_id = $request->input('movie_id');
         $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
-
 
         // フォームの値で上書き
         $review->user_id = $user_id;
