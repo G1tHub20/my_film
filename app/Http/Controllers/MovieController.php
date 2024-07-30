@@ -7,7 +7,7 @@ use App\Models\Movie;
 use App\Models\Director;
 use App\Models\Country;
 use App\Models\Tag;
-use App\Models\MovieTag; //アンダーバー使わない！
+use App\Models\MovieTag; //モデル名にアンダーバー使わない！
 use App\Models\Genre;
 use App\Models\Review;
 use App\Http\Requests\StoreMovieForm; //フォームリクエスト
@@ -28,8 +28,24 @@ class MovieController extends Controller
         // $genres = Genre::all()->orderBy('id', 'asc');
         $genres = Genre::orderBy('id', 'asc')->get();
 
+        // $movies = Movie::all();
+        // $top3_movies = Review::select('movie_id')->selectRaw('AVG(rating) as aggregate')->orderBy('aggregate', 'desc')->groupBy('movie_id')->limit(3)->pluck('movie_id');
+        $top_movies = Review::select('movie_id')->havingRaw('AVG(rating)>4')->groupBy('movie_id')->pluck('movie_id');
+        // dd($top_movies);
 
-        return view('movies.index', compact('tags','directors','countries','genres'));
+        $movies = Movie::with('country')->whereIn('id', $top_movies)->get();
+
+        // 各映画に対してその映画のジャンルIDを取得する
+        $movies->load('genres');
+        $genres2 = [];
+        foreach ($movies as $movie) {
+            foreach ($movie->genres as $genre) {
+                $genres2[$movie->id][$genre->id] = $genre->genre;
+                // $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; 
+            }
+        }
+
+        return view('movies.index', compact('tags','directors','countries','genres','movies','genres2'));
     }
 
 
@@ -51,7 +67,6 @@ class MovieController extends Controller
             ->select('id','title','release_year','director','country_id')
 
             ->sortable() //これを挟むだけ
-            // ->orderBy('title', 'asc')
             ;
 
             //タグを持つ映画を絞り込み
@@ -74,7 +89,23 @@ class MovieController extends Controller
                 }
             }
 
-        return view('movies.result', compact('movies', 'genres'));
+            // $search_parameters = $title;
+
+            $search_params = [];
+            if(!is_null($title)) {
+                array_push($search_params, "タイトル:" . $title);
+            }
+            if(!is_null($release_year)) {
+                array_push($search_params, "公開年:" . $release_year);
+            }
+            if(!is_null($director)) {
+                array_push($search_params, "監督:" . $director);
+            }
+            // dd($search_params);
+            $search_param = implode( ", ", $search_params);
+            // $search_parameters = "タイトル:" . $title . ",タグ:" . $tag_ids . ", ジャンル:" . $genre_ids . ", 公開年:" . $release_year . ", 監督:" . $director . ", 製作国：" . $country_id;
+
+        return view('movies.result', compact('movies', 'genres', 'search_param'));
     }
 
 
@@ -82,6 +113,10 @@ class MovieController extends Controller
     {
         $movie_id = $id;
         $movie = Movie::find($id);
+        if(is_null($movie)) {
+            return abort(404); //http例外を投げる
+        }
+        // dd($movie);
         $image_path = 'https://image.tmdb.org/t/p/w500';
         $image1 = $image_path . $movie->image1;
         $image2 = null;
@@ -117,6 +152,9 @@ class MovieController extends Controller
         $user_id = auth()->user()->id;
         $tags = Tag::all();
         $movie = Movie::find($id);
+        if(is_null($movie)) {
+            return abort(404); //http例外を投げる
+        }
         $movie_id = $movie->id;
         $title = $movie->title;
 
@@ -129,6 +167,9 @@ class MovieController extends Controller
         $user_id = auth()->user()->id;
         $tags = Tag::all();
         $movie = Movie::find($id);
+        if(is_null($movie)) {
+            return abort(404); //http例外を投げる
+        }
 
         // movieTagからtag_idと一緒にtagも取得したい //★pluckで書き換えできる
         $tag_ids = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->pluck('tag_id')->all();
@@ -217,9 +258,8 @@ class MovieController extends Controller
             }
         }
 
-        //既存タグを全て削除
+        //事前に既存タグを全て削除
         $tag_ids = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->delete();
-
 
         //既存タグのチェックが外されたら削除したい
         if(!empty($request->input('tag')) || !empty($insertedId)) {

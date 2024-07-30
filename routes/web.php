@@ -15,13 +15,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 
-Route::get('test', function () {
-  return view('test');
-});
+// Route::get('test', function () {
+//   return view('test');
+// });
 
 Route::get('post', [UserController::class, 'post']);
 
@@ -43,9 +43,9 @@ Route::prefix('movies') // 頭に movies をつける
 		Route::post('update/{id}', 'update')->name('update'); //ユーザIDも指定すべき？
 	});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 
 

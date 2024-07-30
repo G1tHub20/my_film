@@ -4,6 +4,8 @@
       一覧
     </h2>
   </x-slot>
+
+  <p>検索条件{{ $search_param }}</p>
   
   <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
