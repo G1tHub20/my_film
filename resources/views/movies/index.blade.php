@@ -121,24 +121,25 @@
             <thead>
               <tr>
                 <th class="w-4/12 text-left">
-                  @sortablelink('title', 'タイトル')
+                  タイトル
                 </th>
                 <th class="w-4/12 text-left">ジャンル</th>
                 <th class="w-1/12 text-left">
-                  @sortablelink('release_year', '公開年')
+                  公開年
                 </th>
                 <th class="w-2/12 text-left">
-                  @sortablelink('director', '監督')
+                 監督
                 </th>
                 <th class="w-1/12 text-left">
-                  @sortablelink('country_id', '製作国')
+                  {{-- 製作国 --}}
+                  評価
                 </th>
               </tr>
             </thead>
             @foreach($movies as $movie)
             <tbody>
               <tr class="divide-y divide-slate-400">
-                <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">{{ $movie->title }}</button></td>
+                <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button></td>
                 <td class="w-4/12">
                   @foreach($genres2[$movie->id] as $key => $genre)
                   {{-- <a href="/movies/result?genre={{ $key }}" class="hover:underline hover:decoration-indigo-600">{{ $genre }}</a>{{ $loop->last ? '' : '、' }} --}}
@@ -146,7 +147,12 @@
                   @endforeach</td>
                 <td class="w-1/12">{{ $movie->release_year }}</a></td>
                 <td class="w-2/12">{{ $movie->director }}</td>
-                <td class="w-1/12">{{ $movie->country->country }}</td>
+                {{-- <td class="w-1/12 relative text-xs letter-spacing-xs text-gray-200 m-0 p-0 before:content-['★★★★★'] before:absolute before:text-yellow-300 before:w-[calc(3.5em-.2*( 3.5em-.5em))] before:overflow-hidden before:whitespace-nowrap">★★★★★</td> --}}
+                <td title="{{ $movie->rating }}" class="w-1/12 text-xs letter-spacing-xs text-yellow-400">
+                  @for ($i = 0; $i < $movie->rating; $i++)
+                    ★
+                  @endfor
+                </td>
               </tr>
             </tbody>
             @endforeach

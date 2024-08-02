@@ -84,6 +84,26 @@ class TagSeeder extends Seeder
                'tag' => 'ド派手なアクション' ,
                'created_at' => Now()
             ],
+            [
+               'tag' => '不朽の名作' ,
+               'created_at' => Now()
+            ],
+            [
+               'tag' => '旅に出たくなる' ,
+               'created_at' => Now()
+            ],
+            [
+               'tag' => '万人受けする' ,
+               'created_at' => Now()
+            ],
+            [
+               'tag' => '青春' ,
+               'created_at' => Now()
+            ],
+            [
+               'tag' => '隠れた名作' ,
+               'created_at' => Now()
+            ],
         ]);
     }
 }

@@ -9,7 +9,19 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
 
-          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $movie->title }}<span class="font-normal"> {{ $rating==0 ? '未評価' : number_format($rating, 1) }}</span></h1>
+          <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ $movie->title }}</h1>
+          <p class="font-normal mb-4 ">
+            @if($rating == 0)
+              未評価
+            @else
+              <span class="/12 text-xl font-semibold text-yellow-600">{{ number_format($rating, 1) }}</span>
+              <span class="/12 text-xl letter-spacing-xs text-yellow-400">
+              @for ($i = 0; $i < $rating; $i++)
+                ★
+              @endfor
+              </span>
+            @endif
+          </p>
           
           <div class="flex justify-center gap-4 mb-5"> <!-- 上部 -->
           <div>
@@ -57,16 +69,17 @@
           <div class="container mx-auto">
           @foreach($reviews as $review)
           <div class="bg-amber-100 p-2 my-4">
-            <p>
+            <span class="w-1/12 text-xs letter-spacing-xs text-yellow-400"">
               @for ($i = 0; $i < $review->rating; $i++)
                 ★
               @endfor
-            </p>
+            </span>
             <p>{{ $review->comment }}</p>
             <p class="text-right">{{ $review->name }} さん</p>
           </div>
           @endforeach
           </div>
+
 
         </div>
       <div>

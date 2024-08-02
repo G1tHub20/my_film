@@ -35,6 +35,9 @@ class MovieController extends Controller
         foreach ($movies as $movie) {
             foreach ($movie->genres as $genre) {
                 $genres2[$movie->id][$genre->id] = $genre->genre;
+
+                $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
+                $movie->setAttribute('rating', $rating); //配列に属性を追加
             }
         }
 

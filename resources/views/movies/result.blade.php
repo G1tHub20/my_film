@@ -46,7 +46,12 @@
             <td class="w-1/12">{{ $movie->release_year }}</a></td>
             <td class="w-2/12">{{ $movie->director }}</td>
             {{-- <td class="w-1/12">{{ $movie->country->country }}</td> --}}
-            <td class="w-1/12">{{ $movie->rating }}</td>
+            {{-- <td class="w-1/12">{{ $movie->rating }}</td> --}}
+            <td class="w-1/12 text-xs letter-spacing-xs text-yellow-400">
+              @for ($i = 0; $i < $movie->rating; $i++)
+                ★
+              @endfor
+            </td>
           </tr>
         </tbody>
         @endforeach
