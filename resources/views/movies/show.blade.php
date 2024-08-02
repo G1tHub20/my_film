@@ -25,14 +25,17 @@
                     <div class="container px-5 mx-auto">
                       {{-- <p>あらすじ：</p> --}}
                       <p class="mb-5">{{ $movie->overview }}</p>
-                      <p>ジャンル：
-                      @foreach($genres as $key => $genre)
-                      <a href="/movies/result?genre={{ $genre->id }}" class="hover:underline hover:decoration-indigo-600">{{ $genre->genre }}</a>{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
+                      <dt class="border-l-4 border-gray-300 pl-1">ジャンル：</dt>
+                      <dd class="pl-4 mb-1">@foreach($genres as $key => $genre)
+                      <a href="/movies/result?genre={{ $genre->id }}" class="text-indigo-600 hover:text-rose-500">{{ $genre->genre }}</a>{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
                       @endforeach
-                      </p>
-                      <p>公開年：<a href="/movies/result?release_year={{ $movie->release_year }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->release_year }}</a></p>
-                      <p>監督：<a href="/movies/result?director={{ $movie->director }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->director }}</a></p>
-                      <p>製作国：<a href="/movies/result?country={{ $movie->country->id }}" class="hover:underline hover:decoration-indigo-600">{{ $movie->country->country }}</a></p>
+                      </dd>
+                      <dt class="border-l-4 border-gray-300 pl-1">公開年：</dt>
+                      <dd class="pl-4 mb-1"><a href="/movies/result?release_year={{ $movie->release_year }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}</a></dd>
+                      <dt class="border-l-4 border-gray-300 pl-1">監督：</dt>
+                      <dd class="pl-4 mb-1"><a href="/movies/result?director={{ $movie->director }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->director }}</a></dd>
+                      <dt class="border-l-4 border-gray-300 pl-1">製作国：</dt>
+                      <dd class="pl-4 mb-1"><a href="/movies/result?country={{ $movie->country->id }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->country->country }}</a></dd>
                     </div>
                   </div>
                 </div>
