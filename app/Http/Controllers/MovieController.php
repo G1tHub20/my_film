@@ -76,7 +76,14 @@ class MovieController extends Controller
                 $movie->setAttribute('rating', $rating); //配列に属性を追加
             }
 
-            dd($movies);
+            // カスタムソートの例: ratingでソート
+            $sort = $request->input('sort', 'id');
+            $direction = $request->input('direction', 'asc');
+            if ($sort === 'rating') {
+                $movies = $direction === 'desc' ? $movies->sortByDesc('rating') : $movies->sortBy('rating');
+            } else {
+                $movies = $direction === 'desc' ? $movies->sortByDesc($sort) : $movies->sortBy($sort);
+            }
 
             // 各映画に対してその映画のジャンルIDを取得する
             $movies->load('genres');

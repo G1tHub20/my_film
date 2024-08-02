@@ -12,6 +12,12 @@ class Movie extends Model
     use Sortable;
      //ソート対象指定
 	public $sortable = ['title', 'release_year', 'director', 'country_id'];
+    // MovieモデルにSortableトレイトを追加し、ソート可能なカラムを定義
+    public function getRatingAttribute()
+    {
+        // ここでratingを計算または取得するロジックを追加
+        return $this->attributes['rating'] ?? 0; // サンプル値
+    }
 
     // 多対1（従から主のレコードを取り出す）
     public function country()
