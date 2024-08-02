@@ -18,7 +18,7 @@
                       </div>
                     </div>
 
-                <div class="container lg:w-2/3 py-2 mx-auto mb-10">
+                <div class="container lg:w-2/3 py-2 mx-auto mb-5">
                     @foreach($tags as $tag)
                       <label for="{{ $tag->id }}" class="mx-1 text-lg font-bold">
                         <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }}
@@ -40,23 +40,35 @@
                   <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
                   <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                      <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="title">タイトル</label>
-                      <input type="text" class="block w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
+                      <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="title">タイトル</label>
+                      <input type="text" class="block text-sm w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white" id="title" name="title" value="{{ old('title') }}">
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                    <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="genre">ジャンル</label>
-                      <select name="genre">
+                    <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="genre">ジャンル</label>
+                      <select name="genre" class="text-sm">
                         <option value=""></option>
                       @foreach($genres as $genre)
                         <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
                       @endforeach
                       </select>
                       </div>
+{{-- 
+                      <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
+                        <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">評価</label>
+                        <select name="rating" id="rating" class="text-sm">
+                          <option value=""></option>
+                          <option value="5">★★★★★</option>
+                          <option value="4">★★★★</option>
+                          <option value="3">★★★</option>
+                          <option value="2">★★</option>
+                          <option value="1">★</option>
+                      </select>
+                      </div> --}}
 
                       <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                        <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="release_year">公開年</label>
-                      <select name="release_year">
+                        <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">公開年</label>
+                      <select name="release_year" class="text-sm">
                         <option value=""></option>
                         {{-- @for($i=2020; $i>=1985; $i-=5)
                           @if($i == 2020)
@@ -72,8 +84,8 @@
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                    <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="director">監督</label>
-                      <select name="director">
+                    <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="director">監督</label>
+                      <select name="director" class="text-sm">
                         <option value=""></option>
                       @foreach($directors as $director)
                         <option value="{{ $director }}">{{ $director }}</option>
@@ -82,13 +94,13 @@
                     </div>
 
                     <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                      <label class="block sm:w-1/5 font-bold sm:text-right mb-1 pr-4" for="country">製作国</label>
-                      <select name="country">
+                      <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="country">製作国</label>
+                      <select name="country" class="text-sm">
                         <option value=""></option>
                       @foreach($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->country }}</option>
                       @endforeach
-                      </select><br>
+                      </select>
                     </div>
                     </div>
 
@@ -103,7 +115,7 @@
                 </form>
           </div>
 
-          <div class="bg-white p-6 mt-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
+          <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
             <p class="w-4/12">★4以上</p>
           <table class="table-auto w-full">
             <thead>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Director;
 use App\Models\Country;
+use App\Models\User;
 use App\Models\Tag;
 use App\Models\MovieTag; //モデル名にアンダーバー使わない！
 use App\Models\Genre;
@@ -20,18 +21,11 @@ class MovieController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        // $directors = Director::all();
-        // 全ての監督（ユニーク）
-        // $directors = Movie::distinct()->pluck('director');
-        $directors = Movie::distinct()->orderBy('director')->pluck('director'); //directorが配列で出てくる
+        $directors = Movie::distinct()->orderBy('director')->pluck('director');
         $countries = Country::orderBy('id', 'asc')->get();
-        // $genres = Genre::all()->orderBy('id', 'asc');
         $genres = Genre::orderBy('id', 'asc')->get();
 
-        // $movies = Movie::all();
-        // $top3_movies = Review::select('movie_id')->selectRaw('AVG(rating) as aggregate')->orderBy('aggregate', 'desc')->groupBy('movie_id')->limit(3)->pluck('movie_id');
-        $top_movies = Review::select('movie_id')->havingRaw('AVG(rating)>4')->groupBy('movie_id')->pluck('movie_id');
-        // dd($top_movies);
+        $top_movies = Review::havingRaw('AVG(rating)>4')->groupBy('movie_id')->pluck('movie_id');
 
         $movies = Movie::with('country')->whereIn('id', $top_movies)->get();
 
@@ -41,7 +35,6 @@ class MovieController extends Controller
         foreach ($movies as $movie) {
             foreach ($movie->genres as $genre) {
                 $genres2[$movie->id][$genre->id] = $genre->genre;
-                // $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; 
             }
         }
 
@@ -56,9 +49,9 @@ class MovieController extends Controller
         $country_id = $request->country;        //製作国
         $director = $request->director;         //監督
         $tag_ids = $request->tag;               //タグ
-        $genre_ids = $request->genre;           //ジャンル
+        $genre_id = $request->genre;           //ジャンル
 
-        $query = Movie::search($title, $release_year, $director, $country_id, $genre_ids);
+        $query = Movie::search($title, $release_year, $director, $country_id, $genre_id);
         // Eager Loading（遅延読み込み）で関連するデータを事前に読み込む
         // withメソッドの引数にはリレーションメソッド名を指定
         $query
@@ -66,8 +59,7 @@ class MovieController extends Controller
             ->with('genres')
             ->select('id','title','release_year','director','country_id')
 
-            ->sortable() //これを挟むだけ
-            ;
+            ->sortable(); //これを挟むだけ
 
             //タグを持つ映画を絞り込み
             if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
@@ -77,8 +69,14 @@ class MovieController extends Controller
                     });
                 }
             }
-
+            
             $movies = $query->get(); //getメソッド 結果をコレクションとして取得
+            foreach($movies as $movie) {
+                $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
+                $movie->setAttribute('rating', $rating); //配列に属性を追加
+            }
+
+            dd($movies);
 
             // 各映画に対してその映画のジャンルIDを取得する
             $movies->load('genres');
@@ -89,21 +87,31 @@ class MovieController extends Controller
                 }
             }
 
-            // $search_parameters = $title;
-
+            // 検索条件の表示
             $search_params = [];
             if(!is_null($title)) {
-                array_push($search_params, "タイトル:" . $title);
+                array_push($search_params, "\"" . $title . "\"");
             }
             if(!is_null($release_year)) {
-                array_push($search_params, "公開年:" . $release_year);
+                array_push($search_params, $release_year . "年");
+            }
+            if(!is_null($genre_id)) {
+                $genre = Genre::find($genre_id);
+                array_push($search_params, $genre->genre);
             }
             if(!is_null($director)) {
-                array_push($search_params, "監督:" . $director);
+                array_push($search_params, $director);
             }
-            // dd($search_params);
-            $search_param = implode( ", ", $search_params);
-            // $search_parameters = "タイトル:" . $title . ",タグ:" . $tag_ids . ", ジャンル:" . $genre_ids . ", 公開年:" . $release_year . ", 監督:" . $director . ", 製作国：" . $country_id;
+            if(!is_null($country_id)) {
+                $country = Country::find($country_id);
+                array_push($search_params, $country->country);
+            }
+            if(!is_null($tag_ids)) {
+                $tags = Tag::whereIn('id', $tag_ids)->pluck('tag')->toArray(); //コレクションを配列に変換
+                $tag = "\"" . implode( "・", $tags) . "\"";
+                array_push($search_params, $tag);
+            }
+            $search_param = implode( ",　", $search_params);
 
         return view('movies.result', compact('movies', 'genres', 'search_param'));
     }
@@ -140,7 +148,14 @@ class MovieController extends Controller
         ->get();
 
         $genres = $movie->genres;
+        // $reviews = $movie->reviews->sortByDesc('id'); //ここでユーザ名も取得したい
         $reviews = $movie->reviews->sortByDesc('id'); //ここでユーザ名も取得したい
+        foreach($reviews as $review) {
+
+            // $name = User::find($review->user_id)->pluck('name'); //pluck 配列を返す
+            $name = User::where('id', '=', $review->user_id)->value('name'); //value 単一の値を返す
+            $review->setAttribute('name', $name); //配列に属性を追加
+        }
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
         return view('movies.show',compact('movie_id','movie','rating','image1','image2','tags','genres','reviews','posted_user'));
@@ -173,12 +188,7 @@ class MovieController extends Controller
 
         // movieTagからtag_idと一緒にtagも取得したい //★pluckで書き換えできる
         $tag_ids = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->pluck('tag_id')->all();
-
         $review = Review::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->first();
-        //★reviewが無い（NULL）とき
-
-        // whereHas('tags', function($q)use($tag_id))
-
 
         return view('movies.edit', compact('movie','user_id','tags','review','tag_ids'));
     }
@@ -215,9 +225,9 @@ class MovieController extends Controller
             
             // 新規タグ
             if(!empty($insertedId)) {
-                    foreach($insertedId as $i) {
-                        array_push($tags, strval($i)); //取得したidを配列に追加
-                    }
+                foreach($insertedId as $i) {
+                    array_push($tags, strval($i)); //取得したidを配列に追加
+                }
             }
 
             foreach($tags as $tag) {
@@ -230,7 +240,6 @@ class MovieController extends Controller
         }
         // 詳細情報画面に遷移
         return redirect('movies/' . $review->movie_id);
-        // return route('movies.show', ['id' => $review->movie_id]);
     }
 
 
@@ -238,55 +247,68 @@ class MovieController extends Controller
     {
         $user_id = $request->input('user_id');
         $movie_id = $request->input('movie_id');
-        $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
 
-        // フォームの値で上書き
-        $review->user_id = $user_id;
-        $review->movie_id = $movie_id;
-        $review->rating = $request->input('rating');
-        $review->comment = $request->input('comment');
+        if ($request->has('edit')) { //リクエストに値が存在するか判定
+            $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
 
-        $review->save();
+            // フォームの値で上書き
+            $review->user_id = $user_id;
+            $review->movie_id = $movie_id;
+            $review->rating = $request->input('rating');
+            $review->comment = $request->input('comment');
 
-        $insertedId = [];
-        foreach($request->input('newTag') as $newTag) {
-            if(!empty($newTag)) {
-                $tag = new Tag;
-                $tag->tag = $newTag;
-                $tag->save();
-                array_push($insertedId, $tag->id); //登録したタグのidを次処理で使うため配列に格納
+            $review->save();
+
+            $insertedId = [];
+            foreach($request->input('newTag') as $newTag) {
+                if(!empty($newTag)) {
+                    $tag = new Tag;
+                    $tag->tag = $newTag;
+                    $tag->save();
+                    array_push($insertedId, $tag->id); //登録したタグのidを次処理で使うため配列に格納
+                }
             }
-        }
 
-        //事前に既存タグを全て削除
-        $tag_ids = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->delete();
+            //事前に既存タグを全て削除
+            $tag_ids = MovieTag::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->delete();
 
-        //既存タグのチェックが外されたら削除したい
-        if(!empty($request->input('tag')) || !empty($insertedId)) {
-            $tags = [];
-            // リストから選択
-            if(!empty($request->input('tag'))) {
-                $tags = $request->input('tag');
-            }
-            
-            // 新規タグ
-            if(!empty($insertedId)) {
+            //既存タグのチェックが外されたら削除したい
+            if(!empty($request->input('tag')) || !empty($insertedId)) {
+                $tags = [];
+                // リストから選択
+                if(!empty($request->input('tag'))) {
+                    $tags = $request->input('tag');
+                }
+                
+                // 新規タグ
+                if(!empty($insertedId)) {
                     foreach($insertedId as $i) {
                         array_push($tags, strval($i)); //取得したidを配列に追加
                     }
-            }
+                }
 
-            foreach($tags as $tag) {
-                $movieTag = new MovieTag;
-                $movieTag->movie_id = $request->input('movie_id');
-                $movieTag->tag_id = $tag;
-                $movieTag->user_id = $request->input('user_id');
-                $movieTag->save();
+                foreach($tags as $tag) {
+                    $movieTag = new MovieTag;
+                    $movieTag->movie_id = $request->input('movie_id');
+                    $movieTag->tag_id = $tag;
+                    $movieTag->user_id = $request->input('user_id');
+                    $movieTag->save();
+                }
             }
+            // 詳細情報画面に遷移
+            return redirect('movies/' . $movie_id);
+
+        } elseif ($request->has('delete')) {
+            
+            //タグ（MovieTag）を削除
+            MovieTag::where('movie_id', $movie_id)->where('user_id', $user_id)->delete();
+            //レビューを削除
+            Review::where('movie_id', $movie_id)->where('user_id', $user_id)->delete();
+            
+            // 詳細情報画面に遷移
+            return redirect('movies/' . $movie_id);
         }
-        // 詳細情報画面に遷移
-        return redirect('movies/' . $review->movie_id);
-        // return route('movies.show', ['id' => $review->movie_id]);
+
     }
 
     // public function create() // 登録

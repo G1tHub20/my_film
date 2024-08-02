@@ -54,13 +54,13 @@
           <div class="container mx-auto">
           @foreach($reviews as $review)
           <div class="bg-amber-100 p-2 my-4">
-            <p>評価：
+            <p>
               @for ($i = 0; $i < $review->rating; $i++)
                 ★
               @endfor
             </p>
-            <p>レビュー：{{ $review->comment }}</p>
-            <p>ユーザID：{{ $review->user_id }}</p>
+            <p>{{ $review->comment }}</p>
+            <p class="text-right">{{ $review->name }} さん</p>
           </div>
           @endforeach
           </div>

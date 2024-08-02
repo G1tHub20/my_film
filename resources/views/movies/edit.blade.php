@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            レビュー更新
+            レビュー編集
         </h2>
     </x-slot>
 
@@ -60,12 +60,16 @@
           <p>新規タグ3：<input type="text" name="newTag[]" value="{{ old('newTag.2') }}"></p>
         </div>
 
-          </div>
-            <button class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して更新する</button>
-      </div>
+        <div class="flex items-center relative">
+            <button name="delete" class="absolute left-0 text-white bg-red-400 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
+            <div class="w-full text-center">
+              <button name="edit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して編集</button>
+            </div>
+        </div>
   </div>
-  <input type="hidden" name="movie_id" value="{{ $movie->id }}">
-  <input type="hidden" name="user_id" value="{{ $user_id }}">
+</div>
+    <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+    <input type="hidden" name="user_id" value="{{ $user_id }}">
 </form>
 {{-- <a href="/movies/{{ $movie->id }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
 

@@ -27,7 +27,6 @@
         @csrf
           
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
-            {{-- <label for="rating" class="text-sm font-medium text-gray-900 dark:text-white">評価</label> --}}
             <select name="rating" id="rating">
               <option value="">評価を選択</option>
               <option value="1" @if((int)old('rating') === 1) selected @endif>★</option>
@@ -39,7 +38,6 @@
         </div>
 
         <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
-          {{-- <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">本文</label> --}}
           <textarea id="comment" name="comment" rows="4" maxlength="1000" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ここにレビューを書いてください（1,000字以内）">{{ old('comment') }}</textarea>
           <p id="inputlength">0/1000</p>
         </div>
@@ -48,7 +46,6 @@
           <label for="tag" class="text-sm font-medium text-gray-900 dark:text-white">タグを選択（3つまで）</label><br>
           @foreach($tags as $tag)
             <label for="{{ $tag->id }}" class="mx-1 text-lg">
-              {{-- <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}">{{ $tag->tag }} --}}
               <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}"
                 {{ in_array($tag->id, old('tag', [])) ? 'checked' : '' }}><!-- $tag->idの設定値があればチェックする -->
               {{ $tag->tag }}

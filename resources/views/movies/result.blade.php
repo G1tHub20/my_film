@@ -5,13 +5,13 @@
     </h2>
   </x-slot>
 
-  <p>検索条件{{ $search_param }}</p>
   
   <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-      {{-- bladeテンプレート --}}
-    @if($movies->isEmpty())
+      <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
+        {{-- bladeテンプレート --}}
+      <p class="text-base">検索条件 {{ $search_param }}</p>
+        @if($movies->isEmpty())
       <p class="text-lg mb-5">該当する映画が見つかりませんでした。</p>
     @else
     <p class="text-lg mb-5">{{ count($movies) }}本の映画が見つかりました。</p>
@@ -29,7 +29,7 @@
               @sortablelink('director', '監督')
             </th>
             <th class="w-1/12 text-left">
-              @sortablelink('country_id', '製作国')
+              @sortablelink('rating', '評価')
             </th>
           </tr>
         </thead>
@@ -44,7 +44,8 @@
               @endforeach</td>
             <td class="w-1/12">{{ $movie->release_year }}</a></td>
             <td class="w-2/12">{{ $movie->director }}</td>
-            <td class="w-1/12">{{ $movie->country->country }}</td>
+            {{-- <td class="w-1/12">{{ $movie->country->country }}</td> --}}
+            <td class="w-1/12">{{ $movie->rating }}</td>
           </tr>
         </tbody>
         @endforeach
