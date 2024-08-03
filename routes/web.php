@@ -25,8 +25,6 @@ use App\Http\Controllers\UserController;
 
 Route::get('post', [UserController::class, 'post']);
 
-// Route::get('movies', [MovieController::class, 'index']);
-
 // グループ化してまとめる場合（シンプルに書ける）
 Route::prefix('movies') // 頭に movies をつける
 	->middleware(['auth']) // 認証機能をつける

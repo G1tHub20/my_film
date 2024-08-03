@@ -25,7 +25,7 @@ class MovieController extends Controller
         $countries = Country::orderBy('id', 'asc')->get();
         $genres = Genre::orderBy('id', 'asc')->get();
 
-        $top_movies = Review::havingRaw('AVG(rating)>4')->groupBy('movie_id')->pluck('movie_id');
+        $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
 
         $movies = Movie::with('country')->whereIn('id', $top_movies)->get();
 
