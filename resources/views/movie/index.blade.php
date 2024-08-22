@@ -10,7 +10,7 @@
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto">
               <div class="p-6 bg-white border-b border-gray-200">
 
-                <form method="get" action="{{ route('movies.result') }}">
+                <form method="get" action="{{ route('movie.result') }}">
                     <div class="container px-5 pt-5">
                       <div class="flex flex-col text-center w-full mb-4">
                         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">映画を探しましょう</h1>
@@ -139,10 +139,10 @@
             @foreach($movies as $movie)
             <tbody>
               <tr class="divide-y divide-slate-400">
-                <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movies/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button></td>
+                <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button></td>
                 <td class="w-4/12">
                   @foreach($genres2[$movie->id] as $key => $genre)
-                  {{-- <a href="/movies/result?genre={{ $key }}" class="hover:underline hover:decoration-indigo-600">{{ $genre }}</a>{{ $loop->last ? '' : '、' }} --}}
+                  {{-- <a href="/movie/result?genre={{ $key }}" class="hover:underline hover:decoration-indigo-600">{{ $genre }}</a>{{ $loop->last ? '' : '、' }} --}}
                     {{ $genre }}{{ $loop->last ? '' : '、' }}
                   @endforeach</td>
                 <td class="w-1/12">{{ $movie->release_year }}</a></td>

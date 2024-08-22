@@ -15,10 +15,10 @@
                     {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link> --}}
-                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+                    <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movies.index')">
                         TOP
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
+                    {{-- <x-nav-link :href="route('movie.create')" :active="request()->routeIs('movies.create')">
                         登録
                     </x-nav-link> --}}
                 </div>
@@ -72,10 +72,10 @@
             {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link> --}}
-            <x-responsive-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+            <x-responsive-nav-link :href="route('movie.index')" :active="request()->routeIs('movies.index')">
                 TOP
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('movies.create')" :active="request()->routeIs('movies.create')">
+            {{-- <x-responsive-nav-link :href="route('movie.create')" :active="request()->routeIs('movies.create')">
                 登録
             </x-responsive-nav-link> --}}
         </div>

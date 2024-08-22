@@ -41,7 +41,7 @@ class MovieController extends Controller
             }
         }
 
-        return view('movies.index', compact('tags','directors','countries','genres','movies','genres2'));
+        return view('movie.index', compact('tags','directors','countries','genres','movies','genres2'));
     }
 
 
@@ -123,7 +123,7 @@ class MovieController extends Controller
             }
             $search_param = implode( ",　", $search_params);
 
-        return view('movies.result', compact('movies', 'genres', 'search_param'));
+        return view('movie.result', compact('movies', 'genres', 'search_param'));
     }
 
 
@@ -168,7 +168,7 @@ class MovieController extends Controller
         }
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
-        return view('movies.show',compact('movie_id','movie','rating','image1','image2','tags','genres','reviews','posted_user'));
+        return view('movie.show',compact('movie_id','movie','rating','image1','image2','tags','genres','reviews','posted_user'));
     }
 
 
@@ -183,7 +183,7 @@ class MovieController extends Controller
         $movie_id = $movie->id;
         $title = $movie->title;
 
-        return view('movies.post', compact('movie_id','user_id','title','tags'));
+        return view('movie.post', compact('movie_id','user_id','title','tags'));
     }
 
 
@@ -200,7 +200,7 @@ class MovieController extends Controller
         $tag_ids = MovieTag::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->pluck('tag_id')->all();
         $review = Review::where('movie_id', '=', $movie->id)->where('user_id', '=', $user_id)->first();
 
-        return view('movies.edit', compact('movie','user_id','tags','review','tag_ids'));
+        return view('movie.edit', compact('movie','user_id','tags','review','tag_ids'));
     }
 
 
@@ -249,7 +249,7 @@ class MovieController extends Controller
             }
         }
         // 詳細情報画面に遷移
-        return redirect('movies/' . $review->movie_id);
+        return redirect('movie/' . $review->movie_id);
     }
 
 
@@ -306,7 +306,7 @@ class MovieController extends Controller
                 }
             }
             // 詳細情報画面に遷移
-            return redirect('movies/' . $movie_id);
+            return redirect('/' . $movie_id);
 
         } elseif ($request->has('delete')) {
             
@@ -316,7 +316,7 @@ class MovieController extends Controller
             Review::where('movie_id', $movie_id)->where('user_id', $user_id)->delete();
             
             // 詳細情報画面に遷移
-            return redirect('movies/' . $movie_id);
+            return redirect('movie/' . $movie_id);
         }
 
     }
@@ -326,7 +326,7 @@ class MovieController extends Controller
     //     // 管理者ユーザかどうか判定
     //     $isAdmin = auth()->user()->isAdmin;
     //     if($isAdmin === 1) {
-    //         return view('movies.create');
+    //         return view('movie.create');
     //     } else {
     //         abort(404); // HTTP例外を出す
     //     }

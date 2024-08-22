@@ -39,15 +39,15 @@
                       <p class="mb-5">{{ $movie->overview }}</p>
                       <dt class="border-l-4 border-gray-300 pl-1">ジャンル：</dt>
                       <dd class="pl-4 mb-1">@foreach($genres as $key => $genre)
-                      <a href="/movies/result?genre={{ $genre->id }}" class="text-indigo-600 hover:text-rose-500">{{ $genre->genre }}</a>{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
+                      <a href="/movie/result?genre={{ $genre->id }}" class="text-indigo-600 hover:text-rose-500">{{ $genre->genre }}</a>{{ $loop->last ? '' : '、' }} <!-- 最後だけカンマなし -->
                       @endforeach
                       </dd>
                       <dt class="border-l-4 border-gray-300 pl-1">公開年：</dt>
-                      <dd class="pl-4 mb-1"><a href="/movies/result?release_year={{ $movie->release_year }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}</a></dd>
+                      <dd class="pl-4 mb-1"><a href="/movie/result?release_year={{ $movie->release_year }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}</a></dd>
                       <dt class="border-l-4 border-gray-300 pl-1">監督：</dt>
-                      <dd class="pl-4 mb-1"><a href="/movies/result?director={{ $movie->director }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->director }}</a></dd>
+                      <dd class="pl-4 mb-1"><a href="/movie/result?director={{ $movie->director }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->director }}</a></dd>
                       <dt class="border-l-4 border-gray-300 pl-1">製作国：</dt>
-                      <dd class="pl-4 mb-1"><a href="/movies/result?country={{ $movie->country->id }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->country->country }}</a></dd>
+                      <dd class="pl-4 mb-1"><a href="/movie/result?country={{ $movie->country->id }}" class="text-indigo-600 hover:text-rose-500">{{ $movie->country->country }}</a></dd>
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
           <p class="text-lg mb-5">タグが未登録です。</p>
           @else
             @foreach($tags as $tag)
-              <p class="sm:text-xl text-xl font-medium title-font mb-4 text-gray-900"><a href="/movies/result?tag%5B%5D={{ $tag->id }}" class="hover:underline hover:decoration-indigo-600">{{ $tag->tag }}</a></p>
+              <p class="sm:text-xl text-xl font-medium title-font mb-4 text-gray-900"><a href="/movie/result?tag%5B%5D={{ $tag->id }}" class="hover:underline hover:decoration-indigo-600">{{ $tag->tag }}</a></p>
             @endforeach
           @endif
           </div>
@@ -84,9 +84,9 @@
         </div>
       <div>
         @if($posted_user === 1)
-        <button onclick="location.href='/movies/edit/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
+        <button onclick="location.href='/movie/edit/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
         @else
-        <button onclick="location.href='/movies/post/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
+        <button onclick="location.href='/movie/post/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
         @endif
       <div>
       </div>
@@ -94,6 +94,6 @@
   </div>
   
   {{-- <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">一覧に戻る</button> --}}
-  {{-- <button onclick="location.href='/movies/result'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">一覧に戻る</button> --}}
+  {{-- <button onclick="location.href='/movie/result'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">一覧に戻る</button> --}}
 
 </x-app-layout>

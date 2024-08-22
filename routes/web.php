@@ -26,10 +26,10 @@ use App\Http\Controllers\UserController;
 Route::get('post', [UserController::class, 'post']);
 
 // グループ化してまとめる場合（シンプルに書ける）
-Route::prefix('movies') // 頭に movies をつける
+Route::prefix('movie') // 頭に movies をつける
 	->middleware(['auth']) // 認証機能をつける
 	->controller(MovieController::class) // コントローラ指定（Laravel9から）
-	->name('movies.')
+	->name('movie.')
 	->group(function() { //グループ化
 		Route::get('/', 'index')->name('index'); //名前付きルート
 		Route::get('/create', 'create')->name('create');
