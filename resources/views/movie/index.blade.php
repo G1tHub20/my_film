@@ -28,9 +28,8 @@
                   
                 <!-- 詳細条件のアコーディオン -->
                 <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
-                  
                   <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
-                    <button type="button" class="flex items-center justify-between px-5 py-3 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="true" aria-controls="accordion-collapse-body-2">
+                    <button type="button" class="flex items-center justify-between px-5 py-3 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="true" aria-controls="accordion-collapse-body-2">
                       より詳しい条件で検索
                       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>

@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
 
-          <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ $movie->title }}</h1>
+          <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ $movie->title }}<span class="text-base font-normal">　原題：{{ $movie->original_title }}</span></h1>
           <p class="font-normal mb-4 ">
             @if($rating == 0)
               未評価
@@ -84,9 +84,9 @@
         </div>
       <div>
         @if($posted_user === 1)
-        <button onclick="location.href='/movie/edit/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
+        <button onclick="location.href='/movie/edit/{{ $movie->id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビュー編集</button>
         @else
-        <button onclick="location.href='/movie/post/{{ $movie_id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
+        <button onclick="location.href='/movie/post/{{ $movie->id }}'" class="mr-0 text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">レビューを書く</button>
         @endif
       <div>
       </div>

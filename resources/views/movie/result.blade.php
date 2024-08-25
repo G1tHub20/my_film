@@ -37,7 +37,7 @@
         @foreach($movies as $movie)
         <tbody>
           <tr class="divide-y divide-slate-400">
-            <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}" class="text-blue font-medium block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button></td>
+            <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}" class="text-blue font-medium inline-block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</a></button></td>
             <td class="w-4/12">
               @foreach($genres[$movie->id] as $key => $genre)
               {{-- <a href="/movie/result?genre={{ $key }}" class="hover:underline hover:decoration-indigo-600">{{ $genre }}</a>{{ $loop->last ? '' : '、' }} --}}

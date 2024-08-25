@@ -1171,6 +1171,42 @@ class GenreMovieSeeder extends Seeder
                 'created_at' => '2024-07-20 20:22:48',
                 'updated_at' => '2024-07-20 20:22:48',
             ],
+            [
+                'genre_id' => 18,
+                'movie_id' => 73,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
+            [
+                'genre_id' => 10402,
+                'movie_id' => 73,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
+            [
+                'genre_id' => 10749,
+                'movie_id' => 73,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
+            [
+                'genre_id' => 18,
+                'movie_id' => 74,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
+            [
+                'genre_id' => 18,
+                'movie_id' => 75,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
+            [
+                'genre_id' => 12,
+                'movie_id' => 75,
+                'created_at' => '2024-07-20 20:22:48',
+                'updated_at' => '2024-07-20 20:22:48',
+            ],
         ]);
     }
 }

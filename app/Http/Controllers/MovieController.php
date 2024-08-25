@@ -168,7 +168,8 @@ class MovieController extends Controller
         }
 
         $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
-        return view('movie.show',compact('movie_id','movie','rating','image1','image2','tags','genres','reviews','posted_user'));
+        
+        return view('movie.show',compact('movie','rating','image1','image2','tags','genres','reviews','posted_user'));
     }
 
 
@@ -180,10 +181,9 @@ class MovieController extends Controller
         if(is_null($movie)) {
             return abort(404); //http例外を投げる
         }
-        $movie_id = $movie->id;
         $title = $movie->title;
 
-        return view('movie.post', compact('movie_id','user_id','title','tags'));
+        return view('movie.post', compact('movie','user_id','title','tags'));
     }
 
 

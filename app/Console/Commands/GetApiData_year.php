@@ -142,7 +142,7 @@ class GetApiData_year extends Command
                 $movie->image1 = $images[0];
                 $movie->image2 = $images[1];
                 var_dump($movie->getAttributes());
-                $movie->save(); //movieだけまず保存
+                // $movie->save(); //まずmovieを保存
 
                 // GenreMovie
                 $insertedId = $movie->id;
@@ -150,7 +150,7 @@ class GetApiData_year extends Command
                     $genreMovie = new GenreMovie;
                     $genreMovie->movie_id = $insertedId;
                     $genreMovie->genre_id = $genre_id;
-                    $genreMovie->save();
+                    // $genreMovie->save();
                 }
             } else {
                 print("既に登録されています" . "（" . $details['id']. "）");

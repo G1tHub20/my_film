@@ -5,22 +5,13 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    {{-- <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a> --}}
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link> --}}
-                    <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movies.index')">
+                    <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movie.index')">
                         TOP
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('movie.create')" :active="request()->routeIs('movies.create')">
-                        登録
-                    </x-nav-link> --}}
                 </div>
             </div>
 
@@ -72,10 +63,10 @@
             {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link> --}}
-            <x-responsive-nav-link :href="route('movie.index')" :active="request()->routeIs('movies.index')">
+            <x-responsive-nav-link :href="route('movie.index')" :active="request()->routeIs('.index')">
                 TOP
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('movie.create')" :active="request()->routeIs('movies.create')">
+            {{-- <x-responsive-nav-link :href="route('movie.create')" :active="request()->routeIs('movie.create')">
                 登録
             </x-responsive-nav-link> --}}
         </div>

@@ -1,11 +1,22 @@
 <x-guest-layout>
+    <nav>
+        <div class="flex sm:-my-px sm:ml-10 h-16 items-center justify-end">
+            <div>
+                <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="mr-4">Login</x-nav-link>
+                <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="mr-4">Register</x-nav-link>
+            </div>
+        </div>
+    </nav>
+
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
+            登録
+        </h2>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
