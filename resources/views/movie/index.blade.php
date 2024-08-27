@@ -64,10 +64,9 @@
                   </div>
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
-                    <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">公開年</label>
+                    <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">公開</label>
                     <select name="release_year" class="text-base w-full sm:w-full lg:w-1/3">
                       <option value=""></option>
-                      {{-- @for ($i = date('Y'); $i >= 1985; $i -= 1) --}}
                       @foreach($release_year as $i)
                         <option value="{{ $i }}">{{ $i }}</option>
                       @endforeach
@@ -113,26 +112,22 @@
           <table class="table-auto w-full">
             <thead>
               <tr>
-                <th class="w-4/12 text-left">
+                <th class="w-5/12 text-left">
                   タイトル
                 </th>
                 <th class="w-4/12 text-left">ジャンル</th>
                 <th class="w-1/12 text-left">
-                  公開年
+                  公開
                 </th>
                 <th class="w-2/12 text-left">
-                  監督
-                </th>
-                <th class="w-1/12 text-left">
-                  {{-- 製作国 --}}
                   評価
                 </th>
               </tr>
             </thead>
             @foreach ($movies as $movie)
               <tbody>
-                <tr class="divide-y divide-slate-400">
-                  <td class="border-t border-slate-400 w-4/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}"
+                <tr class="divide-y divide-slate-400 flex flex-col sm:table-row">
+                  <td class="border-t border-slate-400 w-5/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}"
                       class="text-blue font-medium inline-block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button>
                   </td>
                   <td class="w-4/12">
@@ -141,8 +136,7 @@
                     @endforeach
                   </td>
                   <td class="w-1/12">{{ $movie->release_year }}</a></td>
-                  <td class="w-2/12">{{ $movie->director }}</td>
-                  <td title="{{ $movie->rating }}" class="w-1/12 text-xs letter-spacing-xs text-yellow-400">
+                  <td title="{{ $movie->rating }}" class="w-2/12 text-xs letter-spacing-xs text-yellow-400">
                     @for ($i = 0; $i < $movie->rating; $i++)
                       ★
                     @endfor
