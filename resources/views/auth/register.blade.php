@@ -1,70 +1,69 @@
 <x-guest-layout>
-    <nav>
-        <div class="flex sm:-my-px sm:ml-10 h-16 items-center justify-end">
-            <div>
-                <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="mr-4">Login</x-nav-link>
-                <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="mr-4">Register</x-nav-link>
-            </div>
-        </div>
-    </nav>
+  <nav>
+    <div class="flex sm:-my-px sm:ml-10 h-16 items-center justify-end">
+      <div>
+        <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="mr-4">ログイン</x-nav-link>
+        <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="mr-4">新規登録</x-nav-link>
+      </div>
+    </div>
+  </nav>
 
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
-            登録
-        </h2>
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+  <x-auth-card>
+    <x-slot name="logo">
+      <a href="/">
+        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+      </a>
+    </x-slot>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
+      新規登録
+    </h2>
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <form method="POST" action="{{ route('register') }}">
+      @csrf
 
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
+      <!-- Name -->
+      <div>
+        <x-input-label for="name" :value="__('Name')" />
 
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+          autofocus />
+      </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
+      <!-- Email Address -->
+      <div class="mt-4">
+        <x-input-label for="email" :value="__('Email')" />
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+          required />
+      </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+      <!-- Password -->
+      <div class="mt-4">
+        <x-input-label for="password" :value="__('Password')" />
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+        <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+          autocomplete="new-password" />
+      </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+      <!-- Confirm Password -->
+      <div class="mt-4">
+        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
+        <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation"
+          required />
+      </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+      <div class="flex items-center justify-end mt-4">
+        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+          {{ __('既に登録済みですか？') }}
+        </a>
 
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
+        <x-primary-button class="ml-4">
+          {{ __('登録する') }}
+        </x-primary-button>
+      </div>
+    </form>
+  </x-auth-card>
 </x-guest-layout>

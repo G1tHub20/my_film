@@ -45,6 +45,10 @@ Route::prefix('movie') // 頭に movies をつける
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
+Route::get('/', function () {
+    return view('auth/login');
+});
+
 
 
 

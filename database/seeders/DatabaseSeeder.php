@@ -40,5 +40,6 @@ class DatabaseSeeder extends Seeder
         // ○○TableSeederは削除する
         // $this->call(ReviewsTableSeeder::class);
         // $this->call(MovieTagTableSeeder::class);
+        // $this->call(TagsTableSeeder::class);
     }
 }

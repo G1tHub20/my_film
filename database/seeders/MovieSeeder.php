@@ -2,21 +2,25 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class MovieSeeder extends Seeder
 {
+
     /**
-     * Run the database seeds.
+     * Auto generated seed file
      *
      * @return void
      */
     public function run()
     {
-        DB::table('movies')->insert([
-            [
+        
+
+        \DB::table('movies')->delete();
+        
+        \DB::table('movies')->insert(array (
+            0 => 
+            array (
                 'id' => 1,
                 'title' => 'トリック劇場版',
                 'tmdb_id' => 326369,
@@ -24,13 +28,14 @@ class MovieSeeder extends Seeder
                 'overview' => 'ある日、奈緒子は災いが起こると言い伝えられる村で「神を演じてほしい」と依頼を受ける。しかし村には自称「神」を名乗る3人の男が待っていた…。',
                 'release_year' => 2002,
                 'director' => '堤幸彦',
-                'country_id' => 1,
                 'image1' => '/tt84MQlU6RCMI00jOxIx8jxQfes.jpg',
                 'image2' => '',
+                'country_id' => 1,
                 'created_at' => '2024-07-17 21:09:01',
                 'updated_at' => '2024-07-17 21:09:01',
-            ],
-            [
+            ),
+            1 => 
+            array (
                 'id' => 2,
                 'title' => 'マッドマックス：フュリオサ',
                 'tmdb_id' => 786892,
@@ -38,41 +43,44 @@ class MovieSeeder extends Seeder
                 'overview' => '世界崩壊から45年。バイカー軍団に連れ去られ、すべてを奪われた若きフュリオサは故郷への帰還を誓い、MADな世界（マッドワールド）に対峙する——巨大なバイカー軍団、その頂点ディメンタス将軍は可愛い熊の人形を引っさげ改造バイクで絶叫し、さらには、白塗りの兵隊ウォーボーイズたちが神と崇めるイモータン・ジョーは鉄壁の要塞を牛耳り、互いが覇権を争っていた。生き残れるのは狂った奴だけ。怒りの戦士フュリオサよ、復讐のエンジンを鳴らせ！',
                 'release_year' => 2024,
                 'director' => 'ジョージ・ミラー',
-                'country_id' => 2,
                 'image1' => '/raph7qjAGTMXaIjVxt6ZDSXRzUr.jpg',
                 'image2' => '/uk3xNoCirHkbcfUbgH5UISI23De.jpg',
+                'country_id' => 2,
                 'created_at' => '2024-07-17 21:09:01',
                 'updated_at' => '2024-07-17 21:09:01',
-            ],
-            [
+            ),
+            2 => 
+            array (
                 'id' => 3,
                 'title' => 'シンドラーのリスト',
                 'tmdb_id' => 424,
-                'original_title' => "Schindler's List",
+                'original_title' => 'Schindler\'s List',
                 'overview' => '1939年、ポーランド南部の都市クラクフにドイツ軍が侵攻した。ドイツ人実業家のオスカー・シンドラーは、一旗揚げようとこの街にやって来た。彼は 金にものを言わせて巧みに軍の幹部たちに取り入り、ユダヤ人の所有していた工場を払い下げてもらう。ユダヤ人会計士のイツァーク・シュテルンをパートナーに選んだシンドラーは、軍用ホーロー容器の事業を始める。41年3月、ユダヤ人たちは壁に囲まれたゲットー（居住区）に住むことを義務づけられる。シュテルンの活躍で、ゲットーのユ ダヤ人たちが無償の労働力として、シンドラーの工場に続々と集められ事業はたちまち軌道に乗る。',
                 'release_year' => 1994,
                 'director' => 'スティーブン・スピルバーグ',
-                'country_id' => 2,
                 'image1' => '/zb6fM1CX41D9rF9hdgclu0peUmy.jpg',
                 'image2' => '/ei5xjikx59WR2oDFl2lNLbtQHkx.jpg',
+                'country_id' => 2,
                 'created_at' => '2024-07-17 21:09:01',
                 'updated_at' => '2024-07-17 21:09:01',
-            ],
-            [
+            ),
+            3 => 
+            array (
                 'id' => 4,
                 'title' => 'ハリー・ポッターと賢者の石',
                 'tmdb_id' => 671,
-                'original_title' => "Harry Potter and the Philosopher's Stone",
+                'original_title' => 'Harry Potter and the Philosopher\'s Stone',
                 'overview' => '両親の死後、親戚の家に預けられたハリー・ポッター少年。そこでは階段下の物置部屋をあてがわれ、何かとこき使われる毎日。そんなある日、ハリー の11歳の誕生日に一通の手紙が届いた。中身はなんと、魔法魔術学校の入学許可証だった。実は、ハリーの両親は優秀な魔法使いだったのだ。手紙に導かれるままホグワーツ魔法魔術学校にたどり着いたハリーは、さっそく魔法使いになるための勉強を始める。ロンとハーマイオニーという友達もでき、楽しい毎日を送るハリーだったが、やがて学校に隠された驚くべき秘密に気づくのだった……。',
                 'release_year' => 2001,
                 'director' => 'クリス・コロンバス',
-                'country_id' => 2,
                 'image1' => '/pXvDfEB5kA4cZJ2S2zTXg8cKTsK.jpg',
                 'image2' => '/dK3WWZCwInfpCG5BMpKagcchJDi.jpg',
+                'country_id' => 2,
                 'created_at' => '2024-07-17 21:09:01',
                 'updated_at' => '2024-07-17 21:09:01',
-            ],
-            [
+            ),
+            4 => 
+            array (
                 'id' => 5,
                 'title' => 'トイ・ストーリー',
                 'tmdb_id' => 862,
@@ -80,27 +88,29 @@ class MovieSeeder extends Seeder
                 'overview' => 'カウボーイ人形のウッディはアンディ少年の大のお気に入り。だがそれも誕生日プレゼントでアクション人形バズ・ライトイヤーを手にするまでの事だ った。NO．1の座を奪われたウッディは何とかバズをこらしめようとするが、バズはバズで自分が本物のスペース・レンジャーだと思い込んでいる有り様。そんな二人がふと したいざこざから外の世界に飛び出してしまう。なんとか我が家へ帰還しようとする二人だが、なんとアンディの隣に住む悪ガキのシドに捕まってしまった……。',
                 'release_year' => 1995,
                 'director' => 'ジョン・ラセター',
-                'country_id' => 2,
                 'image1' => '/lxD5ak7BOoinRNehOCA85CQ8ubr.jpg',
                 'image2' => '/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg',
+                'country_id' => 2,
                 'created_at' => '2024-07-17 21:09:01',
                 'updated_at' => '2024-07-17 21:09:01',
-            ],
-            [
+            ),
+            5 => 
+            array (
                 'id' => 6,
                 'title' => 'パリ、ジュテーム',
                 'tmdb_id' => 2266,
                 'original_title' => 'Paris, je t\'aime',
                 'overview' => '＜モンマルトル編＞駐車できる場所を探し求めてモンマルトルの坂道を走り回った末、ようやく見つけたスペースに マイカーを滑り込ませた男性主人公は、すぐ近くで女性が行き倒れとなっているのと遭遇する。＜セーヌ河岸編＞2人の悪友とともに セーヌ河岸に陣取って、道行く女性たちの品定めをしていたフランソワ。偶然目の前で転んだアラブ系の若い女性を助け起こした彼は、彼女の美しさにたちまち魅せられる。その他、計18話。',
                 'release_year' => 2006,
-                'director' => '	エマニュエル・ベンビイ',
+                'director' => 'エマニュエル・ベンビイ',
                 'image1' => '/3QZkFDe2GVQbOa8XZxK38BVsX1k.jpg',
                 'image2' => '/vyY2gC0cVlAZJzMqXAovVvZY8Ig.jpg',
                 'country_id' => 6,
                 'created_at' => '2024-07-18 21:09:01',
                 'updated_at' => '2024-07-18 21:09:01',
-            ],
-            [
+            ),
+            6 => 
+            array (
                 'id' => 7,
                 'title' => 'パラサイト 半地下の家族',
                 'tmdb_id' => 496243,
@@ -113,8 +123,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 11,
                 'created_at' => '2024-07-18 21:09:07',
                 'updated_at' => '2024-07-18 21:09:07',
-            ],
-            [
+            ),
+            7 => 
+            array (
                 'id' => 8,
                 'title' => 'スパイダーマン',
                 'tmdb_id' => 557,
@@ -127,8 +138,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:12',
                 'updated_at' => '2024-07-18 21:09:12',
-            ],
-            [
+            ),
+            8 => 
+            array (
                 'id' => 9,
                 'title' => 'バッドボーイズ フォー・ライフ',
                 'tmdb_id' => 38700,
@@ -141,8 +153,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:16',
                 'updated_at' => '2024-07-18 21:09:16',
-            ],
-            [
+            ),
+            9 => 
+            array (
                 'id' => 10,
                 'title' => 'アメリカン・ヒストリーX',
                 'tmdb_id' => 73,
@@ -155,8 +168,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:19',
                 'updated_at' => '2024-07-18 21:09:19',
-            ],
-            [
+            ),
+            10 => 
+            array (
                 'id' => 11,
                 'title' => 'アベンジャーズ／インフィニティ・ウォー',
                 'tmdb_id' => 299536,
@@ -169,8 +183,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:24',
                 'updated_at' => '2024-07-18 21:09:24',
-            ],
-            [
+            ),
+            11 => 
+            array (
                 'id' => 12,
                 'title' => 'ブレードランナー 2049',
                 'tmdb_id' => 335984,
@@ -183,8 +198,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 8,
                 'created_at' => '2024-07-18 21:09:34',
                 'updated_at' => '2024-07-18 21:09:34',
-            ],
-            [
+            ),
+            12 => 
+            array (
                 'id' => 13,
                 'title' => '学校',
                 'tmdb_id' => 197139,
@@ -197,8 +213,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 1,
                 'created_at' => '2024-07-18 21:09:36',
                 'updated_at' => '2024-07-18 21:09:36',
-            ],
-            [
+            ),
+            13 => 
+            array (
                 'id' => 14,
                 'title' => 'インサイド・ヘッド',
                 'tmdb_id' => 150540,
@@ -211,8 +228,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:40',
                 'updated_at' => '2024-07-18 21:09:40',
-            ],
-            [
+            ),
+            14 => 
+            array (
                 'id' => 15,
                 'title' => '猿の惑星：新世紀（ライジング）',
                 'tmdb_id' => 119450,
@@ -225,8 +243,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:09:46',
                 'updated_at' => '2024-07-18 21:09:46',
-            ],
-            [
+            ),
+            15 => 
+            array (
                 'id' => 16,
                 'title' => '怪盗グルーのミニオン危機一発',
                 'tmdb_id' => 93456,
@@ -239,8 +258,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:09:48',
                 'updated_at' => '2024-07-18 21:09:48',
-            ],
-            [
+            ),
+            16 => 
+            array (
                 'id' => 17,
                 'title' => 'クライモリ デッド・パーティ',
                 'tmdb_id' => 125509,
@@ -253,8 +273,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 7,
                 'created_at' => '2024-07-18 21:09:59',
                 'updated_at' => '2024-07-18 21:09:59',
-            ],
-            [
+            ),
+            17 => 
+            array (
                 'id' => 18,
                 'title' => 'TIME／タイム',
                 'tmdb_id' => 49530,
@@ -267,8 +288,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:06',
                 'updated_at' => '2024-07-18 21:10:06',
-            ],
-            [
+            ),
+            18 => 
+            array (
                 'id' => 19,
                 'title' => 'アイアンマン2',
                 'tmdb_id' => 10138,
@@ -281,8 +303,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:09',
                 'updated_at' => '2024-07-18 21:10:09',
-            ],
-            [
+            ),
+            19 => 
+            array (
                 'id' => 20,
                 'title' => 'コララインとボタンの魔女',
                 'tmdb_id' => 14836,
@@ -295,8 +318,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:12',
                 'updated_at' => '2024-07-18 21:10:12',
-            ],
-            [
+            ),
+            20 => 
+            array (
                 'id' => 21,
                 'title' => 'トワイライト〜初恋〜',
                 'tmdb_id' => 8966,
@@ -309,8 +333,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:16',
                 'updated_at' => '2024-07-18 21:10:16',
-            ],
-            [
+            ),
+            21 => 
+            array (
                 'id' => 22,
                 'title' => 'デッド・サイレンス',
                 'tmdb_id' => 14001,
@@ -323,8 +348,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:21',
                 'updated_at' => '2024-07-18 21:10:21',
-            ],
-            [
+            ),
+            22 => 
+            array (
                 'id' => 23,
                 'title' => 'プラダを着た悪魔',
                 'tmdb_id' => 350,
@@ -337,8 +363,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:24',
                 'updated_at' => '2024-07-18 21:10:24',
-            ],
-            [
+            ),
+            23 => 
+            array (
                 'id' => 24,
                 'title' => 'ナルニア国物語／第1章：ライオンと魔女',
                 'tmdb_id' => 411,
@@ -351,8 +378,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:10:29',
                 'updated_at' => '2024-07-18 21:10:29',
-            ],
-            [
+            ),
+            24 => 
+            array (
                 'id' => 25,
                 'title' => 'ハウルの動く城',
                 'tmdb_id' => 4935,
@@ -365,8 +393,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 1,
                 'created_at' => '2024-07-18 21:10:32',
                 'updated_at' => '2024-07-18 21:10:32',
-            ],
-            [
+            ),
+            25 => 
+            array (
                 'id' => 26,
                 'title' => 'パイレーツ・オブ・カリビアン／呪われた海賊たち',
                 'tmdb_id' => 22,
@@ -379,8 +408,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:36',
                 'updated_at' => '2024-07-18 21:10:36',
-            ],
-            [
+            ),
+            26 => 
+            array (
                 'id' => 27,
                 'title' => 'トリプルX',
                 'tmdb_id' => 7451,
@@ -393,8 +423,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:40',
                 'updated_at' => '2024-07-18 21:10:40',
-            ],
-            [
+            ),
+            27 => 
+            array (
                 'id' => 28,
                 'title' => 'グラディエーター',
                 'tmdb_id' => 98,
@@ -407,8 +438,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:10:48',
                 'updated_at' => '2024-07-18 21:10:48',
-            ],
-            [
+            ),
+            28 => 
+            array (
                 'id' => 29,
                 'title' => 'トイ・ストーリー2',
                 'tmdb_id' => 863,
@@ -421,8 +453,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:57',
                 'updated_at' => '2024-07-18 21:10:57',
-            ],
-            [
+            ),
+            29 => 
+            array (
                 'id' => 30,
                 'title' => 'ムーラン',
                 'tmdb_id' => 10674,
@@ -435,8 +468,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:10:59',
                 'updated_at' => '2024-07-18 21:10:59',
-            ],
-            [
+            ),
+            30 => 
+            array (
                 'id' => 31,
                 'title' => 'タイタニック',
                 'tmdb_id' => 597,
@@ -449,8 +483,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:03',
                 'updated_at' => '2024-07-18 21:11:03',
-            ],
-            [
+            ),
+            31 => 
+            array (
                 'id' => 32,
                 'title' => 'ツイスター',
                 'tmdb_id' => 664,
@@ -463,8 +498,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:07',
                 'updated_at' => '2024-07-18 21:11:07',
-            ],
-            [
+            ),
+            32 => 
+            array (
                 'id' => 33,
                 'title' => 'セブン',
                 'tmdb_id' => 807,
@@ -477,8 +513,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:10',
                 'updated_at' => '2024-07-18 21:11:10',
-            ],
-            [
+            ),
+            33 => 
+            array (
                 'id' => 34,
                 'title' => 'レオン',
                 'tmdb_id' => 101,
@@ -491,8 +528,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:14',
                 'updated_at' => '2024-07-18 21:11:14',
-            ],
-            [
+            ),
+            34 => 
+            array (
                 'id' => 35,
                 'title' => 'アメリ',
                 'tmdb_id' => 194,
@@ -505,8 +543,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 6,
                 'created_at' => '2024-07-18 21:11:17',
                 'updated_at' => '2024-07-18 21:11:17',
-            ],
-            [
+            ),
+            35 => 
+            array (
                 'id' => 36,
                 'title' => 'ジョジョ・ラビット',
                 'tmdb_id' => 515001,
@@ -519,8 +558,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:20',
                 'updated_at' => '2024-07-18 21:11:20',
-            ],
-            [
+            ),
+            36 => 
+            array (
                 'id' => 37,
                 'title' => 'La Riffa',
                 'tmdb_id' => 59053,
@@ -533,8 +573,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 4,
                 'created_at' => '2024-07-18 21:11:23',
                 'updated_at' => '2024-07-18 21:11:23',
-            ],
-            [
+            ),
+            37 => 
+            array (
                 'id' => 38,
                 'title' => 'ゴッドファーザー PART III',
                 'tmdb_id' => 242,
@@ -547,8 +588,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:28',
                 'updated_at' => '2024-07-18 21:11:28',
-            ],
-            [
+            ),
+            38 => 
+            array (
                 'id' => 39,
                 'title' => 'リトル・マーメイド',
                 'tmdb_id' => 10144,
@@ -561,8 +603,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:37',
                 'updated_at' => '2024-07-18 21:11:37',
-            ],
-            [
+            ),
+            39 => 
+            array (
                 'id' => 40,
                 'title' => 'ミスター・ノーバディ',
                 'tmdb_id' => 31011,
@@ -572,11 +615,12 @@ class MovieSeeder extends Seeder
                 'director' => 'ジャコ・ヴァン・ドルマル',
                 'image1' => '/y9zcjxEilWr44c4vJbEaLTgE0Uw.jpg',
                 'image2' => '/vbba0jXLjghW4nNzte51d8XWSvq.jpg',
-                'country_id' => 15,
+                'country_id' => 6,
                 'created_at' => '2024-07-18 21:11:40',
                 'updated_at' => '2024-07-18 21:11:40',
-            ],
-            [
+            ),
+            40 => 
+            array (
                 'id' => 41,
                 'title' => 'ニア・ダーク/月夜の出来事',
                 'tmdb_id' => 11879,
@@ -589,8 +633,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:43',
                 'updated_at' => '2024-07-18 21:11:43',
-            ],
-            [
+            ),
+            41 => 
+            array (
                 'id' => 42,
                 'title' => 'トップガン',
                 'tmdb_id' => 744,
@@ -603,8 +648,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:48',
                 'updated_at' => '2024-07-18 21:11:48',
-            ],
-            [
+            ),
+            42 => 
+            array (
                 'id' => 43,
                 'title' => 'バック・トゥ・ザ・フューチャー',
                 'tmdb_id' => 105,
@@ -617,8 +663,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:54',
                 'updated_at' => '2024-07-18 21:11:54',
-            ],
-            [
+            ),
+            43 => 
+            array (
                 'id' => 44,
                 'title' => 'ビバリーヒルズ・コップ',
                 'tmdb_id' => 90,
@@ -631,8 +678,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:11:58',
                 'updated_at' => '2024-07-18 21:11:58',
-            ],
-            [
+            ),
+            44 => 
+            array (
                 'id' => 45,
                 'title' => '大逆転',
                 'tmdb_id' => 1621,
@@ -645,8 +693,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:01',
                 'updated_at' => '2024-07-18 21:12:01',
-            ],
-            [
+            ),
+            45 => 
+            array (
                 'id' => 46,
                 'title' => '13日の金曜日 PART3',
                 'tmdb_id' => 9728,
@@ -659,8 +708,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:05',
                 'updated_at' => '2024-07-18 21:12:05',
-            ],
-            [
+            ),
+            46 => 
+            array (
                 'id' => 47,
                 'title' => 'レイダース／失われたアーク《聖櫃》',
                 'tmdb_id' => 85,
@@ -673,8 +723,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:08',
                 'updated_at' => '2024-07-18 21:12:08',
-            ],
-            [
+            ),
+            47 => 
+            array (
                 'id' => 48,
                 'title' => 'シャイニング',
                 'tmdb_id' => 694,
@@ -687,8 +738,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:12:13',
                 'updated_at' => '2024-07-18 21:12:13',
-            ],
-            [
+            ),
+            48 => 
+            array (
                 'id' => 49,
                 'title' => 'エイリアン',
                 'tmdb_id' => 348,
@@ -701,8 +753,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:16',
                 'updated_at' => '2024-07-18 21:12:16',
-            ],
-            [
+            ),
+            49 => 
+            array (
                 'id' => 50,
                 'title' => 'ゾンビ',
                 'tmdb_id' => 923,
@@ -715,8 +768,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 4,
                 'created_at' => '2024-07-18 21:12:20',
                 'updated_at' => '2024-07-18 21:12:20',
-            ],
-            [
+            ),
+            50 => 
+            array (
                 'id' => 51,
                 'title' => 'スター・ウォーズ エピソード４／新たなる希望',
                 'tmdb_id' => 11,
@@ -729,8 +783,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:24',
                 'updated_at' => '2024-07-18 21:12:24',
-            ],
-            [
+            ),
+            51 => 
+            array (
                 'id' => 52,
                 'title' => 'ニュー・シネマ・パラダイス',
                 'tmdb_id' => 11216,
@@ -743,8 +798,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 4,
                 'created_at' => '2024-07-18 21:12:27',
                 'updated_at' => '2024-07-18 21:12:27',
-            ],
-            [
+            ),
+            52 => 
+            array (
                 'id' => 53,
                 'title' => 'ジョーズ',
                 'tmdb_id' => 578,
@@ -757,8 +813,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:12:31',
                 'updated_at' => '2024-07-18 21:12:31',
-            ],
-            [
+            ),
+            53 => 
+            array (
                 'id' => 54,
                 'title' => 'オッペンハイマー',
                 'tmdb_id' => 872585,
@@ -771,8 +828,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:16:41',
                 'updated_at' => '2024-07-18 21:16:41',
-            ],
-            [
+            ),
+            54 => 
+            array (
                 'id' => 55,
                 'title' => '母なる証明',
                 'tmdb_id' => 30018,
@@ -785,8 +843,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 11,
                 'created_at' => '2024-07-18 21:16:41',
                 'updated_at' => '2024-07-18 21:16:41',
-            ],
-            [
+            ),
+            55 => 
+            array (
                 'id' => 56,
                 'title' => 'キングダム・オブ・ヘブン',
                 'tmdb_id' => 1495,
@@ -799,8 +858,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 7,
                 'created_at' => '2024-07-18 21:16:42',
                 'updated_at' => '2024-07-18 21:16:42',
-            ],
-            [
+            ),
+            56 => 
+            array (
                 'id' => 57,
                 'title' => 'Horizon: An American Saga - Chapter 1',
                 'tmdb_id' => 932086,
@@ -813,8 +873,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:16:47',
                 'updated_at' => '2024-07-18 21:16:47',
-            ],
-            [
+            ),
+            57 => 
+            array (
                 'id' => 58,
                 'title' => '続・夕陽のガンマン',
                 'tmdb_id' => 429,
@@ -827,8 +888,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:16:47',
                 'updated_at' => '2024-07-18 21:16:47',
-            ],
-            [
+            ),
+            58 => 
+            array (
                 'id' => 59,
                 'title' => 'The Night They Came Home',
                 'tmdb_id' => 1216299,
@@ -841,8 +903,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:16:47',
                 'updated_at' => '2024-07-18 21:16:47',
-            ],
-            [
+            ),
+            59 => 
+            array (
                 'id' => 60,
                 'title' => '北京ヴァイオリン',
                 'tmdb_id' => 18385,
@@ -855,8 +918,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 12,
                 'created_at' => '2024-07-18 21:16:57',
                 'updated_at' => '2024-07-18 21:16:57',
-            ],
-            [
+            ),
+            60 => 
+            array (
                 'id' => 61,
                 'title' => 'ディセンダント',
                 'tmdb_id' => 277217,
@@ -869,8 +933,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:16:58',
                 'updated_at' => '2024-07-18 21:16:58',
-            ],
-            [
+            ),
+            61 => 
+            array (
                 'id' => 62,
                 'title' => 'チャイナタウン',
                 'tmdb_id' => 417320,
@@ -883,22 +948,24 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-18 21:16:58',
                 'updated_at' => '2024-07-18 21:16:58',
-            ],
-            [
+            ),
+            62 => 
+            array (
                 'id' => 63,
-                'title' => 'CIVIL WAR',
+                'title' => 'シビル・ウォー アメリカ最後の日',
                 'tmdb_id' => 929590,
                 'original_title' => 'Civil War',
-                'overview' => '',
+                'overview' => '連邦政府から19もの州が離脱したアメリカ。テキサスとカリフォルニアの同盟からなる“西部勢力”と政府軍の間で内戦が勃発し、各地で激しい武力衝突が繰り広げられていた。「国民の皆さん、我々は歴史的勝利に近づいている——」。就任 “3期目”に突入した権威主義的な大統領はテレビ演説で力強く訴えるが、ワシントンD.C.の陥落は目前に迫っていた。ニューヨークに滞在していた4人のジャーナリストは、14ヶ月一度も取材を受けていないという大統領に単独インタビューを行うため、ホワイトハウスへと向かう。だが戦場と化した旅路を行く中で、内戦の恐怖と狂気に呑み込まれていくー',
                 'release_year' => 2024,
-                'director' => 'キルスティン・ダンスト',
+                'director' => 'アレックス・ガーランド',
                 'image1' => '/a4IWRYNMNMszIkRbEIiNsRg6cvt.jpg',
                 'image2' => '/aFRyJ1ClU39J9IOTdlmUNa6P9A6.jpg',
-                'country_id' => 15,
+                'country_id' => 2,
                 'created_at' => '2024-07-18 21:17:04',
                 'updated_at' => '2024-07-18 21:17:04',
-            ],
-            [
+            ),
+            63 => 
+            array (
                 'id' => 64,
                 'title' => 'Battle Over Britain',
                 'tmdb_id' => 1136318,
@@ -911,8 +978,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 3,
                 'created_at' => '2024-07-18 21:17:04',
                 'updated_at' => '2024-07-18 21:17:04',
-            ],
-            [
+            ),
+            64 => 
+            array (
                 'id' => 65,
                 'title' => '封神第一部：朝歌风云',
                 'tmdb_id' => 856289,
@@ -925,8 +993,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 12,
                 'created_at' => '2024-07-18 21:17:04',
                 'updated_at' => '2024-07-18 21:17:04',
-            ],
-            [
+            ),
+            65 => 
+            array (
                 'id' => 66,
                 'title' => '万引き家族',
                 'tmdb_id' => 505192,
@@ -939,8 +1008,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 1,
                 'created_at' => '2024-07-19 22:25:00',
                 'updated_at' => '2024-07-19 22:25:00',
-            ],
-            [
+            ),
+            66 => 
+            array (
                 'id' => 67,
                 'title' => 'となりのトトロ',
                 'tmdb_id' => 8392,
@@ -953,8 +1023,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 1,
                 'created_at' => '2024-07-19 22:30:59',
                 'updated_at' => '2024-07-19 22:30:59',
-            ],
-            [
+            ),
+            67 => 
+            array (
                 'id' => 68,
                 'title' => 'マッドマックス',
                 'tmdb_id' => 9659,
@@ -967,8 +1038,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 10,
                 'created_at' => '2024-07-20 20:04:22',
                 'updated_at' => '2024-07-20 20:04:22',
-            ],
-            [
+            ),
+            68 => 
+            array (
                 'id' => 69,
                 'title' => '［リミット］',
                 'tmdb_id' => 26388,
@@ -981,8 +1053,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 5,
                 'created_at' => '2024-07-20 20:07:56',
                 'updated_at' => '2024-07-20 20:07:56',
-            ],
-            [
+            ),
+            69 => 
+            array (
                 'id' => 70,
                 'title' => 'LION／ライオン ～25年目のただいま～',
                 'tmdb_id' => 334543,
@@ -995,8 +1068,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 10,
                 'created_at' => '2024-07-20 20:15:03',
                 'updated_at' => '2024-07-20 20:15:03',
-            ],
-            [
+            ),
+            70 => 
+            array (
                 'id' => 71,
                 'title' => '少林サッカー',
                 'tmdb_id' => 11770,
@@ -1009,13 +1083,14 @@ class MovieSeeder extends Seeder
                 'country_id' => 13,
                 'created_at' => '2024-07-20 20:17:18',
                 'updated_at' => '2024-07-20 20:17:18',
-            ],
-            [
+            ),
+            71 => 
+            array (
                 'id' => 72,
                 'title' => 'きっと、うまくいく',
                 'tmdb_id' => 20453,
                 'original_title' => '3 Idiots',
-                'overview' => '大学時代親友同士だったファランとラージューは、ある日同窓のチャトルから母校に呼び出される。チャトルは二人に、ランチョーというかつての学友の消息がつかめたことを話し、探しに行こうと持ちかけるのだった。  10年前、インド屈指の難関工科大学ICE（Imperial College of Engineering）。それぞれに家庭の期待を受けて入学してきたファランとラージュー、そして自由奔放な天才ランチョーの三人は寮でルームメイトとなる。何をするにも一緒の3人はしばしばバカ騒ぎをやらかし、学長や秀才だったチャトル等から"3 idiots"(三バカ)と呼ばれ目の敵にされていた。  物語は10年前の大学におけるエピソードと現代のランチョーを探す3人の旅を織り交ぜながら、やがてファラン達も知らなかった彼の秘密に迫っていく。',
+            'overview' => '大学時代親友同士だったファランとラージューは、ある日同窓のチャトルから母校に呼び出される。チャトルは二人に、ランチョーというかつての学友の消息がつかめたことを話し、探しに行こうと持ちかけるのだった。  10年前、インド屈指の難関工科大学ICE（Imperial College of Engineering）。それぞれに家庭の期待を受けて入学してきたファランとラージュー、そして自由奔放な天才ランチョーの三人は寮でルームメイトとなる。何をするにも一緒の3人はしばしばバカ騒ぎをやらかし、学長や秀才だったチャトル等から"3 idiots"(三バカ)と呼ばれ目の敵にされていた。  物語は10年前の大学におけるエピソードと現代のランチョーを探す3人の旅を織り交ぜながら、やがてファラン達も知らなかった彼の秘密に迫っていく。',
                 'release_year' => 2009,
                 'director' => 'ラージクマール・ヒラーニ',
                 'image1' => '/u7kuUaySqXBVAtqEl9vkTkAzHV9.jpg',
@@ -1023,8 +1098,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 9,
                 'created_at' => '2024-07-20 20:22:48',
                 'updated_at' => '2024-07-20 20:22:48',
-            ],
-            [
+            ),
+            72 => 
+            array (
                 'id' => 73,
                 'title' => 'コーダ あいのうた',
                 'tmdb_id' => 776503,
@@ -1037,8 +1113,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 6,
                 'created_at' => '2024-07-20 20:22:48',
                 'updated_at' => '2024-07-20 20:22:48',
-            ],
-            [
+            ),
+            73 => 
+            array (
                 'id' => 74,
                 'title' => 'ノマドランド',
                 'tmdb_id' => 581734,
@@ -1051,8 +1128,9 @@ class MovieSeeder extends Seeder
                 'country_id' => 2,
                 'created_at' => '2024-07-20 20:22:48',
                 'updated_at' => '2024-07-20 20:22:48',
-            ],
-            [
+            ),
+            74 => 
+            array (
                 'id' => 75,
                 'title' => 'イントゥ・ザ・ワイルド',
                 'tmdb_id' => 5915,
@@ -1065,7 +1143,24 @@ class MovieSeeder extends Seeder
                 'country_id' => 9,
                 'created_at' => '2024-07-20 20:22:48',
                 'updated_at' => '2024-07-20 20:22:48',
-            ],
-        ]);
+            ),
+            75 => 
+            array (
+                'id' => 76,
+                'title' => 'コマンドー',
+                'tmdb_id' => 10999,
+                'original_title' => 'Commando',
+                'overview' => '元アメリカ特殊部隊隊長メイトリクスは退役し娘と山小屋で平和な日々を送っていた。ある日かつての部下達が次々と殺害され愛娘までも拉致されてしまう。娘の命と引き換えに過去の作戦で政変を起こした国の大統領暗殺を強要されるが、メイトリクスの狙いは敵の殲滅と娘の奪還のみだった。殺戮マシーンと化したメイトリクスの一人世界大戦が孤島バルベルデで強引に開始される。',
+                'release_year' => 1985,
+                'director' => 'Mark L. Lester',
+                'image1' => '/tNiQzlHC5zWpNSabYqrbkXx5ydA.jpg',
+                'image2' => '/ygv8uRcFRsTjtgWrmNfy7NVmZXG.jpg',
+                'country_id' => 2,
+                'created_at' => '2024-08-27 08:52:33',
+                'updated_at' => '2024-08-27 08:52:33',
+            ),
+        ));
+        
+        
     }
 }

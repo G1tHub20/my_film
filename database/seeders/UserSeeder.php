@@ -38,6 +38,13 @@ class UserSeeder extends Seeder
                'isAdmin' => 1,
                'created_at' => Now()
             ],
+            [
+               'name' => 'hanako' ,
+               'email' => 'hanako@test.com' ,
+               'password' => Hash::make('hanako123pass'),
+               'isAdmin' => 0,
+               'created_at' => Now()
+            ],
         ]);
     }
 }

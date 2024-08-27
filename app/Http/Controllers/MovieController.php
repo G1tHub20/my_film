@@ -21,9 +21,10 @@ class MovieController extends Controller
     public function index()
     {
         $tags = Tag::all();
+        $genre_names = Genre::orderBy('id')->get();
+        $release_year = Movie::distinct()->orderBy('release_year', 'desc')->pluck('release_year');
         $directors = Movie::distinct()->orderBy('director')->pluck('director');
-        $countries = Country::orderBy('id', 'asc')->get();
-        $genres = Genre::orderBy('id', 'asc')->get();
+        $countries = Country::orderBy('id')->get();
 
         $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
 
@@ -31,17 +32,17 @@ class MovieController extends Controller
 
         // 各映画に対してその映画のジャンルIDを取得する
         $movies->load('genres');
-        $genres2 = [];
+        $genres = [];
         foreach ($movies as $movie) {
             foreach ($movie->genres as $genre) {
-                $genres2[$movie->id][$genre->id] = $genre->genre;
+                $genres[$movie->id][$genre->id] = $genre->genre;
 
                 $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
                 $movie->setAttribute('rating', $rating); //配列に属性を追加
             }
         }
 
-        return view('movie.index', compact('tags','directors','countries','genres','movies','genres2'));
+        return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
     }
 
 
@@ -52,7 +53,7 @@ class MovieController extends Controller
         $country_id = $request->country;        //製作国
         $director = $request->director;         //監督
         $tag_ids = $request->tag;               //タグ
-        $genre_id = $request->genre;           //ジャンル
+        $genre_id = $request->genre;            //ジャンル
 
         $query = Movie::search($title, $release_year, $director, $country_id, $genre_id);
         // Eager Loading（遅延読み込み）で関連するデータを事前に読み込む
@@ -258,7 +259,7 @@ class MovieController extends Controller
         $user_id = $request->input('user_id');
         $movie_id = $request->input('movie_id');
 
-        if ($request->has('edit')) { //リクエストに値が存在するか判定
+        if ($request->has('update')) { //リクエストに値が存在するか判定
             $review = Review::where('movie_id', '=', $movie_id)->where('user_id', '=', $user_id)->first();
 
             // フォームの値で上書き
@@ -306,7 +307,7 @@ class MovieController extends Controller
                 }
             }
             // 詳細情報画面に遷移
-            return redirect('/' . $movie_id);
+            return redirect('movie/' . $movie_id);
 
         } elseif ($request->has('delete')) {
             

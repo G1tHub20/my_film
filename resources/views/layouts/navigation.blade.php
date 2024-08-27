@@ -38,7 +38,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('ログアウト') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -66,9 +66,6 @@
             <x-responsive-nav-link :href="route('movie.index')" :active="request()->routeIs('.index')">
                 TOP
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('movie.create')" :active="request()->routeIs('movie.create')">
-                登録
-            </x-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->
@@ -86,7 +83,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('ログアウト') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
