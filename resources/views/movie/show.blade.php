@@ -5,7 +5,7 @@
     </h2>
   </x-slot>
 
-  <div class="py-5">
+  <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
 
@@ -36,7 +36,6 @@
 
                 <div class="p-2 w-full">
                   <div class="container px-5 mx-auto">
-                    {{-- <p>あらすじ：</p> --}}
                     <p class="mb-5">{{ $movie->overview }}</p>
                     <dt class="border-l-4 border-gray-300 pl-1">ジャンル：</dt>
                     <dd class="pl-4 mb-1">
@@ -46,7 +45,7 @@
                         <!-- 最後だけカンマなし -->
                       @endforeach
                     </dd>
-                    <dt class="border-l-4 border-gray-300 pl-1">公開年：</dt>
+                    <dt class="border-l-4 border-gray-300 pl-1">公開：</dt>
                     <dd class="pl-4 mb-1"><a href="/movie/result?release_year={{ $movie->release_year }}"
                         class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}</a></dd>
                     <dt class="border-l-4 border-gray-300 pl-1">監督：</dt>
@@ -68,17 +67,17 @@
               <p class="text-lg mb-5">タグが未登録です。</p>
             @else
               @foreach ($tags as $tag)
-                <p class="sm:text-xl text-xl font-medium title-font mb-4 text-gray-900"><a
+                <p class="inline-block text-xl title-font mb-4 mr-2 text-gray-50 bg-yellow-400 px-1 py-0.5 rounded-md hover:bg-yellow-500"><a
                     href="/movie/result?tag%5B%5D={{ $tag->id }}"
-                    class="hover:underline hover:decoration-indigo-600">{{ $tag->tag }}</a></p>
+                    class="">{{ $tag->tag }}</a></p>
               @endforeach
             @endif
           </div>
 
           <div class="container mx-auto">
             @foreach ($reviews as $review)
-              <div class="bg-amber-100 p-2 my-4">
-                <span class="w-1/12 text-xs letter-spacing-xs text-yellow-400"">
+              <div class="bg-gray-50 p-2 my-4">
+                <span class="w-1/12 text-xs letter-spacing-xs text-yellow-400">
                   @for ($i = 0; $i < $review->rating; $i++)
                     ★
                   @endfor
@@ -104,7 +103,5 @@
 
         </div>
 
-        {{-- <button onclick="history.back()" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">一覧に戻る</button> --}}
-        {{-- <button onclick="location.href='/movie/result'" class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">一覧に戻る</button> --}}
 
 </x-app-layout>

@@ -154,6 +154,8 @@ return [
     */
 
     'attributes' => [
+        'Email' => 'メールアドレス',
+        'email' => 'メールアドレス',
         'password' => 'パスワード',
         'rating' => '評価',
         'review' => 'レビュー本文',

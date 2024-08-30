@@ -5,15 +5,15 @@
     </h2>
   </x-slot>
 
-  <div class="py-5">
+  <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="p-6 bg-white border-b-8 border-gray-100">
 
           <form method="get" action="{{ route('movie.result') }}">
             <div class="container px-5 pt-5">
               <div class="flex flex-col text-center w-full mb-4">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">映画を探しましょう
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-1 text-gray-900">映画を探しましょう
                 </h1>
                 <p class="leading-relaxed text-base">気になるタグ、または詳細条件から映画を検索してください</p>
               </div>
@@ -21,18 +21,22 @@
 
             <div class="container lg:w-2/3 py-2 mx-auto mb-5">
               @foreach ($tags as $tag)
-                <label for="{{ $tag->id }}" class="mx-1 text-lg font-bold">
-                  <input type="checkbox" name="tag[]" id="{{ $tag->id }}"
-                    value="{{ $tag->id }}">{{ $tag->tag }}
+                <label for="{{ $tag->id }}" class="group mx-1 text-lg rounded-md bg-gray-100 cursor-pointer whitespace-nowrap">
+                  <input type="checkbox" name="tag[]" id="{{ $tag->id }}" class="hidden peer"
+                    value="{{ $tag->id }}">
+                    <span class="peer-checked:bg-yellow-400 peer-checked:text-gray-50 inlione-block px-1 py-0.5 rounded-md">
+                      {{ $tag->tag }}
+                    </span>
                 </label>
               @endforeach
             </div>
+
 
             <!-- 詳細条件のアコーディオン -->
             <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
               <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
                 <button type="button"
-                  class="flex items-center justify-between px-5 py-3 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
                   aria-controls="accordion-collapse-body-2">
                   より詳しい条件で検索
@@ -49,13 +53,13 @@
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="title">タイトル</label>
                     <input type="text"
-                      class="block text-base  w-full sm:w-full lg:w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white"
+                      class="block text-base leading-4 w-full sm:w-full lg:w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white"
                       id="title" name="title" value="{{ old('title') }}">
                   </div>
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="genre">ジャンル</label>
-                    <select name="genre" class="text-base w-full sm:w-full lg:w-1/3">
+                    <select name="genre" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
                       <option value=""></option>
                       @foreach ($genre_names as $genre)
                         <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
@@ -65,7 +69,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">公開</label>
-                    <select name="release_year" class="text-base w-full sm:w-full lg:w-1/3">
+                    <select name="release_year" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
                       <option value=""></option>
                       @foreach($release_year as $i)
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -75,7 +79,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="director">監督</label>
-                    <select name="director" class="text-base w-full sm:w-full lg:w-1/3">
+                    <select name="director" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
                       <option value=""></option>
                       @foreach ($directors as $director)
                         <option value="{{ $director }}">{{ $director }}</option>
@@ -85,7 +89,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="country">製作国</label>
-                    <select name="country" class="text-base w-full sm:w-full lg:w-1/3">
+                    <select name="country" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
                       <option value=""></option>
                       @foreach ($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->country }}</option>

@@ -65,14 +65,21 @@ class MovieController extends Controller
 
             ->sortable(); //これを挟むだけ
 
-            //タグを持つ映画を絞り込み
-            if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
-                foreach ($tag_ids as $tag_id) {
-                    $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
-                        $q->where('tag_id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
-                    });
-                }
+            // タグを持つ映画を絞り込み（AND条件）
+            // if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
+            //     foreach ($tag_ids as $tag_id) {
+            //         $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
+            //             $q->where('tag_id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
+            //         });
+            //     }
+            // }
+            // タグを持つ映画を絞り込み（OR条件）
+            if (!empty($tag_ids) && count($tag_ids) > 0) { // tag_idsが存在し、かつ0個以上
+                $query->whereHas('tags', function ($q) use ($tag_ids) {
+                    $q->whereIn('tag_id', $tag_ids);
+                });
             }
+
             
             $movies = $query->get(); //getメソッド 結果をコレクションとして取得
             foreach($movies as $movie) {
@@ -80,7 +87,7 @@ class MovieController extends Controller
                 $movie->setAttribute('rating', $rating); //配列に属性を追加
             }
 
-            // カスタムソートの例: ratingでソート
+            // カスタムソート: ratingでソート
             $sort = $request->input('sort', 'id');
             $direction = $request->input('direction', 'asc');
             if ($sort === 'rating') {
@@ -119,7 +126,7 @@ class MovieController extends Controller
             }
             if(!is_null($tag_ids)) {
                 $tags = Tag::whereIn('id', $tag_ids)->pluck('tag')->toArray(); //コレクションを配列に変換
-                $tag = "\"" . implode( "・", $tags) . "\"";
+                $tag = "\"" . implode( "／", $tags) . "\"";
                 array_push($search_params, $tag);
             }
             $search_param = implode( ",　", $search_params);
