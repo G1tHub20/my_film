@@ -10,9 +10,7 @@
 
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
         </x-slot>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
             ログイン

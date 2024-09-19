@@ -15,12 +15,12 @@
           @if ($rating == 0)
             未評価
           @else
-            <span class="/12 text-xl font-semibold text-yellow-600">{{ number_format($rating, 1) }}</span>
-            <span class="/12 text-xl letter-spacing-xs text-yellow-400">
-              @for ($i = 0; $i < $rating; $i++)
-                ★
-              @endfor
-            </span>
+          <span class="/12 text-xl letter-spacing-xs text-yellow-400">
+            @for ($i = 0; $i < $rating; $i++)
+            ★
+            @endfor
+          </span>
+          <span class="/12 text-xl font-semibold text-yellow-600">{{ number_format($rating, 1) }}</span>
           @endif
         </p>
 

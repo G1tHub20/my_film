@@ -112,7 +112,7 @@
         </div>
 
         <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-          <p class="w-4/12">★4.5以上の映画</p>
+          <p class="w-4/12"><span class="text-yellow-400">★</span>4.5以上の映画</p>
           <table class="table-auto w-full">
             <thead>
               <tr>
