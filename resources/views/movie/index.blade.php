@@ -22,7 +22,7 @@
             <!-- タグ -->
             <div class="container lg:w-2/3 py-2 mx-auto mb-5">
               @foreach ($tags as $tag)
-                <label for="{{ $tag->id }}" class="group mx-1 text-lg rounded-md bg-gray-100 cursor-pointer whitespace-nowrap">
+                <label for="{{ $tag->id }}" class="group mx-1 text-lg rounded-md bg-gray-200 cursor-pointer whitespace-nowrap">
                   <input type="checkbox" name="tag[]" id="{{ $tag->id }}" class="hidden peer"
                     value="{{ $tag->id }}">
                     <span class="peer-checked:bg-yellow-400 peer-checked:text-gray-50 inlione-block px-1 py-0.5 rounded-md">
@@ -36,7 +36,7 @@
             <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
               <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
                 <button type="button"
-                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
                   aria-controls="accordion-collapse-body-2">
                   詳しい条件で検索
@@ -48,8 +48,7 @@
                 </button>
               </div>
               <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
-                
-                <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700">
+                <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700 rounded">
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="title">タイトル</label>
                     <input type="text"
@@ -72,7 +71,7 @@
                     <select name="release_year" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
                       <option value=""></option>
                       @foreach($release_year as $i)
-                        <option value="{{ $i }}">{{ $i }}</option>
+                        <option value="{{ $i }}">{{ $i }}年</option>
                       @endforeach
                     </select>
                   </div>
@@ -96,12 +95,12 @@
                       @endforeach
                     </select>
                   </div>
+
                 </div>
-
               </div>
-
             </div><!-- #accordion-collapse -->
 
+            <!-- ボタン -->
             <div class="flex justify-center">
               <button type="reset"
                 class="text-gray-500 bg-gray-100 border-0 py-2 px-8 focus:outline-none rounded text-lg hover:bg-gray-200 mr-5">クリア</button>
@@ -111,6 +110,7 @@
           </form>
         </div>
 
+        <!-- 一覧画面（4.5以上の映画） -->
         <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
           <p class="w-4/12"><span class="text-yellow-400">★</span>4.5以上の映画</p>
           <table class="table-auto w-full">
@@ -139,7 +139,7 @@
                       {{ $genre }}{{ $loop->last ? '' : '、' }}
                     @endforeach
                   </td>
-                  <td class="w-1/12">{{ $movie->release_year }}</a></td>
+                  <td class="w-1/12">{{ $movie->release_year }}年</a></td>
                   <td title="{{ $movie->rating }}" class="w-2/12 text-xs letter-spacing-xs text-yellow-400">
                     @for ($i = 0; $i < $movie->rating; $i++)
                       ★

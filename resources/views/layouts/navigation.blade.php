@@ -10,22 +10,22 @@
         <!-- Navigation Links -->
         <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movie.index')">
-            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-full font-normal">
+            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-full font-medium">
           </x-nav-link>
           @if (request()->routeIs('movie.result'))
-            <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')" class="font-normal">
+            <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')" class="font-medium">
               一覧
             </x-nav-link>
             @elseif(request()->is('movie/post/*'))
-            <x-nav-link :href="route('movie.post', ['id' => request()->route('id')])" :active="request()->is('movie/post/*')" class="font-normal">
+            <x-nav-link :href="route('movie.post', ['id' => request()->route('id')])" :active="request()->is('movie/post/*')" class="font-medium">
                 レビュー登録
             </x-nav-link>
             @elseif(request()->is('movie/edit/*'))
-            <x-nav-link :href="route('movie.edit', ['id' => request()->route('id')])" :active="request()->is('movie/edit/*')" class="font-normal">
+            <x-nav-link :href="route('movie.edit', ['id' => request()->route('id')])" :active="request()->is('movie/edit/*')" class="font-medium">
                 レビュー編集
             </x-nav-link>
             @elseif(request()->is('movie/*'))
-              <x-nav-link :href="route('movie.show', ['id' => request()->route('id')])" :active="request()->is('movie/*')" class="font-normal">
+              <x-nav-link :href="route('movie.show', ['id' => request()->route('id')])" :active="request()->is('movie/*')" class="font-medium">
                 詳細情報
               </x-nav-link>
           @endif
@@ -37,7 +37,7 @@
         <x-dropdown align="right" width="48">
           <x-slot name="trigger">
             <button
-              class="flex items-center text-base font-normal text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+              class="flex items-center text-base font-normal text-gray-900 hover:border-gray-300 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
               <div>{{ Auth::user()->name }}</div>
 
               <div class="ml-1">

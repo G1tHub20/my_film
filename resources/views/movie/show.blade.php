@@ -47,7 +47,7 @@
                     </dd>
                     <dt class="border-l-4 border-gray-300 pl-1">公開：</dt>
                     <dd class="pl-4 mb-1"><a href="/movie/result?release_year={{ $movie->release_year }}"
-                        class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}</a></dd>
+                        class="text-indigo-600 hover:text-rose-500">{{ $movie->release_year }}年</a></dd>
                     <dt class="border-l-4 border-gray-300 pl-1">監督：</dt>
                     <dd class="pl-4 mb-1"><a href="/movie/result?director={{ $movie->director }}"
                         class="text-indigo-600 hover:text-rose-500">{{ $movie->director }}</a></dd>
@@ -87,7 +87,6 @@
               </div>
             @endforeach
           </div>
-
 
         </div>
         <div>

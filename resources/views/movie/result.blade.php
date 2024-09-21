@@ -42,7 +42,7 @@
                       {{ $genre }}{{ $loop->last ? '' : '、' }}
                     @endforeach
                   </td>
-                  <td class="w-1/12">{{ $movie->release_year }}</a></td>
+                  <td class="w-1/12">{{ $movie->release_year }}年</a></td>
                   {{-- <td class="w-2/12">{{ $movie->director }}</td> --}}
                   <td class="w-2/12 text-xs letter-spacing-xs text-yellow-400">
                     @for ($i = 0; $i < $movie->rating; $i++)
