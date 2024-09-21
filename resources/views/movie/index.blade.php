@@ -19,6 +19,7 @@
               </div>
             </div>
 
+            <!-- タグ -->
             <div class="container lg:w-2/3 py-2 mx-auto mb-5">
               @foreach ($tags as $tag)
                 <label for="{{ $tag->id }}" class="group mx-1 text-lg rounded-md bg-gray-100 cursor-pointer whitespace-nowrap">
@@ -30,7 +31,6 @@
                 </label>
               @endforeach
             </div>
-
 
             <!-- 詳細条件のアコーディオン -->
             <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
@@ -53,13 +53,13 @@
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="title">タイトル</label>
                     <input type="text"
-                      class="block text-base leading-4 w-full sm:w-full lg:w-1/2 py-2 px-3 text-gray-700 border rounded focus:outline-none focus:bg-white"
+                      class="block text-base leading-4 w-full sm:w-full lg:w-1/2 py-1 px-3 text-gray-700 rounded focus:outline-none focus:bg-white"
                       id="title" name="title" value="{{ old('title') }}">
                   </div>
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="genre">ジャンル</label>
-                    <select name="genre" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
+                    <select name="genre" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
                       <option value=""></option>
                       @foreach ($genre_names as $genre)
                         <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
@@ -69,7 +69,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="release_year">公開</label>
-                    <select name="release_year" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
+                    <select name="release_year" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
                       <option value=""></option>
                       @foreach($release_year as $i)
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -79,7 +79,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="director">監督</label>
-                    <select name="director" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
+                    <select name="director" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
                       <option value=""></option>
                       @foreach ($directors as $director)
                         <option value="{{ $director }}">{{ $director }}</option>
@@ -89,7 +89,7 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="country">製作国</label>
-                    <select name="country" class="text-base leading-4 w-full sm:w-full lg:w-1/3">
+                    <select name="country" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
                       <option value=""></option>
                       @foreach ($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->country }}</option>

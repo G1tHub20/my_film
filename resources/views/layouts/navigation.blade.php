@@ -10,22 +10,22 @@
         <!-- Navigation Links -->
         <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movie.index')">
-            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-full">
+            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-full font-normal">
           </x-nav-link>
           @if (request()->routeIs('movie.result'))
-            <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')">
+            <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')" class="font-normal">
               一覧
             </x-nav-link>
             @elseif(request()->is('movie/post/*'))
-            <x-nav-link :href="route('movie.post', ['id' => request()->route('id')])" :active="request()->is('movie/post/*')">
+            <x-nav-link :href="route('movie.post', ['id' => request()->route('id')])" :active="request()->is('movie/post/*')" class="font-normal">
                 レビュー登録
             </x-nav-link>
             @elseif(request()->is('movie/edit/*'))
-            <x-nav-link :href="route('movie.edit', ['id' => request()->route('id')])" :active="request()->is('movie/edit/*')">
+            <x-nav-link :href="route('movie.edit', ['id' => request()->route('id')])" :active="request()->is('movie/edit/*')" class="font-normal">
                 レビュー編集
             </x-nav-link>
             @elseif(request()->is('movie/*'))
-              <x-nav-link :href="route('movie.show', ['id' => request()->route('id')])" :active="request()->is('movie/*')">
+              <x-nav-link :href="route('movie.show', ['id' => request()->route('id')])" :active="request()->is('movie/*')" class="font-normal">
                 詳細情報
               </x-nav-link>
           @endif

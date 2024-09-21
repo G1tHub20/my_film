@@ -26,8 +26,8 @@
           <form method="POST" action="{{ route('movie.store', $movie->id) }}">
             @csrf
 
-            <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
-              <select name="rating" id="rating">
+            <div class="container lg:w-2/3 mx-10 px-5 mx-auto mb-5">
+              <select name="rating" id="rating" class="rounded">
                 <option value="">評価を選択</option>
                 <option value="1" @if ((int) old('rating') === 1) selected @endif>★</option>
                 <option value="2" @if ((int) old('rating') === 2) selected @endif>★★</option>
@@ -37,17 +37,17 @@
               </select>
             </div>
 
-            <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
+            <div class="container lg:w-2/3 mx-10 px-5 py-1 mx-auto mb-5">
               <textarea id="comment" name="comment" rows="4" maxlength="1000"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="ここにレビューを書いてください（1,000字以内）">{{ old('comment') }}</textarea>
               <p id="inputlength">0/1000</p>
             </div>
 
-            <div class="container lg:w-2/3 mx-10 px-5 py-2 mx-auto mb-5">
+            <div class="container lg:w-2/3 mx-10 px-5 py-1 mx-auto mb-5">
               <label for="tag" class="text-sm font-medium text-gray-900 dark:text-white">タグを選択（3つまで）</label><br>
               @foreach ($tags as $tag)
-                <label for="{{ $tag->id }}" class="mx-1 text-lg">
+                <label for="{{ $tag->id }}" class="mx-1 text-lg whitespace-nowrap">
                   <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}"
                     {{ in_array($tag->id, old('tag', [])) ? 'checked' : '' }}><!-- $tag->idの設定値があればチェックする -->
                   {{ $tag->tag }}
@@ -55,9 +55,9 @@
               @endforeach
 
               <p class="mx-auto leading-relaxed text-base mt-5">※リストにないタグを追加できます</p>
-              <p class="mb-2">新規タグ1：<input type="text" name="newTag[]" value="{{ old('newTag.0') }}"></p>
-              <p class="mb-2">新規タグ2：<input type="text" name="newTag[]" value="{{ old('newTag.1') }}"></p>
-              <p>新規タグ3：<input type="text" name="newTag[]" value="{{ old('newTag.2') }}"></p>
+              <p class="mb-2">新規タグ1：<input type="text" name="newTag[]" value="{{ old('newTag.0') }}" class="py-1 rounded"></p>
+              <p class="mb-2">新規タグ2：<input type="text" name="newTag[]" value="{{ old('newTag.1') }}" class="py-1 rounded"></p>
+              <p>新規タグ3：<input type="text" name="newTag[]" value="{{ old('newTag.2') }}" class="py-1 rounded"></p>
             </div>
 
         </div>
