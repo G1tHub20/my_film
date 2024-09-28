@@ -180,8 +180,14 @@ class TagSeeder extends Seeder
                 'created_at' => '2024-08-27 09:03:46',
                 'updated_at' => NULL,
             ),
+            23 => 
+            array (
+                'id' => 24,
+                'tag' => 'もう一度観たい',
+                'created_at' => '2024-09-28 19:43:51',
+                'updated_at' => '2024-09-28 19:43:51',
+            ),
         ));
-        
-        
+
     }
 }

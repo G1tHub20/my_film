@@ -51,16 +51,6 @@ class ReviewSeeder extends Seeder
             ),
             3 => 
             array (
-                'id' => 4,
-                'movie_id' => 3,
-                'user_id' => 1,
-                'comment' => '先日観た関心領域より、ずっと前の本作ですが初めて観賞。ナチス幹部の残虐さに衝撃。',
-                'rating' => 4,
-                'created_at' => '2024-08-03 18:10:56',
-                'updated_at' => NULL,
-            ),
-            4 => 
-            array (
                 'id' => 5,
                 'movie_id' => 3,
                 'user_id' => 2,
@@ -69,7 +59,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:10:56',
                 'updated_at' => NULL,
             ),
-            5 => 
+            4 => 
             array (
                 'id' => 6,
                 'movie_id' => 4,
@@ -79,7 +69,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:10:56',
                 'updated_at' => NULL,
             ),
-            6 => 
+            5 => 
             array (
                 'id' => 7,
                 'movie_id' => 5,
@@ -89,7 +79,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:22:23',
                 'updated_at' => NULL,
             ),
-            7 => 
+            6 => 
             array (
                 'id' => 8,
                 'movie_id' => 2,
@@ -99,7 +89,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:23:11',
                 'updated_at' => NULL,
             ),
-            8 => 
+            7 => 
             array (
                 'id' => 9,
                 'movie_id' => 1,
@@ -109,7 +99,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:23:38',
                 'updated_at' => NULL,
             ),
-            9 => 
+            8 => 
             array (
                 'id' => 10,
                 'movie_id' => 3,
@@ -119,7 +109,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:27:12',
                 'updated_at' => NULL,
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 11,
                 'movie_id' => 4,
@@ -129,7 +119,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:27:53',
                 'updated_at' => NULL,
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 12,
                 'movie_id' => 25,
@@ -139,7 +129,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:28:38',
                 'updated_at' => NULL,
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 13,
                 'movie_id' => 26,
@@ -149,7 +139,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:29:25',
                 'updated_at' => NULL,
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 14,
                 'movie_id' => 31,
@@ -159,7 +149,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:30:01',
                 'updated_at' => NULL,
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 15,
                 'movie_id' => 33,
@@ -169,7 +159,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:30:54',
                 'updated_at' => NULL,
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 16,
                 'movie_id' => 43,
@@ -179,7 +169,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:31:26',
                 'updated_at' => NULL,
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 17,
                 'movie_id' => 69,
@@ -189,7 +179,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:33:46',
                 'updated_at' => NULL,
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 18,
                 'movie_id' => 70,
@@ -199,7 +189,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:34:30',
                 'updated_at' => NULL,
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 19,
                 'movie_id' => 71,
@@ -209,7 +199,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:35:25',
                 'updated_at' => NULL,
             ),
-            19 => 
+            18 => 
             array (
                 'id' => 20,
                 'movie_id' => 72,
@@ -219,7 +209,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:35:57',
                 'updated_at' => NULL,
             ),
-            20 => 
+            19 => 
             array (
                 'id' => 21,
                 'movie_id' => 66,
@@ -229,7 +219,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:36:16',
                 'updated_at' => NULL,
             ),
-            21 => 
+            20 => 
             array (
                 'id' => 22,
                 'movie_id' => 67,
@@ -239,7 +229,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-03 18:36:43',
                 'updated_at' => '2024-08-27 09:14:41',
             ),
-            22 => 
+            21 => 
             array (
                 'id' => 23,
                 'movie_id' => 76,
@@ -250,7 +240,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-27 08:55:57',
                 'updated_at' => '2024-08-27 08:55:57',
             ),
-            23 => 
+            22 => 
             array (
                 'id' => 24,
                 'movie_id' => 31,
@@ -260,7 +250,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-27 08:57:47',
                 'updated_at' => '2024-08-27 08:57:47',
             ),
-            24 => 
+            23 => 
             array (
                 'id' => 25,
                 'movie_id' => 46,
@@ -270,7 +260,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-27 08:59:30',
                 'updated_at' => '2024-08-27 08:59:30',
             ),
-            25 => 
+            24 => 
             array (
                 'id' => 26,
                 'movie_id' => 66,
@@ -280,7 +270,7 @@ class ReviewSeeder extends Seeder
                 'created_at' => '2024-08-27 09:01:00',
                 'updated_at' => '2024-08-27 09:01:00',
             ),
-            26 => 
+            25 => 
             array (
                 'id' => 27,
                 'movie_id' => 75,
@@ -290,6 +280,147 @@ class ReviewSeeder extends Seeder
                 'rating' => 4,
                 'created_at' => '2024-08-27 09:03:46',
                 'updated_at' => '2024-08-27 09:03:46',
+            ),
+            26 => 
+            array (
+                'id' => 28,
+                'movie_id' => 10,
+                'user_id' => 2,
+                'comment' => '差別といったものは、時代もあるけれどその個人の環境が強く根付いてできるものなのだと感じた。
+一旦差別していた対象と関係を持ってみることや、怒りに身を任せないことがこの映画の重点だったと思う。',
+                'rating' => 4,
+                'created_at' => '2024-09-21 18:13:34',
+                'updated_at' => '2024-09-21 18:13:34',
+            ),
+            27 => 
+            array (
+                'id' => 29,
+                'movie_id' => 7,
+                'user_id' => 2,
+                'comment' => '想像していたものとは違うかったが面白かった。韓国の映画を見るのは初めてだが、良かった。最後父が地下から上ってきて息子と抱き合うシーンは、将来の妄想なのか現実なのか、馬鹿な私には分からなかった。',
+                'rating' => 3,
+                'created_at' => '2024-09-21 18:51:57',
+                'updated_at' => '2024-09-21 18:51:57',
+            ),
+            28 => 
+            array (
+                'id' => 30,
+                'movie_id' => 13,
+                'user_id' => 2,
+                'comment' => '西田敏行の人情味もさることながら、無学で過ごしてきた田中邦衛の熱い思い（特にオグリキャップ）を語るシーンは鮮烈に覚えている。
+中江有里が可愛かったなぁ…',
+                'rating' => 4,
+                'created_at' => '2024-09-21 19:07:02',
+                'updated_at' => '2024-09-21 19:07:02',
+            ),
+            29 => 
+            array (
+                'id' => 31,
+                'movie_id' => 58,
+                'user_id' => 2,
+                'comment' => '「夕陽のガンマン」と無関係。なぜこんな邦題を？
+南北戦争について、概略だけでも調べてみようと思いました。
+長すぎました。(けど、「あるシーン」からはおもしろかった)',
+                'rating' => 3,
+                'created_at' => '2024-09-21 19:09:26',
+                'updated_at' => '2024-09-21 19:09:26',
+            ),
+            30 => 
+            array (
+                'id' => 32,
+                'movie_id' => 6,
+                'user_id' => 2,
+                'comment' => 'パリ18区を舞台に繰り広げられる短編映画を集めたオムニバス作品。
+有名な監督陣の短編集となっており、コーエン兄弟やガス・ヴァン・サントの作品もある。
+各監督の作品それぞれに個性があって、見ていて面白いし、パリの情景が美しい。フランス映画独特の美しさが光る。セリフとかも素敵なシーンが多いのも見どころ。
+短編集なので飽きることもないし、センスを感じる作品が多かった。',
+                'rating' => 4,
+                'created_at' => '2024-09-21 19:37:30',
+                'updated_at' => '2024-09-21 19:37:30',
+            ),
+            31 => 
+            array (
+                'id' => 33,
+                'movie_id' => 36,
+                'user_id' => 2,
+                'comment' => '絵本のような少年の世界の中、確かにある不穏な空気や少年の言動ががぞわぞわとさせる本作
+
+話が進むに連れユダヤ人の少女との出会いや周囲の不穏さを醸し出していた大人たちとの変化に和みながら、それでもやはり現実にあった出来事に沿って物語は進んでいきます
+終わったあとのなんとも言えない感じ、もう一度見たいかと言われれば見ないけれど何度も思い返すシーンがいくつもある
+
+こういった気持ちを心に残してくれる、戦争映画としてすごいことなのではと感じます',
+                'rating' => 5,
+                'created_at' => '2024-09-21 19:39:54',
+                'updated_at' => '2024-09-21 19:39:54',
+            ),
+            32 => 
+            array (
+                'id' => 34,
+                'movie_id' => 55,
+                'user_id' => 5,
+                'comment' => '障害を持つ息子の容疑を晴らす為に母ちゃんが頑張るんだけど　最後の結局血は争えないという事実にあーマジかよ！ってなってしまい変な余韻のまま劇場を後にしましたが　ポンジュノらしい作品で相変わらずハズレが全く無い職人監督だなあとつくづく思いました！',
+                'rating' => 4,
+                'created_at' => '2024-09-21 22:03:11',
+                'updated_at' => '2024-09-21 22:03:11',
+            ),
+            33 => 
+            array (
+                'id' => 35,
+                'movie_id' => 19,
+                'user_id' => 5,
+                'comment' => 'mark5の装着がめちゃくちゃ良い。このレビューはインフィニティ・サーガをみ終わった後に書いてるけどウォーマシンの誕生少し雑な気がする',
+                'rating' => 3,
+                'created_at' => '2024-09-21 22:04:27',
+                'updated_at' => '2024-09-21 22:04:27',
+            ),
+            34 => 
+            array (
+                'id' => 36,
+                'movie_id' => 62,
+                'user_id' => 2,
+                'comment' => '日本ではそこそこの評価ですが、アメリカでは不朽の名作扱いです。
+
+全体的な印象は静かなハードボイルドの印象です。
+常にニコルの旦那の視点で描かれ、他の人物の視点は排除されています。
+ポランスキー先輩独特の乾いた画面に高級感が漂う映像造形が秀逸です。
+
+ミステリーですがストーリーは単純でスリラーやサスペンスは希薄ですので、独特の映像感覚を堪能する作品です。',
+                'rating' => 4,
+                'created_at' => '2024-09-21 22:13:18',
+                'updated_at' => '2024-09-21 22:13:18',
+            ),
+            35 => 
+            array (
+                'id' => 37,
+                'movie_id' => 40,
+                'user_id' => 2,
+                'comment' => '映画系YouTuberさん2人が勧めていた作品
+
+何の気なしに観てみたが
+案外良かった。
+
+確か2090年代の話だか、
+実際、きっとここまで発展してはいないとは
+思うけど、未来感がとても好き
+とても綺麗。
+
+主人公のジャレッド・レトさん
+良いですね
+
+どんな役でもできそうな感じ',
+                'rating' => 4,
+                'created_at' => '2024-09-21 22:14:36',
+                'updated_at' => '2024-09-21 22:14:36',
+            ),
+            36 => 
+            array (
+                'id' => 38,
+                'movie_id' => 3,
+                'user_id' => 1,
+                'comment' => 'いろんな感情が交錯した。泣いた。とてもいい映画。',
+                'rating' => 5,
+                'created_at' => '2024-09-28 19:40:19',
+                'updated_at' => '2024-09-28 19:43:51',
             ),
         ));
         

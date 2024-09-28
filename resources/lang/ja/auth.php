@@ -20,8 +20,10 @@ return [
     "Confirm Password" => "パスワード(確認用)",
     "Already registered?" => "すでに登録済み",
 
-    'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.' => 'パスワードをお忘れですか？大丈夫です。Eメールアドレスをお知らせいただければ、パスワード再設定用のリンクをメールでお送りします。',
+    'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.' => "パスワードをお忘れですか？大丈夫です。Eメールアドレスをお知らせいただければ、パスワード再設定用のリンクをメールでお送りします。",
     'Email Password Reset Link' => 'パスワード再設定メールを送る',
+
+    'Whoops! Something went wrong.' => '何か問題が発生しました。',
 
     "Hello!" => "ご利用ありがとうございます。",
     "Reset Password Notification" =>  "パスワード再設定のお知らせ",

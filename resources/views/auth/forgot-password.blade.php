@@ -1,4 +1,13 @@
 <x-guest-layout>
+    <nav>
+        <div class="flex sm:-my-px sm:ml-10 h-16 items-center justify-end">
+            <div>
+                <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="mr-4">ログイン</x-nav-link>
+                <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="mr-4">新規登録</x-nav-link>
+            </div>
+        </div>
+    </nav>
+    
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -27,9 +36,10 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
+                <button class="inline-flex items-center justify-center rounded-md bg-neutral-950 p-3 font-normal text-base text-neutral-50 transition active:scale-110 text-sm">【無効】パスワード再設定URLを送信</button>
+                {{-- <x-primary-button>
                     {{ __('auth.Email Password Reset Link') }}
-                </x-primary-button>
+                </x-primary-button> --}}
             </div>
         </form>
     </x-auth-card>
