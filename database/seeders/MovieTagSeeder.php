@@ -660,30 +660,210 @@ class MovieTagSeeder extends Seeder
             ),
             71 => 
             array (
-                'id' => 88,
-                'movie_id' => 3,
-                'tag_id' => 1,
+                'id' => 91,
+                'movie_id' => 77,
+                'tag_id' => 7,
                 'user_id' => 1,
-                'created_at' => '2024-09-28 19:43:51',
-                'updated_at' => '2024-09-28 19:43:51',
+                'created_at' => '2024-10-01 08:23:02',
+                'updated_at' => '2024-10-01 08:23:02',
             ),
             72 => 
             array (
-                'id' => 89,
-                'movie_id' => 3,
-                'tag_id' => 5,
+                'id' => 92,
+                'movie_id' => 77,
+                'tag_id' => 21,
                 'user_id' => 1,
-                'created_at' => '2024-09-28 19:43:51',
-                'updated_at' => '2024-09-28 19:43:51',
+                'created_at' => '2024-10-01 08:23:02',
+                'updated_at' => '2024-10-01 08:23:02',
             ),
             73 => 
             array (
-                'id' => 90,
-                'movie_id' => 3,
+                'id' => 93,
+                'movie_id' => 78,
+                'tag_id' => 19,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:25:54',
+                'updated_at' => '2024-10-01 08:25:54',
+            ),
+            74 => 
+            array (
+                'id' => 94,
+                'movie_id' => 78,
                 'tag_id' => 24,
                 'user_id' => 1,
-                'created_at' => '2024-09-28 19:43:51',
-                'updated_at' => '2024-09-28 19:43:51',
+                'created_at' => '2024-10-01 08:25:54',
+                'updated_at' => '2024-10-01 08:25:54',
+            ),
+            75 => 
+            array (
+                'id' => 95,
+                'movie_id' => 3,
+                'tag_id' => 1,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:27:01',
+                'updated_at' => '2024-10-01 08:27:01',
+            ),
+            76 => 
+            array (
+                'id' => 96,
+                'movie_id' => 3,
+                'tag_id' => 5,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:27:01',
+                'updated_at' => '2024-10-01 08:27:01',
+            ),
+            77 => 
+            array (
+                'id' => 97,
+                'movie_id' => 3,
+                'tag_id' => 23,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:27:01',
+                'updated_at' => '2024-10-01 08:27:01',
+            ),
+            78 => 
+            array (
+                'id' => 98,
+                'movie_id' => 70,
+                'tag_id' => 1,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:29:52',
+                'updated_at' => '2024-10-01 08:29:52',
+            ),
+            79 => 
+            array (
+                'id' => 99,
+                'movie_id' => 70,
+                'tag_id' => 23,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:29:52',
+                'updated_at' => '2024-10-01 08:29:52',
+            ),
+            80 => 
+            array (
+                'id' => 100,
+                'movie_id' => 14,
+                'tag_id' => 10,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:32:20',
+                'updated_at' => '2024-10-01 08:32:20',
+            ),
+            81 => 
+            array (
+                'id' => 101,
+                'movie_id' => 14,
+                'tag_id' => 14,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:32:20',
+                'updated_at' => '2024-10-01 08:32:20',
+            ),
+            82 => 
+            array (
+                'id' => 102,
+                'movie_id' => 14,
+                'tag_id' => 15,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:32:21',
+                'updated_at' => '2024-10-01 08:32:21',
+            ),
+            83 => 
+            array (
+                'id' => 103,
+                'movie_id' => 79,
+                'tag_id' => 25,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:39:52',
+                'updated_at' => '2024-10-01 08:39:52',
+            ),
+            84 => 
+            array (
+                'id' => 104,
+                'movie_id' => 80,
+                'tag_id' => 9,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:42:51',
+                'updated_at' => '2024-10-01 08:42:51',
+            ),
+            85 => 
+            array (
+                'id' => 105,
+                'movie_id' => 80,
+                'tag_id' => 11,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 08:42:51',
+                'updated_at' => '2024-10-01 08:42:51',
+            ),
+            86 => 
+            array (
+                'id' => 106,
+                'movie_id' => 84,
+                'tag_id' => 14,
+                'user_id' => 1,
+                'created_at' => '2024-10-01 09:55:30',
+                'updated_at' => '2024-10-01 09:55:30',
+            ),
+            87 => 
+            array (
+                'id' => 107,
+                'movie_id' => 99,
+                'tag_id' => 8,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:22:38',
+                'updated_at' => '2024-10-01 10:22:38',
+            ),
+            88 => 
+            array (
+                'id' => 108,
+                'movie_id' => 99,
+                'tag_id' => 14,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:22:38',
+                'updated_at' => '2024-10-01 10:22:38',
+            ),
+            89 => 
+            array (
+                'id' => 109,
+                'movie_id' => 91,
+                'tag_id' => 1,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:27:16',
+                'updated_at' => '2024-10-01 10:27:16',
+            ),
+            90 => 
+            array (
+                'id' => 110,
+                'movie_id' => 91,
+                'tag_id' => 5,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:27:16',
+                'updated_at' => '2024-10-01 10:27:16',
+            ),
+            91 => 
+            array (
+                'id' => 111,
+                'movie_id' => 52,
+                'tag_id' => 1,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:30:21',
+                'updated_at' => '2024-10-01 10:30:21',
+            ),
+            92 => 
+            array (
+                'id' => 112,
+                'movie_id' => 52,
+                'tag_id' => 5,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 10:30:21',
+                'updated_at' => '2024-10-01 10:30:21',
+            ),
+            93 => 
+            array (
+                'id' => 113,
+                'movie_id' => 58,
+                'tag_id' => 4,
+                'user_id' => 4,
+                'created_at' => '2024-10-01 11:01:48',
+                'updated_at' => '2024-10-01 11:01:48',
             ),
         ));
         

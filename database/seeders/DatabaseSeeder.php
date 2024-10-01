@@ -24,14 +24,6 @@ class DatabaseSeeder extends Seeder
             MovieTagSeeder::class,
             ReviewSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // $this->call(MoviesTableSeeder::class);
-        // $this->call(GenreMovieTableSeeder::class);
 
         // ○○TableSeederは削除する
         // $this->call(ReviewsTableSeeder::class);

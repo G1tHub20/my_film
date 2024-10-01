@@ -187,7 +187,15 @@ class TagSeeder extends Seeder
                 'created_at' => '2024-09-28 19:43:51',
                 'updated_at' => '2024-09-28 19:43:51',
             ),
+            24 => 
+            array (
+                'id' => 25,
+                'tag' => '脚本がいい',
+                'created_at' => '2024-10-01 08:39:52',
+                'updated_at' => '2024-10-01 08:39:52',
+            ),
         ));
-
+        
+        
     }
 }

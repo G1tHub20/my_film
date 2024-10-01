@@ -14,6 +14,8 @@ class GenreMovieSeeder extends Seeder
      */
     public function run()
     {
+        
+
         \DB::table('genre_movie')->delete();
         
         \DB::table('genre_movie')->insert(array (
@@ -1632,6 +1634,430 @@ class GenreMovieSeeder extends Seeder
                 'movie_id' => 76,
                 'created_at' => '2024-08-27 08:52:33',
                 'updated_at' => '2024-08-27 08:52:33',
+            ),
+            202 => 
+            array (
+                'id' => 203,
+                'genre_id' => 18,
+                'movie_id' => 77,
+                'created_at' => '2024-10-01 08:21:32',
+                'updated_at' => '2024-10-01 08:21:32',
+            ),
+            203 => 
+            array (
+                'id' => 204,
+                'genre_id' => 18,
+                'movie_id' => 78,
+                'created_at' => '2024-10-01 08:24:35',
+                'updated_at' => '2024-10-01 08:24:35',
+            ),
+            204 => 
+            array (
+                'id' => 205,
+                'genre_id' => 18,
+                'movie_id' => 79,
+                'created_at' => '2024-10-01 08:37:03',
+                'updated_at' => '2024-10-01 08:37:03',
+            ),
+            205 => 
+            array (
+                'id' => 206,
+                'genre_id' => 35,
+                'movie_id' => 79,
+                'created_at' => '2024-10-01 08:37:03',
+                'updated_at' => '2024-10-01 08:37:03',
+            ),
+            206 => 
+            array (
+                'id' => 207,
+                'genre_id' => 14,
+                'movie_id' => 79,
+                'created_at' => '2024-10-01 08:37:03',
+                'updated_at' => '2024-10-01 08:37:03',
+            ),
+            207 => 
+            array (
+                'id' => 208,
+                'genre_id' => 9648,
+                'movie_id' => 80,
+                'created_at' => '2024-10-01 08:41:16',
+                'updated_at' => '2024-10-01 08:41:16',
+            ),
+            208 => 
+            array (
+                'id' => 209,
+                'genre_id' => 53,
+                'movie_id' => 80,
+                'created_at' => '2024-10-01 08:41:16',
+                'updated_at' => '2024-10-01 08:41:16',
+            ),
+            209 => 
+            array (
+                'id' => 210,
+                'genre_id' => 27,
+                'movie_id' => 80,
+                'created_at' => '2024-10-01 08:41:16',
+                'updated_at' => '2024-10-01 08:41:16',
+            ),
+            210 => 
+            array (
+                'id' => 211,
+                'genre_id' => 99,
+                'movie_id' => 81,
+                'created_at' => '2024-10-01 09:27:40',
+                'updated_at' => '2024-10-01 09:27:40',
+            ),
+            211 => 
+            array (
+                'id' => 212,
+                'genre_id' => 99,
+                'movie_id' => 82,
+                'created_at' => '2024-10-01 09:27:48',
+                'updated_at' => '2024-10-01 09:27:48',
+            ),
+            212 => 
+            array (
+                'id' => 214,
+                'genre_id' => 36,
+                'movie_id' => 83,
+                'created_at' => '2024-10-01 09:27:55',
+                'updated_at' => '2024-10-01 09:27:55',
+            ),
+            213 => 
+            array (
+                'id' => 215,
+                'genre_id' => 18,
+                'movie_id' => 83,
+                'created_at' => '2024-10-01 09:27:55',
+                'updated_at' => '2024-10-01 09:27:55',
+            ),
+            214 => 
+            array (
+                'id' => 216,
+                'genre_id' => 99,
+                'movie_id' => 84,
+                'created_at' => '2024-10-01 09:28:02',
+                'updated_at' => '2024-10-01 09:28:02',
+            ),
+            215 => 
+            array (
+                'id' => 217,
+                'genre_id' => 18,
+                'movie_id' => 84,
+                'created_at' => '2024-10-01 09:28:02',
+                'updated_at' => '2024-10-01 09:28:02',
+            ),
+            216 => 
+            array (
+                'id' => 218,
+                'genre_id' => 10402,
+                'movie_id' => 85,
+                'created_at' => '2024-10-01 09:28:08',
+                'updated_at' => '2024-10-01 09:28:08',
+            ),
+            217 => 
+            array (
+                'id' => 219,
+                'genre_id' => 99,
+                'movie_id' => 85,
+                'created_at' => '2024-10-01 09:28:08',
+                'updated_at' => '2024-10-01 09:28:08',
+            ),
+            218 => 
+            array (
+                'id' => 220,
+                'genre_id' => 18,
+                'movie_id' => 86,
+                'created_at' => '2024-10-01 10:12:44',
+                'updated_at' => '2024-10-01 10:12:44',
+            ),
+            219 => 
+            array (
+                'id' => 221,
+                'genre_id' => 80,
+                'movie_id' => 86,
+                'created_at' => '2024-10-01 10:12:44',
+                'updated_at' => '2024-10-01 10:12:44',
+            ),
+            220 => 
+            array (
+                'id' => 222,
+                'genre_id' => 18,
+                'movie_id' => 87,
+                'created_at' => '2024-10-01 10:12:51',
+                'updated_at' => '2024-10-01 10:12:51',
+            ),
+            221 => 
+            array (
+                'id' => 223,
+                'genre_id' => 80,
+                'movie_id' => 87,
+                'created_at' => '2024-10-01 10:12:51',
+                'updated_at' => '2024-10-01 10:12:51',
+            ),
+            222 => 
+            array (
+                'id' => 224,
+                'genre_id' => 18,
+                'movie_id' => 88,
+                'created_at' => '2024-10-01 10:12:57',
+                'updated_at' => '2024-10-01 10:12:57',
+            ),
+            223 => 
+            array (
+                'id' => 225,
+                'genre_id' => 16,
+                'movie_id' => 89,
+                'created_at' => '2024-10-01 10:13:03',
+                'updated_at' => '2024-10-01 10:13:03',
+            ),
+            224 => 
+            array (
+                'id' => 226,
+                'genre_id' => 10751,
+                'movie_id' => 89,
+                'created_at' => '2024-10-01 10:13:03',
+                'updated_at' => '2024-10-01 10:13:03',
+            ),
+            225 => 
+            array (
+                'id' => 227,
+                'genre_id' => 14,
+                'movie_id' => 89,
+                'created_at' => '2024-10-01 10:13:03',
+                'updated_at' => '2024-10-01 10:13:03',
+            ),
+            226 => 
+            array (
+                'id' => 228,
+                'genre_id' => 18,
+                'movie_id' => 90,
+                'created_at' => '2024-10-01 10:13:09',
+                'updated_at' => '2024-10-01 10:13:09',
+            ),
+            227 => 
+            array (
+                'id' => 229,
+                'genre_id' => 28,
+                'movie_id' => 90,
+                'created_at' => '2024-10-01 10:13:09',
+                'updated_at' => '2024-10-01 10:13:09',
+            ),
+            228 => 
+            array (
+                'id' => 230,
+                'genre_id' => 80,
+                'movie_id' => 90,
+                'created_at' => '2024-10-01 10:13:09',
+                'updated_at' => '2024-10-01 10:13:09',
+            ),
+            229 => 
+            array (
+                'id' => 231,
+                'genre_id' => 53,
+                'movie_id' => 90,
+                'created_at' => '2024-10-01 10:13:09',
+                'updated_at' => '2024-10-01 10:13:09',
+            ),
+            230 => 
+            array (
+                'id' => 232,
+                'genre_id' => 14,
+                'movie_id' => 91,
+                'created_at' => '2024-10-01 10:13:14',
+                'updated_at' => '2024-10-01 10:13:14',
+            ),
+            231 => 
+            array (
+                'id' => 233,
+                'genre_id' => 18,
+                'movie_id' => 91,
+                'created_at' => '2024-10-01 10:13:14',
+                'updated_at' => '2024-10-01 10:13:14',
+            ),
+            232 => 
+            array (
+                'id' => 234,
+                'genre_id' => 80,
+                'movie_id' => 91,
+                'created_at' => '2024-10-01 10:13:14',
+                'updated_at' => '2024-10-01 10:13:14',
+            ),
+            233 => 
+            array (
+                'id' => 235,
+                'genre_id' => 53,
+                'movie_id' => 92,
+                'created_at' => '2024-10-01 10:13:19',
+                'updated_at' => '2024-10-01 10:13:19',
+            ),
+            234 => 
+            array (
+                'id' => 236,
+                'genre_id' => 80,
+                'movie_id' => 92,
+                'created_at' => '2024-10-01 10:13:19',
+                'updated_at' => '2024-10-01 10:13:19',
+            ),
+            235 => 
+            array (
+                'id' => 237,
+                'genre_id' => 35,
+                'movie_id' => 93,
+                'created_at' => '2024-10-01 10:13:24',
+                'updated_at' => '2024-10-01 10:13:24',
+            ),
+            236 => 
+            array (
+                'id' => 238,
+                'genre_id' => 18,
+                'movie_id' => 93,
+                'created_at' => '2024-10-01 10:13:24',
+                'updated_at' => '2024-10-01 10:13:24',
+            ),
+            237 => 
+            array (
+                'id' => 239,
+                'genre_id' => 10749,
+                'movie_id' => 93,
+                'created_at' => '2024-10-01 10:13:24',
+                'updated_at' => '2024-10-01 10:13:24',
+            ),
+            238 => 
+            array (
+                'id' => 240,
+                'genre_id' => 28,
+                'movie_id' => 94,
+                'created_at' => '2024-10-01 10:13:29',
+                'updated_at' => '2024-10-01 10:13:29',
+            ),
+            239 => 
+            array (
+                'id' => 241,
+                'genre_id' => 18,
+                'movie_id' => 94,
+                'created_at' => '2024-10-01 10:13:29',
+                'updated_at' => '2024-10-01 10:13:29',
+            ),
+            240 => 
+            array (
+                'id' => 242,
+                'genre_id' => 18,
+                'movie_id' => 95,
+                'created_at' => '2024-10-01 10:13:34',
+                'updated_at' => '2024-10-01 10:13:34',
+            ),
+            241 => 
+            array (
+                'id' => 243,
+                'genre_id' => 80,
+                'movie_id' => 95,
+                'created_at' => '2024-10-01 10:13:34',
+                'updated_at' => '2024-10-01 10:13:34',
+            ),
+            242 => 
+            array (
+                'id' => 244,
+                'genre_id' => 16,
+                'movie_id' => 96,
+                'created_at' => '2024-10-01 10:13:39',
+                'updated_at' => '2024-10-01 10:13:39',
+            ),
+            243 => 
+            array (
+                'id' => 245,
+                'genre_id' => 18,
+                'movie_id' => 96,
+                'created_at' => '2024-10-01 10:13:39',
+                'updated_at' => '2024-10-01 10:13:39',
+            ),
+            244 => 
+            array (
+                'id' => 246,
+                'genre_id' => 10752,
+                'movie_id' => 96,
+                'created_at' => '2024-10-01 10:13:39',
+                'updated_at' => '2024-10-01 10:13:39',
+            ),
+            245 => 
+            array (
+                'id' => 247,
+                'genre_id' => 35,
+                'movie_id' => 97,
+                'created_at' => '2024-10-01 10:13:45',
+                'updated_at' => '2024-10-01 10:13:45',
+            ),
+            246 => 
+            array (
+                'id' => 248,
+                'genre_id' => 18,
+                'movie_id' => 97,
+                'created_at' => '2024-10-01 10:13:45',
+                'updated_at' => '2024-10-01 10:13:45',
+            ),
+            247 => 
+            array (
+                'id' => 249,
+                'genre_id' => 12,
+                'movie_id' => 98,
+                'created_at' => '2024-10-01 10:13:50',
+                'updated_at' => '2024-10-01 10:13:50',
+            ),
+            248 => 
+            array (
+                'id' => 250,
+                'genre_id' => 18,
+                'movie_id' => 98,
+                'created_at' => '2024-10-01 10:13:50',
+                'updated_at' => '2024-10-01 10:13:50',
+            ),
+            249 => 
+            array (
+                'id' => 251,
+                'genre_id' => 878,
+                'movie_id' => 98,
+                'created_at' => '2024-10-01 10:13:50',
+                'updated_at' => '2024-10-01 10:13:50',
+            ),
+            250 => 
+            array (
+                'id' => 252,
+                'genre_id' => 18,
+                'movie_id' => 99,
+                'created_at' => '2024-10-01 10:13:55',
+                'updated_at' => '2024-10-01 10:13:55',
+            ),
+            251 => 
+            array (
+                'id' => 253,
+                'genre_id' => 80,
+                'movie_id' => 99,
+                'created_at' => '2024-10-01 10:13:55',
+                'updated_at' => '2024-10-01 10:13:55',
+            ),
+            252 => 
+            array (
+                'id' => 254,
+                'genre_id' => 12,
+                'movie_id' => 100,
+                'created_at' => '2024-10-01 10:14:00',
+                'updated_at' => '2024-10-01 10:14:00',
+            ),
+            253 => 
+            array (
+                'id' => 255,
+                'genre_id' => 28,
+                'movie_id' => 100,
+                'created_at' => '2024-10-01 10:14:00',
+                'updated_at' => '2024-10-01 10:14:00',
+            ),
+            254 => 
+            array (
+                'id' => 256,
+                'genre_id' => 878,
+                'movie_id' => 100,
+                'created_at' => '2024-10-01 10:14:00',
+                'updated_at' => '2024-10-01 10:14:00',
             ),
         ));
         

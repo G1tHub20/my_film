@@ -10,7 +10,7 @@
         <!-- Navigation Links -->
         <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('movie.index')" :active="request()->routeIs('movie.index')">
-            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-full font-medium">
+            <img src="https://img.icons8.com/?size=100&id=9010&format=png&color=000000" alt="TOP" class="h-8 sm:h-full font-medium">
           </x-nav-link>
           @if (request()->routeIs('movie.result'))
             <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')" class="font-medium">
@@ -38,7 +38,7 @@
           <x-slot name="trigger">
             <button
               class="flex items-center text-base font-normal text-gray-900 hover:border-gray-300 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
-              <div>{{ Auth::user()->name }}</div>
+              <div>{{ Auth::user()->name }}さん</div>
 
               <div class="ml-1">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

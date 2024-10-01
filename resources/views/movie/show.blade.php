@@ -24,7 +24,7 @@
           @endif
         </p>
 
-        <div class="flex justify-center gap-4 mb-5"> <!-- 上部 -->
+        <div class="sm:flex sm:justify-center sm:gap-4 sm:mb-5"> <!-- 上部 -->
           <div>
             <p><img src="{{ $image1 }}" class="mb-2"></p>
             <p><img src="{{ $image2 }}"></p>
@@ -61,7 +61,7 @@
           </div>
         </div>
 
-        <div class="flex justify-center items-start gap-4"> <!-- 下部 -->
+        <div class="sm:flex sm:justify-center sm:items-start sm:gap-4"> <!-- 下部 -->
           <div class="container px-5 mx-auto">
             @if ($tags->isEmpty())
               <p class="text-lg mb-5">タグが未登録です。</p>
@@ -83,7 +83,7 @@
                   @endfor
                 </span>
                 <p>{{ $review->comment }}</p>
-                <p class="text-right">{{ $review->name }} さん</p>
+                <p class="text-right">{{ $review->name }}</p>
               </div>
             @endforeach
           </div>

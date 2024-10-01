@@ -78,12 +78,13 @@
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="director">監督</label>
-                    <select name="director" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded">
+                    <input type="text" name="director" class="text-base leading-4 w-full sm:w-full lg:w-1/3 rounded h-9" list="director">
+                    <datalist id="director">
                       <option value=""></option>
                       @foreach ($directors as $director)
                         <option value="{{ $director }}">{{ $director }}</option>
                       @endforeach
-                    </select>
+                    </datalist>
                   </div>
 
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
@@ -130,7 +131,7 @@
             </thead>
             @foreach ($movies as $movie)
               <tbody>
-                <tr class="divide-y divide-slate-400 flex flex-col sm:table-row">
+                <tr class="divide-y divide-slate-400">
                   <td class="border-t border-slate-400 w-5/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}"
                       class="text-blue font-medium inline-block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button>
                   </td>
