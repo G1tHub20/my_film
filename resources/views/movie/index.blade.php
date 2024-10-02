@@ -117,16 +117,10 @@
           <table class="table-auto w-full">
             <thead>
               <tr>
-                <th class="w-5/12 text-left">
-                  タイトル
-                </th>
+                <th class="w-5/12 text-left">タイトル</th>
                 <th class="w-4/12 text-left">ジャンル</th>
-                <th class="w-1/12 text-left">
-                  公開
-                </th>
-                <th class="w-2/12 text-left">
-                  評価
-                </th>
+                <th class="w-1/12 text-left">公開</th>
+                <th class="w-2/12 text-left">評価</th>
               </tr>
             </thead>
             @foreach ($movies as $movie)

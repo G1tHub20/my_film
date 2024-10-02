@@ -62,7 +62,7 @@
 
         </div>
         <button
-          class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して投稿する</button>
+          class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して登録</button>
       </div>
     </div>
     <input type="hidden" name="movie_id" value="{{ $movie->id }}">
