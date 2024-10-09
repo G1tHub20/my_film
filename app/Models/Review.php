@@ -12,12 +12,12 @@ class Review extends Model
     public function movie()
     {
         // 従テーブルから関連する主テーブルのレコードを取り出す
-        return $this->belongsTo('App\Models\Movie', 'movie_id', 'id');
+        return $this->belongsTo(Movie::class, 'movie_id', 'id');
     }
 
     public function user()
     {
         // 従テーブルから関連する主テーブルのレコードを取り出す
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

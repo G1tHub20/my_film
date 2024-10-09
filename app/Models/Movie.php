@@ -22,27 +22,27 @@ class Movie extends Model
     // 多対1（従から主のレコードを取り出す）
     public function country()
     {
-       return $this->belongsTo('App\Models\Country');
+       return $this->belongsTo(Country::class);
     }
 
     // 多対多（中間テーブルを介する）
     public function genres()
     {   //('関係するモデル', '中間テーブル', '中間テーブル外部キー', '中間テーブル外部キー(関係するモデル)');
-        return $this->belongsToMany('App\Models\Genre', 'genre_movie', 'movie_id', 'genre_id');
+        return $this->belongsToMany(Genre::class, 'genre_movie', 'movie_id', 'genre_id');
     }
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag', 'movie_tag', 'movie_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'movie_tag', 'movie_id', 'tag_id');
     }
 
     // 1対多（主から従のレコードを取り出す）
     public function reviews()
     {
-        return $this->hasMany('App\Models\Review');
+        return $this->hasMany(Review::class);
     }
     public function genreMovie()
     {
-        return $this->hasMany('App\Models\GenreMovie');
+        return $this->hasMany(GenreMovie::class);
     }
 
     // ローカルスコープ(頭にscopeを付け、第一引数$queryで定義、呼出時はscopeプレフィックスなし)

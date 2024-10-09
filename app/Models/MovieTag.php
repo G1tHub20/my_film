@@ -13,10 +13,11 @@ class MovieTag extends Model
     // Movie(1) 対 Movie_Tag(多)
     public function movie()
     {
-        return $this->belongsTo('App\Models\Movie');
+        // return $this->belongsTo('App\Models\Movie');
+        return $this->belongsTo(Movie::class); //クラスの完全修飾クラス名（FQCN）を文字列として返す
     }
     public function tag()
     {
-        return $this->belongsTo('App\Models\Tag');
+        return $this->belongsTo(Tag::class);
     }
 }

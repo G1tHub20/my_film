@@ -13,6 +13,6 @@ class GenreMovie extends Model
     // Movie(1) 対 Movie_Tag(多)
     public function movie()
     {
-        return $this->belongsTo('App\Models\Movie');
+        return $this->belongsTo(Movie::class);
     }
 }

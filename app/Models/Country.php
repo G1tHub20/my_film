@@ -12,6 +12,6 @@ class Country extends Model
     // Country(1) 対 Movie(多)
     public function movie()
     {
-        return $this->hasMany('App\Models\Movie');
+        return $this->hasMany(Movie::class);
     }
 }
