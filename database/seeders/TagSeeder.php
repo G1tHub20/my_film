@@ -194,6 +194,13 @@ class TagSeeder extends Seeder
                 'created_at' => '2024-10-01 08:39:52',
                 'updated_at' => '2024-10-01 08:39:52',
             ),
+            25 => 
+            array (
+                'id' => 26,
+                'tag' => '独特の世界観',
+                'created_at' => '2024-10-10 11:10:14',
+                'updated_at' => '2024-10-10 11:10:14',
+            ),
         ));
         
         

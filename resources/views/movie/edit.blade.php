@@ -64,10 +64,10 @@
 
             <div class="flex items-center relative">
               <button name="delete"
-                class="absolute left-0 text-white bg-red-400 border-0 py-1 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
+                class="absolute left-0 text-white bg-red-400 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
               <div class="w-full text-center">
                 <button name="update"
-                  class="text-white bg-indigo-500 border-0 py-1 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して更新</button>
+                  class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して更新</button>
               </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
       {{-- <a href="/movie/{{ $movie->id }}" class="text-blue font-medium block mx-auto mr-0 py-1 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
 
       <button onclick="location.href='/movie/{{ $movie->id }}'"
-        class="text-white block bg-indigo-500 mx-auto border-0 py-1 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
+        class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
 </x-app-layout>
 
 {{-- asset()でJSファイルを読み込む --}}

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 
+use Illuminate\Support\Facades\Artisan; //Artisanコマンドを実行するため
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,21 +21,27 @@ use App\Http\Controllers\UserController;
 //   return view('welcome');
 // });
 
-// Route::get('test', function () {
-//   return view('test');
-// });
-
 Route::get('post', [UserController::class, 'post']);
 
 // グループ化してまとめる場合（シンプルに書ける）
-Route::prefix('movie') // 頭に movies をつける
+Route::prefix('movie') // 頭に movie をつける
 	->middleware(['auth']) // 認証機能をつける
 	->controller(MovieController::class) // コントローラ指定（Laravel9から）
 	->name('movie.')
 	->group(function() { //グループ化
 		Route::get('/', 'index')->name('index'); //名前付きルート
-		Route::get('/create', 'create')->name('create');
 		Route::get('/result', 'result')->name('result');
+		// ----------管理者用------------------------------------
+		Route::get('/admin', 'admin')->name('admin');
+		Route::get('/getApiData', function (Illuminate\Http\Request $request) {
+			$id = $request->query('tmdb_id'); // GETパラメータとしてIDを取得
+			Artisan::call('command:tmdbapi_id', [
+					'query' => $id,
+			]);
+					return response()->json(['message' => "ID {$id} のデータ取得コマンドを実行しました。"]);
+		})->name('getApiData'); // ここで名前を付ける;
+
+		// ------------------------------------------------------
 		Route::get('/{id}', 'show')->name('show');
 		Route::get('post/{id}', 'post')->name('post');
 		Route::get('edit/{id}', 'edit')->name('edit');

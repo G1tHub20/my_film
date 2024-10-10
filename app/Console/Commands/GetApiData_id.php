@@ -16,7 +16,7 @@ class GetApiData_id extends Command
      *
      * @var string
      */
-    protected $signature = 'command:tmdbapi_id {query}';
+    protected $signature = 'command:tmdbapi_id {query}'; //artisanコマンドとして登録するときの識別子
 
     /**
      * The console command description.

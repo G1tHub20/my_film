@@ -36,7 +36,7 @@
             <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
               <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
                 <button type="button"
-                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded dark:focus:ring-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
                   aria-controls="accordion-collapse-body-2">
                   詳しい条件で検索
@@ -103,17 +103,15 @@
 
             <!-- ボタン -->
             <div class="flex justify-center">
-              <button type="reset"
-                class="text-gray-500 bg-gray-100 border-0 py-2 px-8 focus:outline-none rounded text-lg hover:bg-gray-200 mr-5">クリア</button>
-              <button
-                class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
+              <button type="reset" class="text-gray-500 bg-gray-100 border-0 py-2 px-8 focus:outline-none rounded text-lg hover:bg-gray-200 mr-5">クリア</button>
+              <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
             </div>
           </form>
         </div>
 
         <!-- 一覧画面（4.5以上の映画） -->
         <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-          <p class="w-4/12"><span class="text-yellow-400">★</span>4.5以上の映画</p>
+          <p class="w-4/12  text-lg"><span class="text-yellow-400">★</span>4.5以上の映画</p>
           <table class="table-auto w-full">
             <thead>
               <tr>

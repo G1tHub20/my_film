@@ -16,6 +16,10 @@
             <x-nav-link :href="route('movie.result')" :active="request()->routeIs('movie.result')" class="font-medium">
               一覧
             </x-nav-link>
+            @elseif(request()->is('movie/admin'))
+            <x-nav-link :href="route('movie.admin')" :active="request()->is('movie/admin')" class="font-medium">
+                管理者用
+            </x-nav-link>
             @elseif(request()->is('movie/post/*'))
             <x-nav-link :href="route('movie.post', ['id' => request()->route('id')])" :active="request()->is('movie/post/*')" class="font-medium">
                 レビュー登録

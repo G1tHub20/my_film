@@ -18,16 +18,25 @@ use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
+
+    /*-------------------------------------------
+    TOPページ
+    -------------------------------------------*/
     public function index()
     {
+        // 管理者ユーザかどうか判定
+        $isAdmin = auth()->user()->isAdmin;
+        if($isAdmin === 1) {
+            // return view('movie.admin');・
+            return redirect('movie/admin');   
+        } else {
+
         $tags = Tag::all();
         $genre_names = Genre::orderBy('id')->get();
         $release_year = Movie::distinct()->orderBy('release_year', 'desc')->pluck('release_year');
         $directors = Movie::distinct()->orderBy('director')->pluck('director');
         $countries = Country::orderBy('id')->get();
-
         $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
-
         $movies = Movie::with('country')->whereIn('id', $top_movies)->get();
 
         // 各映画に対してその映画のジャンルIDを取得する
@@ -44,9 +53,12 @@ class MovieController extends Controller
 
         return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
     }
+    }
 
-
-    public function result(Request $request) // 検索
+    /*-------------------------------------------
+    検索
+    -------------------------------------------*/
+    public function result(Request $request)
     {
         $title = $request->title;               //タイトル
         $release_year = $request->release_year; //製作年
@@ -62,17 +74,8 @@ class MovieController extends Controller
             ->with('country') //Movieのcountryメソッドを呼び出す
             ->with('genres')
             ->select('id','title','release_year','director','country_id')
+            ->sortable(); //ソート機能を実装
 
-            ->sortable(); //これを挟むだけ
-
-            // タグを持つ映画を絞り込み（AND条件）
-            // if(!empty($tag_ids) && count($tag_ids) > 0) { //tag_idsを持つ、かつ0個以上
-            //     foreach ($tag_ids as $tag_id) {
-            //         $query = $query->whereHas('tags', function($q)use($tag_id) { //whereHas リレーション先のテーブルの条件で検索
-            //             $q->where('tag_id', $tag_id);                                //useメソッドを使用するとクロージャの中で変数が使える
-            //         });
-            //     }
-            // }
             // タグを持つ映画を絞り込み（OR条件）
             if (!empty($tag_ids) && count($tag_ids) > 0) { // tag_idsが存在し、かつ0個以上
                 $query->whereHas('tags', function ($q) use ($tag_ids) {
@@ -134,8 +137,10 @@ class MovieController extends Controller
         return view('movie.result', compact('movies', 'genres', 'search_param'));
     }
 
-
-    public function show($id) // 詳細情報
+    /*-------------------------------------------
+    詳細情報
+    -------------------------------------------*/
+    public function show($id)
     {
         $movie_id = $id;
         $movie = Movie::find($id);
@@ -181,7 +186,10 @@ class MovieController extends Controller
     }
 
 
-    public function post($id) // レビュー作成
+    /*-------------------------------------------
+    レビュー登録
+    -------------------------------------------*/
+    public function post($id)
     {
         $user_id = auth()->user()->id;
         $tags = Tag::all();
@@ -194,8 +202,10 @@ class MovieController extends Controller
         return view('movie.post', compact('movie','user_id','title','tags'));
     }
 
-
-    public function edit($id) // レビュー更新
+    /*-------------------------------------------
+    レビュー編集
+    -------------------------------------------*/
+    public function edit($id)
     {
         $user_id = auth()->user()->id;
         $tags = Tag::all();
@@ -211,8 +221,10 @@ class MovieController extends Controller
         return view('movie.edit', compact('movie','user_id','tags','review','tag_ids'));
     }
 
-
-    public function store(StoreMovieForm $request) // DBに登録 //バリデーション
+    /*-------------------------------------------
+    DBに登録
+    -------------------------------------------*/
+    public function store(StoreMovieForm $request) //バリデーションあり
     {
         $review = new Review;
 
@@ -260,8 +272,10 @@ class MovieController extends Controller
         return redirect('movie/' . $review->movie_id);
     }
 
-
-    public function update(StoreMovieForm $request) // DBに登録 //バリデーション
+    /*-------------------------------------------
+    DBを更新
+    -------------------------------------------*/
+    public function update(StoreMovieForm $request) //バリデーションあり
     {
         $user_id = $request->input('user_id');
         $movie_id = $request->input('movie_id');
@@ -329,14 +343,17 @@ class MovieController extends Controller
 
     }
 
-    // public function create() // 登録
-    // {
-    //     // 管理者ユーザかどうか判定
-    //     $isAdmin = auth()->user()->isAdmin;
-    //     if($isAdmin === 1) {
-    //         return view('movie.create');
-    //     } else {
-    //         abort(404); // HTTP例外を出す
-    //     }
-    // }
+    /*-------------------------------------------
+    管理者画面
+    -------------------------------------------*/
+    public function admin()
+    {
+        // 管理者ユーザかどうか判定
+        $isAdmin = auth()->user()->isAdmin;
+        if($isAdmin === 1) {
+            return view('movie.admin');
+        } else {
+            abort(404); // HTTP例外を出す
+        }
+    }
 }
