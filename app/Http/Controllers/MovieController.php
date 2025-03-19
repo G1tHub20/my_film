@@ -26,33 +26,33 @@ class MovieController extends Controller
     {
         // 管理者ユーザかどうか判定
         $isAdmin = auth()->user()->isAdmin;
-        if($isAdmin === 1) {
-            // return view('movie.admin');・
-            return redirect('movie/admin');   
+        if ($isAdmin === 1) {
+            return redirect('movie/admin');
+
         } else {
+            $tags = Tag::all();
+            $genre_names = Genre::orderBy('id')->get();
+            $release_year = Movie::distinct()->orderBy('release_year', 'desc')->pluck('release_year');
+            $directors = Movie::distinct()->orderBy('director')->pluck('director');
+            $countries = Country::orderBy('id')->get();
+            // $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
+            $latest_reviewed_movies = Review::orderBy('updated_at', 'desc')->groupBy('movie_id')->limit(10)->pluck('movie_id');
+            $movies = Movie::whereIn('id', $latest_reviewed_movies)->get();
 
-        $tags = Tag::all();
-        $genre_names = Genre::orderBy('id')->get();
-        $release_year = Movie::distinct()->orderBy('release_year', 'desc')->pluck('release_year');
-        $directors = Movie::distinct()->orderBy('director')->pluck('director');
-        $countries = Country::orderBy('id')->get();
-        $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
-        $movies = Movie::with('country')->whereIn('id', $top_movies)->get();
+            // 各映画に対してその映画のジャンルIDを取得する
+            $movies->load('genres');
+            $genres = [];
+            foreach ($movies as $movie) {
+                foreach ($movie->genres as $genre) {
+                    $genres[$movie->id][$genre->id] = $genre->genre;
 
-        // 各映画に対してその映画のジャンルIDを取得する
-        $movies->load('genres');
-        $genres = [];
-        foreach ($movies as $movie) {
-            foreach ($movie->genres as $genre) {
-                $genres[$movie->id][$genre->id] = $genre->genre;
-
-                $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
-                $movie->setAttribute('rating', $rating); //配列に属性を追加
+                    $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
+                    $movie->setAttribute('rating', $rating); //配列に属性を追加
+                }
             }
-        }
 
-        return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
-    }
+            return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
+        }
     }
 
     /*-------------------------------------------
