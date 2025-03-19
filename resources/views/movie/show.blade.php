@@ -36,7 +36,7 @@
 
                 <div class="p-2 w-full">
                   <div class="container sm:px-5 mx-auto">
-                    <p class="mb-5">{{ $movie->overview }}</p>
+                    <p class="mt-5 sm:mt-0 mb-5">{{ $movie->overview }}</p>
                     <dt class="border-l-4 border-gray-300 pl-1">ジャンル：</dt>
                     <dd class="pl-4 mb-1">
                       @foreach ($genres as $key => $genre)
