@@ -112,7 +112,7 @@
         <!-- 一覧画面（4.5以上の映画） -->
         <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
           {{-- <p class="w-4/12  text-lg"><span class="text-yellow-400">★</span>4.5以上の映画</p> --}}
-          <p class="w-4/12 text-lg mb-4">最近レビューされた映画</p>
+          <p class="text-lg mb-4">最近レビューされた映画</p>
           <table class="table-auto w-full">
             <thead>
               <tr>

@@ -30,12 +30,12 @@
             <p><img src="{{ $image2 }}"></p>
           </div>
 
-          <div class="container px-5 mx-auto">
+          <div class="container sm:px-5 mx-auto">
             <div class="mx-auto">
               <div class="flex flex-wrap -m-2">
 
                 <div class="p-2 w-full">
-                  <div class="container px-5 mx-auto">
+                  <div class="container sm:px-5 mx-auto">
                     <p class="mb-5">{{ $movie->overview }}</p>
                     <dt class="border-l-4 border-gray-300 pl-1">ジャンル：</dt>
                     <dd class="pl-4 mb-1">
