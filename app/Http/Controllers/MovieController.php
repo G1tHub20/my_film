@@ -36,14 +36,12 @@ class MovieController extends Controller
             $directors = Movie::distinct()->orderBy('director')->pluck('director');
             $countries = Country::orderBy('id')->get();
             // $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
-            // $latest_reviewed_movies = Review::orderBy('updated_at', 'desc')->groupBy('movie_id')->limit(10)->pluck('movie_id');
-            $latest_reviewed_movies = Movie::whereIn('id', function ($query) {
-                $query->select('movie_id')
-                    ->from('reviews')
-                    ->groupBy('movie_id')
-                    ->orderByRaw('MAX(updated_at) DESC')
-                    ->limit(10);
-            })->get();
+            $latest_reviewed_movies = Review::select('movie_id', DB::raw('MAX(updated_at) as latest_update'))
+                ->groupBy('movie_id')
+                ->orderBy('latest_update', 'DESC')
+                ->limit(10)
+                ->pluck('movie_id') // pluck() で movie_id のコレクションを取得
+                ->toArray(); // コレクションを配列に変換
             $movies = Movie::whereIn('id', $latest_reviewed_movies)->get();
 
             // 各映画に対してその映画のジャンルIDを取得する
