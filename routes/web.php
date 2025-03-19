@@ -56,7 +56,7 @@ Route::prefix('movie') // 頭に movie をつける
 // Route::get('/', function () {
 //     return view('auth/login');
 // });
-Route::get('/', function () {
+Route::get('/my_film', function () {
 	return redirect('/movie');
 });
 
