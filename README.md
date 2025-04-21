@@ -1,7 +1,7 @@
 ## 開発したサービスについて
 
 ### タイトル名：My Film
-URL：https://myfilminfo.com/ (PC推奨)
+URL：https://aoiyama.jp/movie
 GitHub：https://github.com/G1tHub20/my_film
 
 ### サービス概要
