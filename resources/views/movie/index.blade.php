@@ -36,8 +36,8 @@
             <div id="accordion-collapse" class="container mx-auto" data-accordion="collapse">
               <div id="accordion-collapse-heading-2" class="container lg:w-2/3 mx-auto">
                 <button type="button"
-                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded dark:focus:ring-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                  data-accordion-target="#accordion-collapse-body-2" aria-expanded="true"
+                  class="flex items-center justify-between px-5 py-3 font-medium leading-4 rtl:text-right text-black-500 border-2 border-gray-200 rounded dark:focus:ring-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                  data-accordion-target="#accordion-collapse-body-2" aria-expanded="false"
                   aria-controls="accordion-collapse-body-2">
                   詳しい条件で検索
                   <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
@@ -47,8 +47,8 @@
                   </svg>
                 </button>
               </div>
-              <div id="accordion-collapse-body-2" class="" aria-labelledby="accordion-collapse-heading-2">
-                <div class="lg:w-2/3 mx-auto p-5 border border-gray-200 dark:border-gray-700 rounded">
+              <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                <div class="lg:w-2/3 mx-auto p-5 pb-2 border border-gray-200 dark:border-gray-700 rounded">
                   <div class="flex sm:items-center mb-3 flex-col sm:flex-row">
                     <label class="block sm:w-1/5 font-bold sm:text-right pr-4" for="title">タイトル</label>
                     <input type="text"
@@ -102,7 +102,7 @@
             </div><!-- #accordion-collapse -->
 
             <!-- ボタン -->
-            <div class="flex justify-center">
+            <div class="flex justify-center mt-5">
               <button type="reset" class="text-gray-500 bg-gray-100 border-0 py-2 px-8 focus:outline-none rounded text-lg hover:bg-gray-200 mr-5">クリア</button>
               <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索</button>
             </div>
