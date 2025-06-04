@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
   <!-- ファビコン -->
   <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
-
+  <link rel="apple-touch-icon" href="./img/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="./images/apple-touch-icon.png" sizes="192x192">
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -23,9 +24,6 @@
 
     <!-- Page Heading -->
     <header class="bg-white shadow">
-      {{-- <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-        {{ $header }}
-      </div> --}}
     </header>
 
     <!-- Page Content -->

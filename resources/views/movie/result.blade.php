@@ -38,12 +38,10 @@
                   </td>
                   <td class="w-4/12 text-sm sm:text-base">
                     @foreach ($genres[$movie->id] as $key => $genre)
-                      {{-- <a href="/movie/result?genre={{ $key }}" class="hover:underline hover:decoration-indigo-600">{{ $genre }}</a>{{ $loop->last ? '' : '、' }} --}}
                       {{ $genre }}{{ $loop->last ? '' : '、' }}
                     @endforeach
                   </td>
                   <td class="w-1/12">{{ $movie->release_year }}</a></td>
-                  {{-- <td class="w-2/12">{{ $movie->director }}</td> --}}
                   <td class="w-2/12 text-xs letter-spacing-xs text-yellow-400">
                     @for ($i = 0; $i < $movie->rating; $i++)
                       ★

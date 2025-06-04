@@ -27,7 +27,6 @@
             @csrf
 
             <div class="container lg:w-2/3 mx-10 px-5 py-1 mx-auto mb-5">
-              {{-- <label for="rating" class="text-sm font-medium text-gray-900 dark:text-white">評価</label> --}}
               <select name="rating" id="rating" class="rounded">
                 <option value="">評価を選択</option>
                 <option value="1" @if ($review->rating === 1) selected @endif>★</option>
@@ -39,7 +38,6 @@
             </div>
 
             <div class="container lg:w-2/3 mx-10 px-5 py-1 mx-auto mb-5">
-              {{-- <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">本文</label> --}}
               <textarea id="comment" name="comment" rows="4" maxlength="1000"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="ここにレビューを書いてください（1,000字以内）">{{ $review->comment }}</textarea>
@@ -47,7 +45,7 @@
             </div>
 
             <div class="container lg:w-2/3 mx-10 px-5 py-1 mx-auto mb-5">
-              <label for="tag" class="text-sm font-medium text-gray-900 dark:text-white">タグを選択（3つまで）</label><br>
+              <label class="text-sm font-medium text-gray-900 dark:text-white">タグを選択（3つまで）</label><br>
               @foreach ($tags as $tag)
                 <label for="{{ $tag->id }}" class="mx-1 text-lg whitespace-nowrap">
                   <input type="checkbox" name="tag[]" id="{{ $tag->id }}" value="{{ $tag->id }}"
@@ -75,7 +73,6 @@
       <input type="hidden" name="movie_id" value="{{ $movie->id }}">
       <input type="hidden" name="user_id" value="{{ $user_id }}">
       </form>
-      {{-- <a href="/movie/{{ $movie->id }}" class="text-blue font-medium block mx-auto mr-0 py-1 px-1 focus:outline-none hover:bg-indigo-600 hover:text-white">詳細に戻る</button> --}}
 
       <button onclick="location.href='/movie/{{ $movie->id }}'"
         class="text-white block bg-indigo-500 mx-auto border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">詳細に戻る</button>
