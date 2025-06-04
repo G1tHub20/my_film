@@ -128,12 +128,12 @@
                   <td class="border-t border-slate-400 w-5/12 text-indigo-600"><a href="/movie/{{ $movie['id'] }}"
                       class="text-blue font-medium inline-block mx-auto mr-0 py-2 px-1 focus:outline-none hover:text-rose-500">{{ $movie->title }}</button>
                   </td>
-                  <td class="w-4/12">
+                  <td class="w-4/12 text-sm sm:text-base">
                     @foreach ($genres[$movie->id] as $key => $genre)
                       {{ $genre }}{{ $loop->last ? '' : '、' }}
                     @endforeach
                   </td>
-                  <td class="w-1/12">{{ $movie->release_year }}年</a></td>
+                  <td class="w-1/12">{{ $movie->release_year }}</a></td>
                   <td title="{{ $movie->rating }}" class="w-2/12 text-xs letter-spacing-xs text-yellow-400">
                     @for ($i = 0; $i < $movie->rating; $i++)
                       ★

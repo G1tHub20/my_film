@@ -64,7 +64,7 @@
 
             <div class="flex items-center relative">
               <button name="delete"
-                class="absolute left-0 text-white bg-red-400 border-0 py-2 px-8 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
+                class="absolute left-0 text-white bg-red-400 border-0 py-2 px-2 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
               <div class="w-full text-center">
                 <button name="update"
                   class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">内容を確認して更新</button>
