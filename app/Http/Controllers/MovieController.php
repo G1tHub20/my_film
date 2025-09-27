@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
-use App\Models\Director;
 use App\Models\Country;
 use App\Models\User;
 use App\Models\Tag;
@@ -13,8 +12,6 @@ use App\Models\Genre;
 use App\Models\Review;
 use App\Http\Requests\StoreMovieForm; //フォームリクエスト
 use Illuminate\Support\Facades\DB;
-
-use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -170,7 +167,7 @@ class MovieController extends Controller
         }
         // tag_idのカウント数の降順
         $tags = $movie->tags()
-        ->select('tags.id','tags.tag',\DB::raw('COUNT(movie_tag.tag_id) as tag_count'))
+        ->select('tags.id','tags.tag',DB::raw('COUNT(movie_tag.tag_id) as tag_count'))
         ->groupBy('tags.id','tags.tag','movie_tag.movie_id','movie_tag.tag_id')
         ->orderBy('tag_count', 'desc')
         ->get();

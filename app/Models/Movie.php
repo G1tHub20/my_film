@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Movie extends Model
 {
-    use HasFactory;
-    use Sortable;
+    use HasFactory, Sortable, SoftDeletes;
      //ソート対象指定
 	public $sortable = ['title', 'release_year', 'director', 'country_id'];
     // MovieモデルにSortableトレイトを追加し、ソート可能なカラムを定義
