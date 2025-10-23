@@ -11,10 +11,17 @@ use App\Models\MovieTag; //モデル名にアンダーバー使わない！
 use App\Models\Genre;
 use App\Models\Review;
 use App\Http\Requests\StoreMovieForm; //フォームリクエスト
+use App\Services\RatingService;
 use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
+    protected $ratingService;
+
+    public function __construct(RatingService $ratingService)
+    {
+        $this->ratingService = $ratingService;
+    }
 
     /*-------------------------------------------
     TOPページ
@@ -33,26 +40,16 @@ class MovieController extends Controller
             $directors = Movie::distinct()->orderBy('director')->pluck('director');
             $countries = Country::orderBy('id')->get();
             // $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
-            $latest_reviewed_movies = Review::select('movie_id', DB::raw('MAX(updated_at) as latest_update'))
-                ->groupBy('movie_id')
-                ->orderBy('latest_update', 'DESC')
-                ->limit(10)
-                ->pluck('movie_id') // pluck() で movie_id のコレクションを取得
-                ->toArray(); // コレクションを配列に変換
-            $movies = Movie::whereIn('id', $latest_reviewed_movies)->get();
+            $movies = $this->ratingService->getLatestReviewedMoviesWithRatings(10);
 
-            // 各映画に対してその映画のジャンルIDを取得する
-            $movies->load('genres');
+            // ジャンル情報を構築
             $genres = [];
             foreach ($movies as $movie) {
                 foreach ($movie->genres as $genre) {
                     $genres[$movie->id][$genre->id] = $genre->genre;
-
-                    $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
-                    $movie->setAttribute('rating', $rating); //配列に属性を追加
                 }
             }
-
+            
             return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
         }
     }
@@ -85,12 +82,10 @@ class MovieController extends Controller
                 });
             }
 
-            
             $movies = $query->get(); //getメソッド 結果をコレクションとして取得
-            foreach($movies as $movie) {
-                $rating = floor(Review::where('movie_id', $movie->id)->avg('rating') *100) /100; //平均スコア
-                $movie->setAttribute('rating', $rating); //配列に属性を追加
-            }
+
+            // 評価を一括付与
+            $movies = $this->ratingService->attachRatingsToMoviesOptimized($movies);
 
             // カスタムソート: ratingでソート
             $sort = $request->input('sort', 'id');
@@ -182,7 +177,7 @@ class MovieController extends Controller
             $review->setAttribute('name', $name); //配列に属性を追加
         }
 
-        $rating = floor(Review::where('movie_id',$id)->avg('rating') *100) /100; //平均スコア
+        $rating = $this->ratingService->calculateAverageRating($id);
         
         return view('movie.show',compact('movie','rating','image1','image2','tags','genres','reviews','posted_user'));
     }
