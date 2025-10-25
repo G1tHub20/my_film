@@ -58,7 +58,6 @@ class Movie extends Model
         }
             
         if($release_year != null) {
-            // $query->whereBetween('release_year', [$release_year, $release_year+4]);
             $query->where('release_year', '=', $release_year);
         }
         if($country_id != null) {
