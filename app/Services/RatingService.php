@@ -81,7 +81,9 @@ class RatingService
           ->pluck('movie_id')
           ->toArray();
           
-      $movies = Movie::whereIn('id', $movieIds)->get();
+      $movies = Movie::whereIn('id', $movieIds)
+        ->orderByRaw('FIELD(id, ' . implode(',', $movieIds) . ')') // FIELD関数を使って $movieIds の順番通りに並べ直し
+        ->get();
       return $this->attachRatingsToMoviesOptimized($movies);
   }
 
