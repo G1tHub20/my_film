@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
-use App\Models\Country;
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\MovieTag; //モデル名にアンダーバー使わない！
-use App\Models\Genre;
 use App\Models\Review;
 use App\Http\Requests\StoreMovieForm; //フォームリクエスト
 use App\Services\RatingService;
+use App\Services\SearchService;
 use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
     protected $ratingService;
+    protected $searchService;
 
-    public function __construct(RatingService $ratingService)
+    public function __construct(RatingService $ratingService, SearchService $searchService)
     {
         $this->ratingService = $ratingService;
+        $this->searchService = $searchService;
     }
 
     /*-------------------------------------------
@@ -34,23 +35,10 @@ class MovieController extends Controller
             return redirect('movie/admin');
 
         } else {
-            $tags = Tag::all();
-            $genre_names = Genre::orderBy('id')->get();
-            $release_year = Movie::distinct()->orderBy('release_year', 'desc')->pluck('release_year');
-            $directors = Movie::distinct()->orderBy('director')->pluck('director');
-            $countries = Country::orderBy('id')->get();
-            // $top_movies = Review::havingRaw('AVG(rating) >= 4.5')->groupBy('movie_id')->pluck('movie_id');
-            $movies = $this->ratingService->getLatestReviewedMoviesWithRatings(10);
-
-            // ジャンル情報を構築
-            $genres = [];
-            foreach ($movies as $movie) {
-                foreach ($movie->genres as $genre) {
-                    $genres[$movie->id][$genre->id] = $genre->genre;
-                }
-            }
+            $options = $this->searchService->getOptionsForSearch();
+            $movieData = $this->searchService->getMoviesForIndex();
             
-            return view('movie.index', compact('tags','countries','genre_names','release_year','directors','movies','genres'));
+            return view('movie.index', array_merge($options, $movieData));
         }
     }
 
@@ -59,79 +47,13 @@ class MovieController extends Controller
     -------------------------------------------*/
     public function result(Request $request)
     {
-        $title = $request->title;               //タイトル
-        $release_year = $request->release_year; //製作年
-        $country_id = $request->country;        //製作国
-        $director = $request->director;         //監督
-        $tag_ids = $request->tag;               //タグ
-        $genre_id = $request->genre;            //ジャンル
-
-        $query = Movie::search($title, $release_year, $director, $country_id, $genre_id);
-        // Eager Loading（遅延読み込み）で関連するデータを事前に読み込む
-        // withメソッドの引数にはリレーションメソッド名を指定
-        $query
-            ->with('country') //Movieのcountryメソッドを呼び出す
-            ->with('genres')
-            ->select('id','title','release_year','director','country_id')
-            ->sortable(); //ソート機能を実装
-
-            // タグを持つ映画を絞り込み（OR条件）
-            if (!empty($tag_ids) && count($tag_ids) > 0) { // tag_idsが存在し、かつ0個以上
-                $query->whereHas('tags', function ($q) use ($tag_ids) {
-                    $q->whereIn('tag_id', $tag_ids);
-                });
-            }
-
-            $movies = $query->get(); //getメソッド 結果をコレクションとして取得
-
-            // 評価を一括付与
-            $movies = $this->ratingService->attachRatingsToMoviesOptimized($movies);
-
-            // カスタムソート: ratingでソート
-            $sort = $request->input('sort', 'id');
-            $direction = $request->input('direction', 'asc');
-            if ($sort === 'rating') {
-                $movies = $direction === 'desc' ? $movies->sortByDesc('rating') : $movies->sortBy('rating');
-            } else {
-                $movies = $direction === 'desc' ? $movies->sortByDesc($sort) : $movies->sortBy($sort);
-            }
-
-            // 各映画に対してその映画のジャンルIDを取得する
-            $movies->load('genres');
-            $genres = [];
-            foreach ($movies as $movie) {
-                foreach ($movie->genres as $genre) {
-                    $genres[$movie->id][$genre->id] = $genre->genre;
-                }
-            }
-
-            // 検索条件の表示
-            $search_params = [];
-            if(!is_null($title)) {
-                array_push($search_params, "\"" . $title . "\"");
-            }
-            if(!is_null($release_year)) {
-                array_push($search_params, $release_year . "年");
-            }
-            if(!is_null($genre_id)) {
-                $genre = Genre::find($genre_id);
-                array_push($search_params, $genre->genre);
-            }
-            if(!is_null($director)) {
-                array_push($search_params, $director);
-            }
-            if(!is_null($country_id)) {
-                $country = Country::find($country_id);
-                array_push($search_params, $country->country);
-            }
-            if(!is_null($tag_ids)) {
-                $tags = Tag::whereIn('id', $tag_ids)->pluck('tag')->toArray(); //コレクションを配列に変換
-                $tag = "\"" . implode( "／", $tags) . "\"";
-                array_push($search_params, $tag);
-            }
-            $search_param = implode( ",　", $search_params);
-
-        return view('movie.result', compact('movies', 'genres', 'search_param'));
+        $result = $this->searchService->searchMoviesWithDetails($request);
+        
+        return view('movie.result', [
+            'movies' => $result['movies'],
+            'genres' => $result['genres'],
+            'search_param' => $result['search_param']
+        ]);
     }
 
     /*-------------------------------------------
