@@ -42,11 +42,13 @@ class SearchService
             ->select('id','title','release_year','director','country_id')
             ->sortable(); //ソート機能を実装
 
-        // タグを持つ映画を絞り込み（OR条件）
+        // タグを持つ映画を絞り込み（AND条件）
         if (!empty($tag_ids) && count($tag_ids) > 0) {
-            $query->whereHas('tags', function ($q) use ($tag_ids) {
-                $q->whereIn('tag_id', $tag_ids);
-            });
+            foreach ($tag_ids as $tag_id) {
+                $query->whereHas('tags', function ($q) use ($tag_id) {
+                    $q->where('tag_id', $tag_id);
+                });
+            }
         }
 
         $movies = $query->get(); //getメソッド 結果をコレクションとして取得
@@ -93,7 +95,7 @@ class SearchService
         }
         if(!is_null($tag_ids)) {
             $tags = Tag::whereIn('id', $tag_ids)->pluck('tag')->toArray();
-            $tag = "\"" . implode( "／", $tags) . "\"";
+            $tag = "\"" . implode( " & ", $tags) . "\"";
             array_push($search_params, $tag);
         }
         $search_param = implode( ",　", $search_params);
