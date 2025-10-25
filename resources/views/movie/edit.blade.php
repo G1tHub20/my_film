@@ -7,7 +7,7 @@
 
   <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
+      <div class="bg-white p-2 sm:p-6 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
           <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $movie->title }}</h2>

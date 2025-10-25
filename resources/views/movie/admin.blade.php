@@ -8,7 +8,7 @@
   <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-        <div class="p-6 bg-white border-b-8 border-gray-100">
+        <div class="p-2 sm:p-6 bg-white border-b-8 border-gray-100">
 
           <div class="container px-5 pt-5">
             <div class="flex flex-col text-center w-full mb-4">

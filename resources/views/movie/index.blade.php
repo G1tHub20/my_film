@@ -8,7 +8,7 @@
   <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto">
-        <div class="p-6 bg-white border-b-8 border-gray-100">
+        <div class="p-2 sm:p-6 bg-white border-b-8 border-gray-100">
 
           <form method="get" action="{{ route('movie.result') }}">
             <div class="container px-5 pt-5">
@@ -110,7 +110,7 @@
         </div>
 
         <!-- 一覧画面（4.5以上の映画） -->
-        <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
+        <div class="bg-white p-2 sm:p-6  overflow-hidden shadow-sm sm:rounded-lg mx-auto">
           <p class="text-lg mb-4">最近レビューされた映画</p>
           <table class="table-auto w-full">
             <thead>

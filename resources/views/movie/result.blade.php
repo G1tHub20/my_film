@@ -8,7 +8,7 @@
 
   <div class="">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
+      <div class="bg-white p-2 sm:p-6 overflow-hidden shadow-sm sm:rounded-lg mx-auto">
         {{-- bladeテンプレート --}}
         <p class="text-lg">検索条件： {{ $search_param ?: 'なし' }}</p>
         @if ($movies->isEmpty())
