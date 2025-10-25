@@ -65,7 +65,7 @@ class Movie extends Model
             $query->where('country_id', '=', $country_id);
         }
         if($director != null) {
-            $query->where('director', '=', $director);
+            $query->where('director', 'like', '%' . $director . '%');
         }
         if($genre_id != null) {
             // GenreMovieを参照
