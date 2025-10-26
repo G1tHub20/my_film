@@ -67,16 +67,13 @@ class MovieController extends Controller
         }
         // dd($movie);
         $image_path = 'https://image.tmdb.org/t/p/w500';
-        $image1 = $image_path . $movie->image1;
-        $image2 = null;
+        $image1 = $movie->image1 ? $image_path . $movie->image1 : null;
+        $image2 = $movie->image2 ? $image_path . $movie->image2 : null;
 
         $user_id = auth()->user()->id;
         // 投稿済みのユーザーか
         $posted_user = $this->reviewService->hasUserPostedReview($movie_id, $user_id) ? 1 : 0;
 
-        if(!empty($movie->image2)) {
-            $image2 = $image_path . $movie->image2;
-        }
         // tag_idのカウント数の降順
         $tags = $this->reviewService->getMovieTagsWithCount($id);
 
@@ -126,7 +123,7 @@ class MovieController extends Controller
     }
 
     /*-------------------------------------------
-    DBに登録
+    DBに登録（レビュー）
     -------------------------------------------*/
     public function store(StoreMovieForm $request) //バリデーションあり
     {
@@ -135,7 +132,7 @@ class MovieController extends Controller
     }
 
     /*-------------------------------------------
-    DBを更新
+    DBを更新（レビュー）
     -------------------------------------------*/
     public function update(StoreMovieForm $request) //バリデーションあり
     {
