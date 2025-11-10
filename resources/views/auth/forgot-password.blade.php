@@ -36,7 +36,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <button class="inline-flex items-center justify-center rounded-md bg-neutral-950 p-3 font-normal text-base text-neutral-50 transition active:scale-110 text-sm">【無効】パスワード再設定URLを送信</button>
+                <button class="inline-flex items-center justify-center rounded-md bg-neutral-950 p-3 font-normal text-base text-neutral-50 transition active:scale-110 text-sm">パスワード再設定URLを送信</button>
                 {{-- <x-primary-button>
                     {{ __('auth.Email Password Reset Link') }}
                 </x-primary-button> --}}
